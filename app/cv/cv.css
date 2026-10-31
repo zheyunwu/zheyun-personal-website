@@ -9,6 +9,8 @@
 .cv-print-button { cursor: pointer; gap: 28px; }
 .cv-layout { display: grid; grid-template-columns: 252px minmax(0, 1fr); gap: 90px; margin-top: 66px; }
 .cv-sidebar-sticky { position: sticky; top: 115px; }
+.cv-portrait { width: 110px; height: 110px; flex-shrink: 0; overflow: hidden; border-radius: 50%; margin-bottom: 23px; background: #e4e3da; outline: 1px solid #d6d5cc; outline-offset: 5px; }
+.cv-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 43%; transform: scale(1.6); transform-origin: 50% 43%; }
 .cv-name { margin: 0 0 10px; font-size: 33px; letter-spacing: -.04em; }
 .cv-name-dot { color: #717461; }
 .cv-role { font-size: 13px; line-height: 1.8; }
@@ -84,7 +86,11 @@
   .cv-actions { flex-direction: row; align-items: center; gap: 23px; }
   .cv-layout { display: block; margin-top: 30px; }
   .cv-sidebar-sticky { position: static; }
-  .cv-sidebar .cv-name, .cv-sidebar .cv-role, .cv-sidebar-detail { display: none; }
+  .cv-profile { display: flex; align-items: center; gap: 23px; margin: 6px 0 25px; }
+  .cv-portrait { width: 80px; height: 80px; margin-bottom: 0; }
+  .cv-name { font-size: 29px; margin-bottom: 3px; }
+  .cv-role { font-size: 11px; }
+  .cv-sidebar-detail { display: none; }
   .cv-section-nav { display: flex; flex-wrap: wrap; column-gap: 22px; row-gap: 0; border: 0; margin: 0 0 40px; }
   .cv-section-nav a { padding: 10px 0; font-size: 11px; gap: 7px; border: 0; }
   .cv-nav-arrow { display: none; }
@@ -119,6 +125,8 @@
   .cv-intro-bottom > p { font-size: 11px; max-width: 560px; }
   .cv-layout { display: block; margin-top: 20px; }
   .cv-sidebar-sticky { position: static; display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap; margin-bottom: 28px; }
+  .cv-profile { display: flex; align-items: center; gap: 20px; margin: 0; break-inside: avoid; }
+  .cv-portrait { width: 64px; height: 64px; margin: 0; outline-offset: 3px; }
   .cv-sidebar .cv-name, .cv-sidebar .cv-role { display: block; }
   .cv-sidebar .cv-name { font-size: 25px; }
   .cv-sidebar .cv-role { font-size: 11px; }

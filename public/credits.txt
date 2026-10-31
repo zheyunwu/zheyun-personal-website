@@ -1,5 +1,3 @@
-Berlin colonnade: Maik Winnecke / Unsplash
-https://unsplash.com/photos/a-walkway-with-columns-and-a-clock-on-the-top-of-it-FsGI2CCpQVk
-License: https://unsplash.com/license
-Stockholm and KTH photographs: assets from Zheyun Wu's previous website repository.
+Stockholm waterfront and portrait: supplied by Zheyun Wu from his personal collection.
+KTH photograph: asset from Zheyun Wu’s previous website repository.
 Fonts: Cormorant Garamond and Manrope, self-hosted, SIL Open Font License.

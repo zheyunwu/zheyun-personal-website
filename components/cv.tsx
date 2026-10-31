@@ -165,8 +165,13 @@ export function CV() {
       <div className="cv-layout">
         <aside className="cv-sidebar">
           <div className="cv-sidebar-sticky">
-            <p className="cv-name serif">Zheyun Wu<span className="cv-name-dot">.</span></p>
-            <p className="cv-role">AI Platform Engineer<br /><span>SAP · {t('Berlin, Germany', '德国 · 柏林')}</span></p>
+            <div className="cv-profile">
+              <div className="cv-portrait"><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Portrait of Zheyun Wu', 'Zheyun Wu 的头像')} width={1056} height={1056} /></div>
+              <div className="cv-profile-copy">
+                <p className="cv-name serif">Zheyun Wu<span className="cv-name-dot">.</span></p>
+                <p className="cv-role">AI Platform Engineer<br /><span>SAP · {t('Berlin, Germany', '德国 · 柏林')}</span></p>
+              </div>
+            </div>
             <nav className="cv-section-nav" aria-label={t('CV sections', '简历章节')}>
               {sections.map(([id, label], index) => <a key={id} href={`#${id}`}><span>0{index + 1}</span>{label}<span className="cv-nav-arrow" aria-hidden="true">↗</span></a>)}
             </nav>
