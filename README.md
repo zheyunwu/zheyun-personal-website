@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Zheyun Wu — Personal Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+个人主页、履历与双语 Journal。暖白与墨色、衬线标题、充足留白，采用北欧与法式编辑设计方向。
 
-## Available Scripts
+- Next.js App Router、React、TypeScript；依赖的准确版本锁定在 `package-lock.json`。
+- 静态导出到 `out/`，直接由 GitHub Pages 托管，无需 Node.js 后端。
+- 英文为默认界面，支持中文切换；字体与图片由本站提供。
+- 首页、CV、博客列表与文章详情，博客支持分类、标签及搜索。
+- 不默认加载广告、第三方分析脚本或跟踪 Cookie。
 
-In the project directory, you can run:
+## 本地开发
 
-### `npm start`
+建议使用 Node.js 24 LTS。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm ci
+npm run dev
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+校验并生成可发布文件：
 
-### `npm test`
+```sh
+npm run typecheck
+npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`out/` 是完整静态站点，可以由任意静态 HTTP 服务预览。文章详情的 URL 使用末尾斜杠，支持 GitHub Pages 直接访问与刷新。
 
-### `npm run build`
+## GitHub Pages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+仓库：[zheyunwu/zheyun-personal-website](https://github.com/zheyunwu/zheyun-personal-website)。已有自定义域名：[zheyun.dev](https://zheyun.dev)。`public/CNAME` 保留该域名，生产链接按域名根路径生成。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+自动发布配置见 `.github/workflows/deploy.yml`。推送到 `main` 或 `master` 会依次进行依赖安装、类型检查、静态构建、上传与部署，也可以从 Actions 页面手动运行。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+仓库 **Settings → Pages → Build and deployment → Source** 已切换为 **GitHub Actions**。旧站的 `gh-pages` 分支作为历史记录保留。`github-pages` environment 必须允许发布所用的源分支。
 
-### `npm run eject`
+工作流只需要仓库自带的 `GITHUB_TOKEN`，权限为 `contents: read`、`pages: write`、`id-token: write`，无需另建部署密钥。不要提交访问令牌。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+如果未来移除自定义域名，需同时更新站点 URL、Next.js `basePath`、静态资源路径及 CNAME，而不能只删除 CNAME。GitHub 项目站默认路径为 `/zheyun-personal-website/`。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 内容维护
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `components/home.tsx`：首页介绍、当前状态和服务。
+- `components/cv.tsx`：经历、教育、证书与项目。
+- `content/posts.ts`：文章元数据、正文和标签。
+- `public/images/`：站内图片。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+新增文章时，复制一个现有条目，设置唯一且稳定的英文 `slug`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。重新构建后，会自动生成对应静态详情页；不要将未完成的草稿加入发布数组。
 
-## Learn More
+初始文章是站点开篇与通用研究笔记。德国银行、存款/MMF、买房、贷款及厨房采购等专题保留为后续写作方向；没有虚构个人经历、金融收益数据或评测。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+履历中的 SAP 当前岗位采用本人提供的信息；部分历史资料参考旧站与公开 LinkedIn。AWS 历史证书应继续显示获取/到期信息，不应在未核实续证前改成“有效”。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 联盟链接与未来广告
+
+文章包含商业链接时，应开启相应披露并清晰标记。联盟链接使用 `rel="sponsored noopener noreferrer"`；不要把一般参考资料误标为推广链接。
+
+当前没有 AdSense 脚本或虚构的 publisher ID。实际接入前：
+
+1. 完成 AdSense 的站点审核，使用自己的真实 publisher ID。
+2. 按当时适用的欧洲同意政策配置 Google 认证 CMP，在取得所需同意后才加载广告脚本。
+3. 根据 AdSense 后台实际提供的记录建立 `public/ads.txt`，并更新隐私说明。
+4. 核实适用的 Impressum/经营者资料要求。网站按站主明确要求只公开工作邮箱，不公开电话和具体地址；这不等于完整的商业 Impressum。DDG §5 对商业网站通常要求可送达地址，可另行核实合适的商业/服务地址方案，不能猜测或擅自公开私人地址。
+
+金融、房产及贷款类文章发布前，应核对当日数据，标注来源、核实日期和适用条件，明确区分个人经验与专业建议。
+
+## 参考资料
+
+- [Next.js 静态导出](https://nextjs.org/docs/app/guides/static-exports)
+- [GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [Google 欧盟用户同意政策](https://www.google.com/about/company/user-consent-policy/)
+- [Google AdSense 的欧洲 CMP 要求](https://support.google.com/adsense/answer/13554116)

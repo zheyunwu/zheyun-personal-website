@@ -1,0 +1,12 @@
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useLanguage } from './language';
+export function Header(){
+ const {lang,setLang,t}=useLanguage(); const path=usePathname(); const [open,setOpen]=useState(false);
+ const links=[{href:'/',text:t('Home','主页')},{href:'/cv/',text:t('About & CV','关于与履历')},{href:'/journal/',text:t('Journal','手记')}];
+ return <><a className="skip-link" href="#main">{t('Skip to content','跳至正文')}</a><header className="header container"><Link className="wordmark" href="/" aria-label="Zheyun Wu home" onClick={()=>setOpen(false)}>zheyun wu<span>.</span></Link><div className="header-right"><nav className={open?'navigation is-open':'navigation'} id="main-navigation" aria-label={t('Main navigation','主导航')}>{links.map(l=><Link key={l.href} href={l.href} aria-current={path===l.href||l.href!=='/'&&path.startsWith(l.href)?'page':undefined} onClick={()=>setOpen(false)}>{l.text}</Link>)}<Link className="mobile-contact" href="/#contact" onClick={()=>setOpen(false)}>{t('Let’s talk','联系我')} ↗</Link></nav><div className="language-toggle" aria-label="Language"><button aria-pressed={lang==='en'} onClick={()=>setLang('en')}>EN</button><span>/</span><button aria-pressed={lang==='zh'} onClick={()=>setLang('zh')}>中文</button></div><Link className="header-contact" href="/#contact">{t('Let’s talk','联系我')}<ArrowUpRight size={15}/></Link><button className="menu-button" aria-label={open?t('Close menu','关闭菜单'):t('Open menu','打开菜单')} aria-expanded={open} aria-controls="main-navigation" onClick={()=>setOpen(!open)}>{open?<X size={22}/>:<Menu size={22}/>}</button></div></header></>;
+}
+export function Footer(){const {t}=useLanguage();return <footer className="footer container"><div className="footer-top"><Link className="wordmark" href="/">zheyun wu<span>.</span></Link><p>{t('A little corner of the internet. Made with intention.','互联网的一隅。用心构建，认真生活。')}</p><a className="back-top" href="#top">{t('Back to top','回到顶部')} ↑</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Zheyun Wu</span><div><a href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/zheyunwu" target="_blank" rel="noopener noreferrer">GitHub ↗</a><Link href="/privacy/">{t('Privacy & disclosures','隐私与披露')}</Link><Link href="/imprint/">Impressum</Link></div><span className="footer-location">BERLIN, DE · 52.52° N 13.40° E</span></div></footer>}
