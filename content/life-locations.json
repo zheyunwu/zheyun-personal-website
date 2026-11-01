@@ -1,0 +1,161 @@
+[
+  {
+    "id": "quanzhou",
+    "name": {
+      "en": "Quanzhou",
+      "zh": "泉州"
+    },
+    "context": {
+      "en": "China",
+      "zh": "中国"
+    },
+    "coordinates": [
+      118.58,
+      24.93
+    ],
+    "label": [
+      480,
+      370
+    ],
+    "align": "end",
+    "leader": [
+      [
+        522,
+        386
+      ],
+      [
+        492,
+        386
+      ]
+    ],
+    "source": "https://ungegn.un.org/dashboard/cities/details?id=2311"
+  },
+  {
+    "id": "tamsui",
+    "name": {
+      "en": "Tamsui",
+      "zh": "淡水"
+    },
+    "context": {
+      "en": "New Taipei",
+      "zh": "新北"
+    },
+    "coordinates": [
+      121.43847,
+      25.1755786
+    ],
+    "label": [
+      676,
+      290
+    ],
+    "align": "end",
+    "leader": [
+      [
+        695,
+        276
+      ],
+      [
+        695,
+        306
+      ],
+      [
+        688,
+        306
+      ]
+    ],
+    "source": "https://www.imc.ntpc.gov.tw/websitedowndoc?file=imc%2F201811301605410.pdf&filedisplay=WIFI_ENG.pdf"
+  },
+  {
+    "id": "helsinki",
+    "name": {
+      "en": "Helsinki",
+      "zh": "赫尔辛基"
+    },
+    "context": {
+      "en": "Finland",
+      "zh": "芬兰"
+    },
+    "coordinates": [
+      24.94,
+      60.17
+    ],
+    "label": [
+      426,
+      96
+    ],
+    "align": "start",
+    "leader": [
+      [
+        407,
+        112
+      ],
+      [
+        414,
+        112
+      ]
+    ],
+    "source": "https://publications.pik-potsdam.de/rest/items/item_26770_2/component/file_26771/content"
+  },
+  {
+    "id": "stockholm",
+    "name": {
+      "en": "Stockholm",
+      "zh": "斯德哥尔摩"
+    },
+    "context": {
+      "en": "Sweden",
+      "zh": "瑞典"
+    },
+    "coordinates": [
+      18.06,
+      59.33
+    ],
+    "label": [
+      235,
+      62
+    ],
+    "align": "end",
+    "leader": [
+      [
+        320,
+        78
+      ],
+      [
+        247,
+        78
+      ]
+    ],
+    "source": "https://unstats.un.org/unsd/ungegn/nna/documents/3_UNGEGN%20db.pdf"
+  },
+  {
+    "id": "berlin",
+    "name": {
+      "en": "Berlin",
+      "zh": "柏林"
+    },
+    "context": {
+      "en": "Germany",
+      "zh": "德国"
+    },
+    "coordinates": [
+      13.4,
+      52.52
+    ],
+    "label": [
+      270,
+      256
+    ],
+    "align": "end",
+    "leader": [
+      [
+        324,
+        272
+      ],
+      [
+        282,
+        272
+      ]
+    ],
+    "source": "https://publications.pik-potsdam.de/rest/items/item_26770_2/component/file_26771/content"
+  }
+]

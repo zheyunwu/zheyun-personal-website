@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { useLanguage } from './language';
+import { LifeMap } from './life-map';
 import { posts, formatPostDate } from '@/content/posts';
 
 const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path;
@@ -24,10 +25,7 @@ export function Home() {
             <Link className="text-link" href="/journal/">{t('Read the blog', '看看博客')}<ArrowRight size={18} aria-hidden="true" /></Link>
           </div>
         </div>
-        <figure className="hero-figure">
-          <img className="hero-image" src={asset('/images/stockholm.jpg')} alt={t('Boats on the Stockholm waterfront at dusk, with the old town across the water', '暮色中的斯德哥尔摩海滨，水面上的船只与远处的老城')} width={1600} height={1200} fetchPriority="high" />
-          <figcaption>{t('Photographed in Stockholm, Sweden', '摄于斯德哥尔摩，瑞典')}</figcaption>
-        </figure>
+        <LifeMap />
       </section>
 
       <section className="journal-home" aria-labelledby="notes-title">

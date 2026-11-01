@@ -43,7 +43,7 @@ npm run build
 - 全站共用 `app/globals.css` 中的颜色、字体、按钮和导航；CV 与 Blog 的局部样式分别维护。
 - 界面正文 16–18px，长文 18–19px，次要信息保持清晰对比。中文采用适合中文阅读的无衬线字体与较宽松行距。
 - 首页以个人介绍和最新文章组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
-- 使用真实头像与 Stockholm 摄影。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
+- 使用真实头像与五地世界地图；Stockholm 摄影保留于社交分享图片。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
 - 更新样式后检查英文与中文、320px/390px 手机端和桌面，测试键盘菜单、搜索筛选、文章目录和打印布局。
 
 设计研究参考：[Anthropic 对前端设计趋同的讨论](https://claude.com/resources/articles/improving-frontend-design-through-skills)、[Adrian Krebs 的 Show HN 页面模式研究](https://www.adriankrebs.ch/blog/design-slop/)。这些是设计倾向和启发式观察，不是判断 AI 作者身份的依据。
@@ -51,9 +51,13 @@ npm run build
 ## 内容维护
 
 - `components/home.tsx`：首页介绍、最新文章和服务。
+- `components/life-map.tsx` 与 `components/life-map.css`：首页地图与双语标签。
+- `content/life-locations.json`：五个地点的城市级坐标、名称、标签位置与坐标来源。
 - `components/cv.tsx`：经历、教育、证书与项目。
 - `content/posts.ts`：文章元数据、正文和标签。
 - `public/images/`：站内图片。
+
+地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
 新增文章时，复制一个现有条目，设置唯一且稳定的英文 `slug`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。重新构建后，会自动生成对应静态详情页；不要将未完成的草稿加入发布数组。
 

@@ -1,0 +1,13 @@
+.life-map { min-width: 0; }
+.life-map-artwork { position: relative; width: 100%; aspect-ratio: 4 / 3; background: #f0f3f7; border-radius: 5px; isolation: isolate; }
+.life-map-artwork > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.life-map-leader { fill: none; stroke: #758da4; stroke-width: .85; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.life-map-dot { fill: var(--accent); }
+.life-map-label { position: absolute; top: var(--label-y); font-size: 14px; line-height: 1.35; color: #253d55; }
+.life-map-label--end { right: calc(100% - var(--label-x)); text-align: right; }
+.life-map-label--start { left: var(--label-x); text-align: left; }
+.life-map-city { display: block; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
+.life-map-country { display: block; font-size: 12px; line-height: 1.5; margin-top: 2px; color: #586b7e; white-space: nowrap; }
+.life-map figcaption { padding-top: 14px; font-size: 13px; line-height: 1.65; color: var(--muted); }
+@media (max-width: 1050px) and (min-width: 761px) { .life-map-label { font-size: 13px; } }
+@media (max-width: 370px) { .life-map-label { font-size: 12px; } .life-map-country { font-size: 11px; } }
