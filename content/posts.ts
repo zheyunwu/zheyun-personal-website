@@ -2,6 +2,16 @@ import { robinhoodEuroYieldPost } from './robinhood-eur-yield';
 
 export type Localized = { en: string; zh: string };
 export type PostLink = { label: Localized; href: string; sponsored?: boolean };
+export type PostTable = {
+  caption: Localized;
+  columns: Localized[];
+  rows: {
+    id: string;
+    cells: { value: Localized; detail?: Localized; date?: Localized }[];
+    sources?: PostLink[];
+  }[];
+  note?: Localized;
+};
 export type PostSection = {
   id: string;
   title: Localized;
@@ -10,6 +20,7 @@ export type PostSection = {
   afterBullets?: Localized[];
   subtitle?: Localized;
   image?: { src: string; alt: Localized; caption?: Localized; width: number; height: number };
+  table?: PostTable;
   links?: PostLink[];
 };
 export type Post = {

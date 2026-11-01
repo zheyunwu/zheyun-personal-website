@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from './language';
 import { formatPostDate, topicLabels, type Post, type PostLink } from '../content/posts';
+import ArticleTable from './article-table';
 
 const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path;
 
@@ -46,6 +47,7 @@ export default function Article({ post, nextPost }: { post: Post; nextPost: Post
               {section.bullets ? <ul>{section.bullets.map((bullet, index) => <li key={index}>{bullet[lang]}</li>)}</ul> : null}
               {section.afterBullets?.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
               {section.image ? <figure className="article-figure"><a href={asset(section.image.src)} target="_blank" rel="noopener noreferrer"><img src={asset(section.image.src)} alt={section.image.alt[lang]} width={section.image.width} height={section.image.height} loading="lazy" decoding="async" /><span className="sr-only">{t('View the full-size image in a new tab.', '在新标签页查看原图。')}</span></a><figcaption>{section.image.caption ? <span>{section.image.caption[lang]}</span> : null}<span className="article-image-hint">{t('Click the image to view it at full size.', '点击图片可查看原图。')}</span></figcaption></figure> : null}
+              {section.table ? <ArticleTable table={section.table} id={`${section.id}-table`} /> : null}
               {section.links ? <div className="article-sources">{section.links.map(link => <ArticleExternalLink key={link.href} link={link} />)}</div> : null}
             </section>
           ))}

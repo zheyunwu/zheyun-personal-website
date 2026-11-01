@@ -1,4 +1,5 @@
 import type { Post } from './posts';
+import { platformComparison } from './platform-comparison';
 
 export const robinhoodEuroYieldPost: Post = {
   slug: 'robinhood-euro-yield-safety',
@@ -21,8 +22,8 @@ export const robinhoodEuroYieldPost: Post = {
     zh: '文末包含我的 Robinhood 个人邀请链接。符合活动条件时，我和受邀者可能获得奖励；资格、金额、入金与持有要求，以 Robinhood 当时展示的条款为准。',
   },
   editorialNote: {
-    en: 'The Chinese article below was researched and written by me. This English translation and the separate source-check notes were prepared with AI assistance; the platform comparison graphic was also compiled with AI. The original text is preserved, with dated clarifications at the end. Rates and promotions are snapshots, not live quotes.',
-    zh: '中文正文由我研究撰写，按原稿保留。英文译文和文末独立的资料核对注释使用 AI 协助；平台对比图也由 AI 整理。利率与活动信息是当时的记录，请结合文末注明日期的核对注释阅读。',
+    en: 'The Chinese article below was researched and written by me. The English translation, platform comparison table, and separate source-check notes were prepared with AI assistance. The table has been updated against the linked sources; the rest of the original text is preserved, with dated clarifications at the end. Rates and promotions are snapshots, not live quotes.',
+    zh: '中文正文由我研究撰写。英文译文、平台对比表和文末独立的资料核对注释使用 AI 协助。表格已按所附来源核对更新，其余正文保留原稿；利率与活动信息是当时的记录，请结合文末注明日期的核对注释阅读。',
   },
   body: [
     {
@@ -95,23 +96,11 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '当然我们无法保证RH内部具体如何运作，这个平台层面的风险需要自己了解Robinhood这个公司做判断。',
         },
         {
-          en: 'Here is a comparison of Robinhood, Revolut, N26, Trade Republic, and Trading 212 using public data (this part was compiled with AI):',
-          zh: '根据公开数据，RH与Revolut、N26、Trade Republic、Trading 212的一些对比（这部分来自AI）：',
+          en: 'Here is a comparison of Robinhood, Revolut, N26, Trade Republic, and Trading 212, compiled with AI assistance and checked against the sources linked below:',
+          zh: '根据公开资料，RH与Revolut、N26、Trade Republic、Trading 212的一些对比（这部分由 AI 协助整理，并按表格下方来源核对）：',
         },
       ],
-      image: {
-        src: '/images/robinhood-revolut-n26-traderepublic-trading212.png',
-        width: 1086,
-        height: 1448,
-        alt: {
-          en: 'Chinese-language comparison of Robinhood, Revolut, N26, Trade Republic, and Trading 212: origins, employee counts, asset or customer balance figures, and listing status. AI-compiled figures use different dates, currencies, and definitions.',
-          zh: 'Robinhood、Revolut、N26、Trade Republic 与 Trading 212 对比图，列出国家背景、员工人数、资产或客户余额规模及上市情况；AI 整理的数据采用不同日期、币种与统计口径。',
-        },
-        caption: {
-          en: 'Author-supplied, AI-compiled comparison in Chinese. Dates, currencies, and definitions differ; individual figures have not been independently verified. This is not a safety ranking.',
-          zh: '作者提供、AI 整理的对比图。日期、币种与统计口径不同，图中各项数字未逐一独立核实，不构成平台安全性排名。',
-        },
-      },
+      table: platformComparison,
     },
     {
       id: 'fund-risk',
@@ -218,8 +207,8 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '历史与法规 [7–9]：未找到足以证明“欧洲过去十年没有重大信用亏损案例”或“2008 年是最后一次”的完整官方统计。ESMA 记录了 2020 年的严重流动性压力，未发生大面积失败不能证明所有基金均无亏损。欧盟主要 MMF 法规于 2017 年通过、2018 年 7 月起适用，早于新冠危机；2020 年冲击促成进一步审议，ESMA 在 2022 年提出的改革建议本身并不等于已经落地的疫后全面改革。',
         },
         {
-          en: 'Comparison graphic. The AI-compiled table uses different dates, currencies, and measures, including client assets, deposits, and balances. Its individual figures were not independently checked. Robinhood’s US group figures are not the same as the assets or protection of the EU contracting entity; company size alone does not establish safety.',
-          zh: '对比图：AI 整理的表格混用了不同日期、币种以及客户资产、存款和余额等口径，各项数字未逐一独立核实。Robinhood 美国集团的规模也不等于欧洲签约主体的资产或保障范围，不能仅凭规模判断安全性。',
+          en: 'Platform comparison. The bilingual table replaces the original image and links to sources for each platform. Robinhood is updated to September 2026; unverified Trade Republic headcount is marked explicitly. Robinhood’s total platform assets cover the group, not just its EU entity. Revolut’s customer balances include deposits and off-balance-sheet partner savings / Flexible Cash Funds. These differ from N26’s deposits and the brokers’ client assets; neither scale nor listing status establishes safety.',
+          zh: '平台对比：双语表格替代原图，并逐家附上来源。Robinhood 更新至 2026 年 9 月，未确认的 Trade Republic 员工数已明确标出。Robinhood 平台总资产是集团口径，不等于欧洲签约主体资产。Revolut 客户余额包含存款以及表外合作方储蓄／Flexible Cash Funds，与 N26 的存款及券商客户资产口径不同；规模与上市状态均不能直接证明安全性。',
         },
         {
           en: 'Referral offer [10]. The original €50 offer could not be independently confirmed from the public terms. The invitation page and app determine the actual amount, eligibility, deposit, and holding requirements; the published terms include a 180-day restriction on withdrawing the reward’s cash value. The terms describe personal referrals and restrict commercial use. This link is a personal invitation, not evidence of an approved affiliate partnership.',
