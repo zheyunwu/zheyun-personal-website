@@ -69,6 +69,7 @@
 .article-prose{min-width:0;max-width:700px;font-size:19px;line-height:1.85}
 .article-prose>section{scroll-margin-top:32px;margin:0 0 44px}
 .article-prose h2{font-family:var(--sans);font-size:28px;font-weight:600;letter-spacing:-.035em;line-height:1.35;margin:0 0 22px;text-wrap:balance}
+.article-prose h3{font-family:var(--sans);font-size:22px;font-weight:600;line-height:1.5;margin:24px 0 18px}
 .article-prose p{margin:0 0 22px;overflow-wrap:break-word}
 .article-prose ul{margin:24px 0 0;padding-left:1.2em}
 .article-prose li{padding-left:5px;margin-bottom:13px;overflow-wrap:break-word}
@@ -79,6 +80,13 @@
 .article-disclosure{background:var(--pale);border-left:3px solid var(--accent);font-size:16px;line-height:1.8;padding:22px 25px;margin-bottom:36px}
 .article-disclosure strong{display:block;font-weight:600;margin-bottom:7px}
 .article-disclosure p:last-child{margin:0}
+.article-editorial-note{font-size:16px;line-height:1.8;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:32px}
+.article-editorial-note p:last-child{margin:0}
+.article-figure{margin:28px 0}
+.article-figure>a{display:block}
+.article-figure img{display:block;width:100%;height:auto;object-fit:contain}
+.article-figure figcaption{margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)}
+.article-image-hint{display:block;margin-top:5px}
 .article-finish{border-top:1px solid var(--line);padding-top:27px;font-size:16px;line-height:1.7}
 .article-finish p{font-weight:500;margin:0 0 8px}
 .article-finish a{display:inline-flex;gap:12px;align-items:center;color:var(--accent)}

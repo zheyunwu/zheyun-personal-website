@@ -9,12 +9,12 @@ const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path
 
 export function ArticleExternalLink({ link }: { link: PostLink }) {
   const { lang, t } = useLanguage();
-  return <a href={link.href} target="_blank" rel={link.sponsored ? 'sponsored noopener noreferrer' : 'noopener noreferrer'} className="article-source-link"><span>{link.label[lang]} {link.sponsored ? <span>({t('affiliate link', '联盟链接')})</span> : null}</span><ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{t(' (opens in a new tab)', '（在新标签页打开）')}</span></a>;
+  return <a href={link.href} target="_blank" rel={link.sponsored ? 'sponsored noopener noreferrer' : 'noopener noreferrer'} className="article-source-link"><span>{link.label[lang]} {link.sponsored ? <span>({t('referral / affiliate link', '邀请 / 联盟链接')})</span> : null}</span><ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{t(' (opens in a new tab)', '（在新标签页打开）')}</span></a>;
 }
 
 export default function Article({ post, nextPost }: { post: Post; nextPost: Post }) {
   const { lang, t } = useLanguage();
-  const hasAffiliateLinks = post.affiliate || post.body.some(section => section.links?.some(link => link.sponsored));
+  const hasAffiliateLinks = post.affiliate || post.affiliateDisclosure || post.body.some(section => section.links?.some(link => link.sponsored));
 
   return (
     <article className="article-page container">
@@ -36,12 +36,16 @@ export default function Article({ post, nextPost }: { post: Post; nextPost: Post
           <p className="article-topics">{post.tags.map(tag => topicLabels[tag]?.[lang] || tag).join(' · ')}</p>
         </aside>
         <div className="article-prose">
-          {hasAffiliateLinks ? <aside className="article-disclosure"><strong>{t('Affiliate disclosure', '联盟链接说明')}</strong><p>{t('This article contains affiliate links. If you choose to use them, this site may earn a commission at no additional cost to you. Affiliate links are individually marked.', '本文包含联盟链接。如果你通过这些链接购买或注册，本站可能获得佣金，而不会增加你的费用。相关链接均会单独标注。')}</p></aside> : null}
+          {hasAffiliateLinks ? <aside className="article-disclosure"><strong>{t('Referral & affiliate disclosure', '邀请与联盟链接说明')}</strong><p>{post.affiliateDisclosure?.[lang] ?? t('This article contains affiliate links. If you choose to use them, this site may earn a commission at no additional cost to you. Affiliate links are individually marked.', '本文包含联盟链接。如果你通过这些链接购买或注册，本站可能获得佣金，而不会增加你的费用。相关链接均会单独标注。')}</p></aside> : null}
+          {post.editorialNote ? <aside className="article-editorial-note" aria-label={t('Editorial note', '作者说明')}><p>{post.editorialNote[lang]}</p></aside> : null}
           {post.body.map(section => (
             <section id={section.id} key={section.id}>
               <h2>{section.title[lang]}</h2>
+              {section.subtitle ? <h3>{section.subtitle[lang]}</h3> : null}
               {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
               {section.bullets ? <ul>{section.bullets.map((bullet, index) => <li key={index}>{bullet[lang]}</li>)}</ul> : null}
+              {section.afterBullets?.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
+              {section.image ? <figure className="article-figure"><a href={asset(section.image.src)} target="_blank" rel="noopener noreferrer"><img src={asset(section.image.src)} alt={section.image.alt[lang]} width={section.image.width} height={section.image.height} loading="lazy" decoding="async" /><span className="sr-only">{t('View the full-size image in a new tab.', '在新标签页查看原图。')}</span></a><figcaption>{section.image.caption ? <span>{section.image.caption[lang]}</span> : null}<span className="article-image-hint">{t('Click the image to view it at full size.', '点击图片可查看原图。')}</span></figcaption></figure> : null}
               {section.links ? <div className="article-sources">{section.links.map(link => <ArticleExternalLink key={link.href} link={link} />)}</div> : null}
             </section>
           ))}

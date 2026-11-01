@@ -1,3 +1,5 @@
+import { robinhoodEuroYieldPost } from './robinhood-eur-yield';
+
 export type Localized = { en: string; zh: string };
 export type PostLink = { label: Localized; href: string; sponsored?: boolean };
 export type PostSection = {
@@ -5,6 +7,9 @@ export type PostSection = {
   title: Localized;
   paragraphs: Localized[];
   bullets?: Localized[];
+  afterBullets?: Localized[];
+  subtitle?: Localized;
+  image?: { src: string; alt: Localized; caption?: Localized; width: number; height: number };
   links?: PostLink[];
 };
 export type Post = {
@@ -18,6 +23,8 @@ export type Post = {
   visual: 'platform' | 'home' | 'notes';
   format: Localized;
   affiliate?: boolean;
+  affiliateDisclosure?: Localized;
+  editorialNote?: Localized;
   body: PostSection[];
 };
 
@@ -31,6 +38,7 @@ export const topicLabels: Record<string, Localized> = {
 };
 
 export const posts: Post[] = [
+  robinhoodEuroYieldPost,
   {
     slug: 'from-prototype-to-platform',
     title: { en: 'From prototype to platform.', zh: '从原型，到可靠的平台。' },

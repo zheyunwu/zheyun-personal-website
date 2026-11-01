@@ -54,20 +54,27 @@ npm run build
 - `components/life-map.tsx` 与 `components/life-map.css`：首页地图与双语标签。
 - `content/life-locations.json`：五个地点的城市级坐标、名称、标签位置与坐标来源。
 - `components/cv.tsx`：经历、教育、证书与项目。
-- `content/posts.ts`：文章元数据、正文和标签。
+- `content/posts.ts`：文章类型、发布列表、通用文章正文和标签。
+- `content/robinhood-eur-yield.ts`：Robinhood 欧元收益专题，详情页 slug 为 `robinhood-euro-yield-safety`；包含中文原文、AI 辅助英文翻译，以及独立的文末核对注释。
 - `public/images/`：站内图片。
 
 地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
 新增文章时，复制一个现有条目，设置唯一且稳定的英文 `slug`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。重新构建后，会自动生成对应静态详情页；不要将未完成的草稿加入发布数组。
 
-初始文章是站点开篇与通用研究笔记。德国银行、存款/MMF、买房、贷款及厨房采购等专题保留为后续写作方向；没有虚构个人经历、金融收益数据或评测。
+专题长文可以单独保存在 `content/`，再加入 `content/posts.ts` 的发布列表。Robinhood 欧元收益文章保留作者提供的中文原文与段落顺序，英文版本明确标注为 AI 辅助翻译。后续查证、时效性变化及需要限定的表述，放在独立、注明核对日期的文末注释中，并链接相应来源；不要静默改写原文，也不要把翻译或 AI 生成的图表当作独立核实的证据。
+
+文章配图放在 `public/images/`，通过章节的 `image` 字段填写站内 `src`、中英文 `alt`、可选中英文 `caption`，以及原始 `width` / `height`。图片按比例完整显示，可点击在新标签页打开原图。用 `afterBullets` 保留列表之后的原文段落，避免为了数据结构重排正文。来源记录在 `public/credits.txt`，图注应说明用户提供的 AI 比较图未经过独立核实；产品截图也应与实时条款区分。
+
+开篇与通用研究笔记继续保留；德国银行、存款/MMF、买房、贷款及厨房采购等专题会逐步更新。个人经历、金融收益数据和评测结论均应来自本人提供的内容或可核对的资料，不得虚构。
 
 履历中的职位名称与日期以本人确认的信息为准，经历及教育描述于 2026-11-01 对齐本人 LinkedIn。公司与学校 Logo 来自相应 LinkedIn 页面，本地文件来源记录于 `public/images/logos/sources.json`。三张 AWS 认证已通过更新后的 Credly 官方凭证核实：Solutions Architect 与 Cloud Practitioner 有效至 2027-10-24，Developer 有效至 2027-08-29；后续更新以官方凭证为准。
 
 ## 联盟链接与未来广告
 
-文章包含商业链接时，应开启相应披露并清晰标记。联盟链接使用 `rel="sponsored noopener noreferrer"`；不要把一般参考资料误标为推广链接。
+部分文章已包含明确标注的个人邀请或联盟链接。文章包含此类链接时，应开启相应披露并清晰标记，使用 `rel="sponsored noopener noreferrer"`；不要把一般参考资料误标为推广链接，也不要将个人邀请描述成正式合作。
+
+按实际活动填写文章的双语 `affiliateDisclosure`，说明作者、读者或双方可能获得何种奖励，以及服务商资格要求、当期条款等适用条件。不要对邀请活动一律套用“佣金”或“不会增加费用”的表述。`editorialNote` 可用于简洁的作者或翻译说明；独立的文末核对注释应保留核对日期和原始来源。
 
 当前没有 AdSense 脚本或虚构的 publisher ID。实际接入前：
 
