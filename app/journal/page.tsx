@@ -3,8 +3,8 @@ import Journal from '../../components/journal';
 import './journal.css';
 
 export const metadata: Metadata = {
-  title: 'Journal',
-  description: 'Notes on AI, cloud infrastructure, backend engineering, and everyday life in Germany. A personal journal by Zheyun Wu.',
+  title: 'Blog',
+  description: 'Articles on AI, cloud infrastructure, backend engineering, and everyday life in Germany. A personal blog by Zheyun Wu.',
   alternates: { canonical: '/journal/' },
 };
 

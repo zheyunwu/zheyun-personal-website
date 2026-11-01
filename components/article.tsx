@@ -18,7 +18,7 @@ export default function Article({ post, nextPost }: { post: Post; nextPost: Post
 
   return (
     <article className="article-page container">
-      <Link href="/journal/" className="article-back"><ArrowLeft size={18} aria-hidden="true" />{t('The journal', '返回手记')}</Link>
+      <Link href="/journal/" className="article-back"><ArrowLeft size={18} aria-hidden="true" />{t('Back to blog', '返回博客')}</Link>
       <header className="article-heading">
         <p className="journal-kicker">{post.format[lang]}<span aria-hidden="true"> / </span><span>{post.category === 'technology' ? t('Technology', '技术') : t('Life in Germany', '德国生活')}</span></p>
         <h1>{post.title[lang]}</h1>

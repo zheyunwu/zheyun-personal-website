@@ -177,7 +177,8 @@ export function CV() {
             <div className="cv-sidebar-detail">
               <h2 className="cv-sidebar-title">{t('Languages', '语言')}</h2>
               <ul className="cv-languages">
-                <li><span>{t('Chinese', '中文')}</span><span>{t('Fluent', '流利')}</span></li>
+                <li><span>{t('Chinese', '中文')}</span><span>{t('Native', '母语')}</span></li>
+                <li><span>{t('Hokkien', '闽南语')}</span><span>{t('Native', '母语')}</span></li>
                 <li><span>{t('English', '英语')}</span><span>{t('Fluent', '流利')}</span></li>
                 <li><span>{t('German', '德语')}</span><span>{t('Learning', '学习中')}</span></li>
               </ul>
@@ -185,7 +186,6 @@ export function CV() {
             <div className="cv-sidebar-detail">
               <h2 className="cv-sidebar-title">{t('Let’s connect', '联系我')}</h2>
               <a className="cv-email" href="mailto:zheyun.wu.work@gmail.com">zheyun.wu.work@gmail.com</a>
-              <a className="text-link cv-github" href="https://github.com/zheyunwu/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </aside>

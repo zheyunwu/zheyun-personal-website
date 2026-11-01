@@ -21,7 +21,6 @@
 .cv-languages li span:last-child { color: var(--muted); }
 .cv-email { font-size: 14px; overflow-wrap: anywhere; line-height: 1.7; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
 .cv-email:hover { text-decoration-color: var(--accent); }
-.cv-github { display: flex; width: fit-content; margin-top: 12px; font-size: 14px; }
 .cv-section { scroll-margin-top: 36px; margin-bottom: 62px; }
 .cv-section-heading { border-bottom: 1px solid var(--line); padding-bottom: 19px; margin-bottom: 29px; }
 .cv-section-heading h2 { font-family: var(--serif); font-size: clamp(32px, 3vw, 39px); font-weight: 500; line-height: 1.15; letter-spacing: -.025em; }
@@ -99,7 +98,6 @@ html[lang='zh-CN'] .cv-description, html[lang='zh-CN'] .cv-intro-description { l
   .cv-sidebar-sticky { grid-template-columns: 1fr; }
   .cv-sidebar-detail { display: grid; grid-template-columns: 95px minmax(0, 1fr); gap: 0 20px; }
   .cv-sidebar-detail .cv-sidebar-title { margin: 3px 0 0; }
-  .cv-sidebar-detail .cv-github { grid-column: 2; margin-top: 8px; }
   .cv-email { font-size: 14px; }
   .cv-section-heading h2 { font-size: 33px; }
   .cv-experience-item { padding-left: 20px; padding-bottom: 31px; }
@@ -136,8 +134,7 @@ html[lang='zh-CN'] .cv-description, html[lang='zh-CN'] .cv-intro-description { l
   .cv-sidebar-title { font-size: 10pt; margin-bottom: 6px; }
   .cv-languages { display: flex; flex-wrap: wrap; gap: 4px 12px; }
   .cv-languages li { font-size: 9pt; gap: 4px; padding: 0; }
-  .cv-email, .cv-github { font-size: 9pt; }
-  .cv-github { margin-top: 4px; padding: 0; }
+  .cv-email { font-size: 9pt; }
   .cv-section { margin-bottom: 25px; }
   .cv-section-heading { break-after: avoid; margin-bottom: 18px; padding-bottom: 10px; }
   .cv-section-heading h2, html[lang='zh-CN'] .cv-section-heading h2 { font-size: 21pt; }

@@ -1,6 +1,6 @@
 # Zheyun Wu — Personal Website
 
-个人主页、履历与双语 Journal。明朗、亲近的现代设计结合杂志排版：暖白、墨蓝与少量蓝色，Manrope 界面字体与 Newsreader 阅读标题，保留个人摄影与真实内容。
+个人主页、履历与双语博客。明朗、亲近的现代设计结合杂志排版：暖白、墨蓝与少量蓝色，Manrope 界面字体与 Newsreader 阅读标题，保留个人摄影与真实内容。
 
 - Next.js App Router、React、TypeScript；依赖的准确版本锁定在 `package-lock.json`。
 - 静态导出到 `out/`，直接由 GitHub Pages 托管，无需 Node.js 后端。
@@ -40,9 +40,9 @@ npm run build
 
 ## 设计与阅读规范
 
-- 全站共用 `app/globals.css` 中的颜色、字体、按钮和导航；CV 与 Journal 的局部样式分别维护。
+- 全站共用 `app/globals.css` 中的颜色、字体、按钮和导航；CV 与 Blog 的局部样式分别维护。
 - 界面正文 16–18px，长文 18–19px，次要信息保持清晰对比。中文采用适合中文阅读的无衬线字体与较宽松行距。
-- 首页以个人介绍和近况组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
+- 首页以个人介绍和最新文章组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
 - 使用真实头像与 Stockholm 摄影。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
 - 更新样式后检查英文与中文、320px/390px 手机端和桌面，测试键盘菜单、搜索筛选、文章目录和打印布局。
 
@@ -50,7 +50,7 @@ npm run build
 
 ## 内容维护
 
-- `components/home.tsx`：首页介绍、当前状态和服务。
+- `components/home.tsx`：首页介绍、最新文章和服务。
 - `components/cv.tsx`：经历、教育、证书与项目。
 - `content/posts.ts`：文章元数据、正文和标签。
 - `public/images/`：站内图片。
