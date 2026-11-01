@@ -4,7 +4,7 @@ import './cv.css';
 
 export const metadata: Metadata = {
   title: 'About & CV',
-  description: 'The experience, education, selected projects and credentials of Zheyun Wu, an AI Platform Engineer at SAP in Berlin, Germany.',
+  description: 'The experience, education, projects and credentials of Zheyun Wu, an AI Platform Engineer at SAP in Berlin, Germany.',
   alternates: { canonical: '/cv/' },
 };
 

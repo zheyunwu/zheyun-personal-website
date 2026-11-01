@@ -63,7 +63,7 @@ npm run build
 
 初始文章是站点开篇与通用研究笔记。德国银行、存款/MMF、买房、贷款及厨房采购等专题保留为后续写作方向；没有虚构个人经历、金融收益数据或评测。
 
-履历中的 SAP 当前岗位采用本人提供的信息；部分历史资料参考旧站与公开 LinkedIn。AWS 历史证书应继续显示获取/到期信息，不应在未核实续证前改成“有效”。
+履历中的职位名称与日期以本人确认的信息为准，经历及教育描述于 2026-11-01 对齐本人 LinkedIn。公司与学校 Logo 来自相应 LinkedIn 页面，本地文件来源记录于 `public/images/logos/sources.json`。三张 AWS 认证已通过更新后的 Credly 官方凭证核实：Solutions Architect 与 Cloud Practitioner 有效至 2027-10-24，Developer 有效至 2027-08-29；后续更新以官方凭证为准。
 
 ## 联盟链接与未来广告
 

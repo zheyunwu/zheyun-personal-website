@@ -4,3 +4,4 @@ Fonts: Newsreader and Manrope, self-hosted, SIL Open Font License.
 Life map: Natural Earth public-domain land geometry, distributed as world-atlas 2.0.2 (110m).
 Sources: https://github.com/topojson/world-atlas and https://www.naturalearthdata.com/about/terms-of-use/
 The map uses approximate city/district coordinates. Coordinate sources are recorded in content/life-locations.json.
+Company and university logos: downloaded from the institutions’ LinkedIn profiles on 1 November 2026. Original logos belong to their respective owners. Source URLs: images/logos/sources.json.
