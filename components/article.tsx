@@ -39,13 +39,13 @@ export default function Article({ post, nextPost }: { post: Post; nextPost?: Pos
           <p className="article-topics">{post.tags.map(tag => topicLabels[tag]?.[lang] || tag).join(' · ')}</p>
         </aside>
         <div className="article-prose">
-          {hasAffiliateLinks ? <aside className="article-disclosure"><strong>{t('Referral & affiliate disclosure', '邀请与联盟链接说明')}</strong><p>{post.affiliateDisclosure?.[lang] ?? t('This article contains affiliate links. If you choose to use them, this site may earn a commission at no additional cost to you. Affiliate links are individually marked.', '本文包含联盟链接。如果你通过这些链接购买或注册，本站可能获得佣金，而不会增加你的费用。相关链接均会单独标注。')}</p></aside> : null}
+          {hasAffiliateLinks ? <aside className="article-disclosure"><strong>{post.disclosureTitle?.[lang] ?? t('Referral & affiliate disclosure', '邀请与联盟链接说明')}</strong><p>{post.affiliateDisclosure?.[lang] ?? t('This article contains affiliate links. If you choose to use them, this site may earn a commission at no additional cost to you. Affiliate links are individually marked.', '本文包含联盟链接。如果你通过这些链接购买或注册，本站可能获得佣金，而不会增加你的费用。相关链接均会单独标注。')}</p></aside> : null}
           {post.editorialNote ? <aside className="article-editorial-note" aria-label={t('Editorial note', '作者说明')}><p>{post.editorialNote[lang]}</p></aside> : null}
           {post.body.map(section => (
             <section id={section.id} key={section.id}>
               <h2>{section.title[lang]}</h2>
               {section.subtitle ? <h3>{section.subtitle[lang]}</h3> : null}
-              {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
+              {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}{paragraph.emphasis ? <strong>{paragraph.emphasis[lang]}</strong> : null}</p>)}
               {section.bullets ? <ul>{section.bullets.map((bullet, index) => <li key={index}>{bullet[lang]}</li>)}</ul> : null}
               {section.afterBullets?.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
               {section.image ? <ArticleImage image={section.image} /> : null}

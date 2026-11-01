@@ -25,7 +25,7 @@ export type PostImage = {
 export type PostSection = {
   id: string;
   title: Localized;
-  paragraphs: Localized[];
+  paragraphs: (Localized & { emphasis?: Localized })[];
   bullets?: Localized[];
   afterBullets?: Localized[];
   subtitle?: Localized;
@@ -45,6 +45,7 @@ export type Post = {
   visual: 'platform' | 'home' | 'notes';
   format: Localized;
   affiliate?: boolean;
+  disclosureTitle?: Localized;
   affiliateDisclosure?: Localized;
   editorialNote?: Localized;
   body: PostSection[];

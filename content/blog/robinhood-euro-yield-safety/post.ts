@@ -18,6 +18,7 @@ export const robinhoodEuroYieldPost: Post = {
   readTime: 12,
   visual: 'notes',
   format: { en: 'Research note', zh: '研究笔记' },
+  disclosureTitle: { en: 'Referral link disclosure', zh: '邀请链接说明' },
   affiliateDisclosure: {
     en: 'I’ve included my Robinhood referral link at the end. If you sign up and meet the offer’s conditions, we may both get a reward. Check Robinhood’s current terms for who qualifies, how much you get, and how much you need to deposit and keep in the account.',
     zh: '文末包含我的 Robinhood 个人邀请链接。符合活动条件时，我和受邀者可能获得奖励；资格、金额、入金与持有要求，以 Robinhood 当时展示的条款为准。',
@@ -170,8 +171,12 @@ export const robinhoodEuroYieldPost: Post = {
       title: { en: 'My invitation', zh: '我的邀请' },
       paragraphs: [
         {
-          en: 'If you found this helpful and want to try Robinhood, feel free to use my referral link. They’re currently offering new customers €50.',
-          zh: '如果你觉得这个信息有帮助到你且感兴趣，欢迎用我的邀请，当前RH送新户50€',
+          en: 'If you found this helpful and want to try Robinhood, feel free to use my referral link. ',
+          zh: '如果你觉得这个信息有帮助到你且感兴趣，欢迎用我的邀请链接，',
+          emphasis: {
+            en: 'Robinhood is currently offering €50 when you open an account through the link.',
+            zh: '当前通过链接开户Robinhood送50€',
+          },
         },
       ],
       links: [{
