@@ -11,7 +11,8 @@ const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path
 
 export function ArticleExternalLink({ link }: { link: PostLink }) {
   const { lang, t } = useLanguage();
-  return <a href={link.href} target="_blank" rel={link.sponsored ? 'sponsored noopener noreferrer' : 'noopener noreferrer'} className="article-source-link"><span>{link.label[lang]} {link.sponsored ? <span>({t('referral / affiliate link', '邀请 / 联盟链接')})</span> : null}</span><ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{t(' (opens in a new tab)', '（在新标签页打开）')}</span></a>;
+  const showReferralLabel = link.sponsored && link.label[lang] !== link.href;
+  return <a href={link.href} target="_blank" rel={link.sponsored ? 'sponsored noopener noreferrer' : 'noopener noreferrer'} className="article-source-link"><span>{link.label[lang]}{showReferralLabel ? <span> ({t('referral / affiliate link', '邀请 / 联盟链接')})</span> : null}</span><ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{t(' (opens in a new tab)', '（在新标签页打开）')}</span></a>;
 }
 
 export default function Article({ post, nextPost }: { post: Post; nextPost?: Post }) {

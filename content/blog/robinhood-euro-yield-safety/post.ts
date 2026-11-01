@@ -175,7 +175,7 @@ export const robinhoodEuroYieldPost: Post = {
         },
       ],
       links: [{
-        label: { en: 'Join Robinhood with my invitation', zh: '使用我的 Robinhood 邀请链接' },
+        label: { en: 'https://join.robinhood.com/eu_crypto/hood-29cf8e9a9/', zh: 'https://join.robinhood.com/eu_crypto/hood-29cf8e9a9/' },
         href: 'https://join.robinhood.com/eu_crypto/hood-29cf8e9a9/',
         sponsored: true,
       }],
