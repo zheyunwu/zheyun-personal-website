@@ -210,14 +210,6 @@ const awsCredentials = [
 export function CV() {
   const { t } = useLanguage();
   const localized = (value: Localized) => t(value[0], value[1]);
-  const printCV = () => {
-    const closedCourses = [...document.querySelectorAll<HTMLDetailsElement>('.cv-courses:not([open])')];
-    closedCourses.forEach(course => { course.open = true; });
-    window.addEventListener('afterprint', () => {
-      closedCourses.forEach(course => { course.open = false; });
-    }, { once: true });
-    window.print();
-  };
   const sections = [
     ['experience', t('Experience', '工作经历')],
     ['education', t('Education', '教育背景')],
@@ -234,7 +226,6 @@ export function CV() {
           <p className="cv-intro-role">{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</p>
           <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, China, now based in Berlin, Germany. My work connects software, cloud infrastructure and AI. Along the way, I’ve studied in the Nordics, built products, and kept learning by making things.', '我是一名来自中国福建泉州、现居德国柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。一路走来，我曾在北欧求学，也在持续通过做项目、造产品，学习新的东西。')}</p>
           <div className="cv-actions">
-            <button className="button cv-print-button" onClick={printCV}>{t('Print / Save PDF', '打印 / 保存 PDF')}<span aria-hidden="true">↗</span></button>
             <a className="text-link" href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>

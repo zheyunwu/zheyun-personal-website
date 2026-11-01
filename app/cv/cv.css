@@ -6,7 +6,6 @@
 .cv-intro-role { font-size: 21px; font-weight: 500; line-height: 1.5; margin-top: 12px; }
 .cv-intro-description { max-width: 650px; font-size: 18px; line-height: 1.8; color: var(--muted); margin-top: 22px; text-wrap: pretty; }
 .cv-actions { display: flex; flex-wrap: wrap; gap: 26px; align-items: center; margin-top: 29px; }
-.cv-print-button { background: transparent; }
 .cv-portrait img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; border-radius: 5px; }
 .cv-portrait figcaption { margin-top: 14px; font-size: 14px; line-height: 1.6; color: var(--muted); }
 .cv-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 88px; padding-top: 48px; }
@@ -137,54 +136,4 @@ html[lang='zh-CN'] .cv-description, html[lang='zh-CN'] .cv-intro-description { l
   .cv-credential-row h3 { font-size: 16px; }
   .cv-credential-row > a { gap: 4px; }
   .cv-endnote p { font-size: 16px; }
-}
-@media print {
-  @page { margin: 16mm; }
-  .cv-page { width: 100%; max-width: none; padding: 0; color: #202b36; }
-  .cv-actions, .cv-section-nav, .cv-endnote { display: none !important; }
-  .cv-intro { grid-template-columns: 1fr 95px; gap: 30px; padding-bottom: 20px; }
-  .cv-kicker { font-size: 10pt; margin-bottom: 8px; }
-  .cv-intro h1 { font-size: 30pt; }
-  .cv-intro-role { font-size: 12pt; margin-top: 6px; }
-  .cv-intro-description { font-size: 10.5pt; line-height: 1.6; margin-top: 12px; }
-  .cv-portrait { display: block; margin: 0; }
-  .cv-portrait img { width: 95px; height: 95px; }
-  .cv-portrait figcaption { display: none; }
-  .cv-layout { display: block; padding-top: 18px; }
-  .cv-sidebar { margin-bottom: 24px; }
-  .cv-sidebar-sticky { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-  .cv-sidebar-detail { display: block; margin: 0; padding: 0; border: 0; }
-  .cv-sidebar-title { font-size: 10pt; margin-bottom: 6px; }
-  .cv-languages { display: flex; flex-wrap: wrap; gap: 4px 12px; }
-  .cv-languages li { font-size: 9pt; gap: 4px; padding: 0; }
-  .cv-email { font-size: 9pt; }
-  .cv-section { margin-bottom: 25px; }
-  .cv-section-heading { break-after: avoid; margin-bottom: 18px; padding-bottom: 10px; }
-  .cv-section-heading h2, html[lang='zh-CN'] .cv-section-heading h2 { font-size: 21pt; }
-  .cv-experience-item, .cv-education-item, .cv-project, .cv-credential-row { break-inside: avoid; }
-  .cv-experience-item { padding-bottom: 22px; }
-  .cv-experience-item h3, .cv-education-item h3 { font-size: 13pt; margin-top: 6px; }
-  .cv-item-meta { font-size: 9pt; }
-  .cv-item-meta span { width: auto; }
-  .cv-description, .cv-degree, .cv-section-lede { font-size: 10.5pt; line-height: 1.6; }
-  .cv-organization-heading { margin-bottom: 12px; gap: 12px; }
-  .cv-organization-heading h3 { margin-top: 0; }
-  .cv-organization-logo { width: 38px; height: 38px; }
-  .cv-organization-location, .cv-position-date { font-size: 9pt; }
-  .cv-position { display: flex; }
-  .cv-position h4 { font-size: 11pt; }
-  .cv-role-history { gap: 8px; margin-bottom: 10px; }
-  .cv-courses { font-size: 9pt; margin-top: 7px; }
-  .cv-courses summary { min-height: 0; padding-block: 4px; }
-  .cv-current-label, .cv-technologies li { font-size: 9pt; }
-  .cv-technologies { margin-top: 7px; }
-  .cv-education-item { padding-bottom: 18px; margin-bottom: 18px; }
-  .cv-project { grid-template-columns: 1fr 2fr; gap: 24px; padding-block: 20px; }
-  .cv-project h3 { font-size: 18pt; }
-  .cv-project-year, .cv-project-kind, .cv-project-link { font-size: 9pt; }
-  .cv-project-link { margin-top: 8px; }
-  .cv-credential-row { padding-block: 12px; }
-  .cv-credential-row h3 { font-size: 11pt; }
-  .cv-credential-row p, .cv-credential-row > a { font-size: 9pt; }
-  .cv-certification-group { font-size: 10pt; }
 }
