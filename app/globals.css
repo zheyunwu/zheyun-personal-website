@@ -81,7 +81,7 @@ svg { flex-shrink: 0; }
 .home-post h3 a { display: flex; align-items: baseline; justify-content: space-between; gap: 25px; }
 .home-post h3 a svg { color: var(--accent); width: 20px; }
 .home-post h3 a:hover { color: var(--accent); }
-.home-post > p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-top: 9px; max-width: 600px; }
+.home-post > p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-top: 9px; }
 .home-post time { display: block; font-size: 13px; color: var(--muted); margin-top: 12px; }
 .services-section { display: grid; grid-template-columns: 1.25fr 1fr; gap: 100px; padding-block: 78px 85px; }
 .services-intro h2 { font-family: var(--serif); font-weight: 400; font-size: 44px; margin-top: 18px; letter-spacing: -.025em; }

@@ -78,7 +78,7 @@ export const platformComparison: PostTable = {
     },
   ],
   note: {
-    en: 'Checked 1 Nov 2026. Figures retain their original dates, currencies, and definitions; they are not directly comparable. Trade Republic’s original 1,200 headcount could not be verified on a consistent group-wide basis. Company size is not a safety rating.',
-    zh: '核对于 2026 年 11 月 1 日。数据保留各自的日期、币种与统计口径，不宜直接横比。原稿中 Trade Republic 的 1,200 人未获集团统一口径确认。公司规模不等同于安全评级。',
+    en: 'Checked 1 Nov 2026. The dates, currencies, and figures come from each platform’s own reports, so they aren’t directly comparable.',
+    zh: '核对于 2026 年 11 月 1 日。数据保留各自的日期、币种与统计口径，不宜直接横比。',
   },
 };

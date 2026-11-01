@@ -19,7 +19,7 @@ export type PostSection = {
   bullets?: Localized[];
   afterBullets?: Localized[];
   subtitle?: Localized;
-  image?: { src: string; alt: Localized; caption?: Localized; width: number; height: number };
+  image?: { src: string; alt: Localized; caption?: Localized; width: number; height: number; size?: 'compact' };
   table?: PostTable;
   links?: PostLink[];
 };
