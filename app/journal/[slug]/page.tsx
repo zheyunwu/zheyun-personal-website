@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Article from '../../../components/article';
-import { posts } from '../../../content/posts';
-import '../journal.css';
+import LegacyBlogRedirect from '../../../components/legacy-blog-redirect';
+import { posts } from '../../../content/blog';
 
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return posts.map(post => ({ slug: post.slug }));
 }
@@ -15,15 +15,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   return {
     title: post.title.en,
-    description: post.excerpt.en,
-    alternates: { canonical: `/journal/${post.slug}/` },
-    openGraph: { type: 'article', title: post.title.en, description: post.excerpt.en, publishedTime: post.date },
+    alternates: { canonical: `/blog/${post.slug}/` },
+    robots: { index: false, follow: true },
   };
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function LegacyArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const index = posts.findIndex(post => post.slug === slug);
-  if (index === -1) notFound();
-  return <main id="main" tabIndex={-1}><Article post={posts[index]} nextPost={posts[(index + 1) % posts.length]} /></main>;
+  if (!posts.some(post => post.slug === slug)) notFound();
+  return <LegacyBlogRedirect href={`/blog/${slug}/`} />;
 }

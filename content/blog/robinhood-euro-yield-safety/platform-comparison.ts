@@ -1,4 +1,4 @@
-import type { PostTable } from './posts';
+import type { PostTable } from '../types';
 
 // Preserve each provider's reporting date and metric; these are not like-for-like bank deposits.
 export const platformComparison: PostTable = {

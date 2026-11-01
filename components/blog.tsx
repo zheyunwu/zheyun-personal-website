@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { ArrowRight, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useLanguage } from './language';
-import { posts, topics, topicLabels, formatPostDate, type Post } from '../content/posts';
+import { posts, topics, topicLabels, formatPostDate, type Post } from '../content/blog';
 
-export function JournalCard({ post }: { post: Post }) {
+export function BlogCard({ post }: { post: Post }) {
   const { lang, t } = useLanguage();
   return (
     <article className="journal-entry">
@@ -17,11 +17,11 @@ export function JournalCard({ post }: { post: Post }) {
       </div>
       <div className="journal-entry-copy">
         <p className="journal-entry-format">{post.format[lang]}</p>
-        <h2><Link href={`/journal/${post.slug}/`}>{post.title[lang]}</Link></h2>
+        <h2><Link href={`/blog/${post.slug}/`}>{post.title[lang]}</Link></h2>
         <p className="journal-entry-excerpt">{post.excerpt[lang]}</p>
         <div className="journal-entry-bottom">
           <span className="journal-entry-topics">{post.tags.map(tag => topicLabels[tag]?.[lang] ?? tag).join(' · ')}</span>
-          <Link className="journal-read-link" href={`/journal/${post.slug}/`} aria-label={`${t('Read', '阅读')} ${post.title[lang]}`}>
+          <Link className="journal-read-link" href={`/blog/${post.slug}/`} aria-label={`${t('Read', '阅读')} ${post.title[lang]}`}>
             {t('Read article', '阅读全文')}<ArrowRight size={19} aria-hidden="true" />
           </Link>
         </div>
@@ -30,7 +30,7 @@ export function JournalCard({ post }: { post: Post }) {
   );
 }
 
-export default function Journal() {
+export default function Blog() {
   const { lang, t } = useLanguage();
   const [category, setCategory] = useState<'all' | 'technology' | 'life'>('all');
   const [topic, setTopic] = useState('all');
@@ -80,10 +80,10 @@ export default function Journal() {
             {isFiltered ? <button type="button" onClick={reset}>{t('Clear filters', '清除筛选')}</button> : null}
           </div>
         </div>
-        {filtered.length ? <div className="journal-entries">{filtered.map(post => <JournalCard key={post.slug} post={post} />)}</div> : (
+        {filtered.length ? <div className="journal-entries">{filtered.map(post => <BlogCard key={post.slug} post={post} />)}</div> : (
           <div className="journal-empty">
             <h2>{query ? t('No articles found.', '暂时没有找到。') : t('More to come.', '这个主题，还在准备中。')}</h2>
-            <p>{query ? t('Try another search, or return to the full collection.', '换一个关键词试试，或返回全部文章。') : t('There are no published articles on this topic yet. Banking, savings, housing, mortgages, and kitchens are on the research list.', '这个主题暂时还没有文章。银行、存款、买房、房贷和厨房，都已列入未来的研究选题。')}</p>
+            <p>{query ? t('Try another search, or return to the full collection.', '换一个关键词试试，或返回全部文章。') : t('There are no published articles on this topic yet. Banking, investing, housing, mortgages, and kitchens are on the research list.', '这个主题暂时还没有文章。银行、投资、买房、房贷和厨房，都已列入未来的研究选题。')}</p>
             <button className="button" type="button" onClick={reset}>{t('Browse all articles', '浏览全部文章')}<ArrowRight size={18} aria-hidden="true" /></button>
           </div>
         )}

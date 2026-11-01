@@ -82,12 +82,6 @@
 .article-disclosure p:last-child{margin:0}
 .article-editorial-note{font-size:16px;line-height:1.8;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:32px}
 .article-editorial-note p:last-child{margin:0}
-.article-figure{margin:28px 0}
-.article-figure-compact{max-width:360px;margin-inline:auto}
-.article-figure>a{display:block}
-.article-figure img{display:block;width:100%;height:auto;object-fit:contain}
-.article-figure figcaption{margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)}
-.article-image-hint{display:block;margin-top:5px}
 .article-table-block{margin:32px 0;scroll-margin-top:32px}
 .article-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border-bottom:1px solid var(--line)}
 .article-table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:5px}

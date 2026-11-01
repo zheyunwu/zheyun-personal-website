@@ -1,6 +1,6 @@
 'use client';
 
-import type { PostTable } from '../content/posts';
+import type { PostTable } from '../content/blog';
 import { useLanguage } from './language';
 
 export default function ArticleTable({ table, id }: { table: PostTable; id: string }) {

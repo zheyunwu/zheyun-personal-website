@@ -24,7 +24,7 @@ npm run typecheck
 npm run build
 ```
 
-`out/` 是完整静态站点，可以由任意静态 HTTP 服务预览。文章详情的 URL 使用末尾斜杠，支持 GitHub Pages 直接访问与刷新。
+`out/` 是完整静态站点，可以由任意静态 HTTP 服务预览。博客入口为 `/blog/`，文章详情为 `/blog/<slug>/`，使用末尾斜杠，支持 GitHub Pages 直接访问与刷新。旧 `/journal/` 及已发布文章的旧链接保留静态兼容页，由浏览器自动跳转并保留查询参数与章节位置；这不是服务器 301。规范链接与 sitemap 只使用 `/blog/`。
 
 ## GitHub Pages
 
@@ -54,23 +54,28 @@ npm run build
 - `components/life-map.tsx` 与 `components/life-map.css`：首页地图与双语标签。
 - `content/life-locations.json`：五个地点的城市级坐标、名称、标签位置与坐标来源。
 - `components/cv.tsx`：经历、教育、证书与项目。
-- `content/posts.ts`：文章类型、发布列表、通用文章正文和标签。
-- `content/robinhood-eur-yield.ts`：Robinhood 欧元收益专题，详情页 slug 为 `robinhood-euro-yield-safety`；包含中文原文、AI 辅助英文翻译，以及独立的文末核对注释。
-- `content/platform-comparison.ts`：平台对比表的双语数据、统计日期、口径与逐行来源。
-- `components/article-table.tsx`：基于 `content/posts.ts` 中 `PostTable` 类型的原生 HTML 表格，跟随网站语言切换。
-- `public/images/`：站内图片。
+- `content/blog/index.ts`：文章发布列表；首页、博客、搜索、详情页与 sitemap 共用此列表。
+- `content/blog/types.ts` 与 `topics.ts`：文章类型与双语主题名称。
+- `content/blog/<slug>/post.ts`：每篇文章的中英文标题、摘要、正文与元数据。
+- `content/blog/<slug>/images/`：该篇文章的配图，与正文一起维护。
+- `content/blog/robinhood-euro-yield-safety/platform-comparison.ts`：此文章的平台对比表，包含双语数据、统计日期、口径与逐行来源。
+- `components/article-table.tsx`：基于 `PostTable` 类型的原生 HTML 表格，跟随网站语言切换。
+- `components/article-image.tsx` 与 `article-image.css`：文章图片与页内放大弹窗，支持键盘关闭、原始尺寸查看及关闭后恢复阅读位置。
+- `public/images/`：头像、地图、公司 Logo 等全站共用图片，文章专属图片不放在这里。
 
 地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
-新增文章时，复制一个现有条目，设置唯一且稳定的英文 `slug`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。重新构建后，会自动生成对应静态详情页；不要将未完成的草稿加入发布数组。
+新增文章时，在 `content/blog/` 下创建以稳定英文 `slug` 命名的目录，复制现有 `post.ts`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。在 `index.ts` 导入文章并加入 `posts` 后，重新构建便会生成静态详情页；不要将未完成的草稿加入发布数组。
 
-专题长文可以单独保存在 `content/`，再加入 `content/posts.ts` 的发布列表。Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，英文翻译保持原稿自然、个人分享的口吻；平台比较部分按作者要求换成经资料核对的双语表格。后续查证、时效性变化及需要限定的正文表述，放在独立、注明核对日期的文末注释中，并链接相应来源；不要静默改写原文，也不要把翻译或 AI 生成的图表当作独立核实的证据。
+三篇示例文章 `from-prototype-to-platform`、`a-home-in-germany` 和 `a-home-for-ideas` 的目录与正文完整保留，对应 import 与发布项已注释。它们不会出现在首页、搜索、列表或 sitemap，也不会生成详情页。以后取消注释即可恢复。
 
-文章配图放在 `public/images/`，通过章节的 `image` 字段填写站内 `src`、中英文 `alt`、可选中英文 `caption`，以及原始 `width` / `height`。图片按比例完整显示，可点击在新标签页打开原图；手机截图可设置 `size: 'compact'`，居中展示且最大宽度为 360px。用 `afterBullets` 保留列表之后的原文段落，避免为了数据结构重排正文。来源记录在 `public/credits.txt`，产品截图应与实时条款区分。
+Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，英文翻译保持原稿自然、个人分享的口吻；平台比较部分按作者要求换成经资料核对的双语表格。后续查证、时效性变化及需要限定的正文表述，放在独立、注明核对日期的文末注释中，并链接相应来源；不要静默改写原文，也不要把翻译或 AI 生成的图表当作独立核实的证据。
 
-数据比较使用章节的 `table` 字段，不把表格烘焙进图片。单元格的 `value`、`detail` 与 `date` 分别维护中英文数值、口径和日期，逐行附来源链接，表格说明标明核对日期。数据优先采用官方披露；没有同口径官方支持的数字应明确标注未确认，不从相近口径或第三方估计推算。客户资产、客户余额和存款，以及各自的报告日期、币种，应保持区别。手机端保留横向滚动与固定首列，避免缩小文字挤进屏幕。原始 `robinhood-revolut-n26-traderepublic-trading212.png` 仅作为历史素材留在仓库，文章不再渲染该图。
+文章配图放在该篇文章的 `images/` 中，在 `post.ts` 静态导入，例如 `import photo from './images/photo.jpg'`。章节的 `image` 字段使用 `src: photo.src`、`width: photo.width`、`height: photo.height`，并填写中英文 `alt` 和可选 `caption`。Next.js 会把图片打包到带内容指纹的静态资源路径，不需要复制到 `public/`，也不要再手动添加 basePath。图片按比例完整显示，点击在当前页弹窗查看；手机截图可设置 `size: 'compact'`，居中展示且最大宽度为 360px。用 `afterBullets` 保留列表之后的原文段落，避免为了数据结构重排正文。来源记录在 `public/credits.txt`，产品截图应与实时条款区分。
 
-开篇与通用研究笔记继续保留；德国银行、存款/MMF、买房、贷款及厨房采购等专题会逐步更新。个人经历、金融收益数据和评测结论均应来自本人提供的内容或可核对的资料，不得虚构。
+数据比较使用章节的 `table` 字段，不把表格烘焙进图片。单元格的 `value`、`detail` 与 `date` 分别维护中英文数值、口径和日期，逐行附来源链接，表格说明标明核对日期。数据优先采用官方披露；没有同口径官方支持的数字应明确标注未确认，不从相近口径或第三方估计推算。客户资产、客户余额和存款，以及各自的报告日期、币种，应保持区别。手机端保留横向滚动与固定首列，避免缩小文字挤进屏幕。旧平台比较图片已被此表格替代。
+
+德国银行、投资、买房、贷款及厨房采购等专题会逐步更新。个人经历、金融收益数据和评测结论均应来自本人提供的内容或可核对的资料，不得虚构。
 
 履历中的职位名称与日期以本人确认的信息为准，经历及教育描述于 2026-11-01 对齐本人 LinkedIn。公司与学校 Logo 来自相应 LinkedIn 页面，本地文件来源记录于 `public/images/logos/sources.json`。三张 AWS 认证已通过更新后的 Credly 官方凭证核实：Solutions Architect 与 Cloud Practitioner 有效至 2027-10-24，Developer 有效至 2027-08-29；后续更新以官方凭证为准。
 

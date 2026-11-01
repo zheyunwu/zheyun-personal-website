@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from './language';
-import { formatPostDate, topicLabels, type Post, type PostLink } from '../content/posts';
+import { formatPostDate, topicLabels, type Post, type PostLink } from '../content/blog';
 import ArticleTable from './article-table';
+import ArticleImage from './article-image';
 
 const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path;
 
@@ -13,13 +14,13 @@ export function ArticleExternalLink({ link }: { link: PostLink }) {
   return <a href={link.href} target="_blank" rel={link.sponsored ? 'sponsored noopener noreferrer' : 'noopener noreferrer'} className="article-source-link"><span>{link.label[lang]} {link.sponsored ? <span>({t('referral / affiliate link', '邀请 / 联盟链接')})</span> : null}</span><ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{t(' (opens in a new tab)', '（在新标签页打开）')}</span></a>;
 }
 
-export default function Article({ post, nextPost }: { post: Post; nextPost: Post }) {
+export default function Article({ post, nextPost }: { post: Post; nextPost?: Post }) {
   const { lang, t } = useLanguage();
   const hasAffiliateLinks = post.affiliate || post.affiliateDisclosure || post.body.some(section => section.links?.some(link => link.sponsored));
 
   return (
     <article className="article-page container">
-      <Link href="/journal/" className="article-back"><ArrowLeft size={18} aria-hidden="true" />{t('Back to blog', '返回博客')}</Link>
+      <Link href="/blog/" className="article-back"><ArrowLeft size={18} aria-hidden="true" />{t('Back to blog', '返回博客')}</Link>
       <header className="article-heading">
         <p className="journal-kicker">{post.format[lang]}<span aria-hidden="true"> / </span><span>{post.category === 'technology' ? t('Technology', '技术') : t('Life in Germany', '德国生活')}</span></p>
         <h1>{post.title[lang]}</h1>
@@ -46,7 +47,7 @@ export default function Article({ post, nextPost }: { post: Post; nextPost: Post
               {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
               {section.bullets ? <ul>{section.bullets.map((bullet, index) => <li key={index}>{bullet[lang]}</li>)}</ul> : null}
               {section.afterBullets?.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
-              {section.image ? <figure className={`article-figure${section.image.size === 'compact' ? ' article-figure-compact' : ''}`}><a href={asset(section.image.src)} target="_blank" rel="noopener noreferrer"><img src={asset(section.image.src)} alt={section.image.alt[lang]} width={section.image.width} height={section.image.height} loading="lazy" decoding="async" /><span className="sr-only">{t('View the full-size image in a new tab.', '在新标签页查看原图。')}</span></a><figcaption>{section.image.caption ? <span>{section.image.caption[lang]}</span> : null}<span className="article-image-hint">{t('Click the image to view it at full size.', '点击图片可查看原图。')}</span></figcaption></figure> : null}
+              {section.image ? <ArticleImage image={section.image} /> : null}
               {section.table ? <ArticleTable table={section.table} id={`${section.id}-table`} /> : null}
               {section.links ? <div className="article-sources">{section.links.map(link => <ArticleExternalLink key={link.href} link={link} />)}</div> : null}
             </section>
@@ -55,10 +56,10 @@ export default function Article({ post, nextPost }: { post: Post; nextPost: Post
         </div>
       </div>
 
-      <aside className="article-next" aria-label={t('Read next', '接下来读')}>
+      {nextPost ? <aside className="article-next" aria-label={t('Read next', '接下来读')}>
         <p className="journal-kicker">{t('Read next', '继续阅读')}</p>
-        <div><Link href={`/journal/${nextPost.slug}/`}><h2>{nextPost.title[lang]}</h2><ArrowRight size={26} aria-hidden="true" /></Link><p>{nextPost.excerpt[lang]}</p></div>
-      </aside>
+        <div><Link href={`/blog/${nextPost.slug}/`}><h2>{nextPost.title[lang]}</h2><ArrowRight size={26} aria-hidden="true" /></Link><p>{nextPost.excerpt[lang]}</p></div>
+      </aside> : null}
     </article>
   );
 }

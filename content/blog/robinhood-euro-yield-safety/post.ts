@@ -1,4 +1,5 @@
-import type { Post } from './posts';
+import type { Post } from '../types';
+import yieldScreenshot from './images/robinhood-interest-composition.jpg';
 import { platformComparison } from './platform-comparison';
 
 export const robinhoodEuroYieldPost: Post = {
@@ -12,7 +13,7 @@ export const robinhoodEuroYieldPost: Post = {
     zh: '5% 的收益从哪里来，22,000 欧元保障究竟保什么，底层货币市场基金又是什么？从平台和基金两个层面，记录我的研究。',
   },
   category: 'life',
-  tags: ['banking', 'savings'],
+  tags: ['banking', 'investing'],
   date: '2026-11-01',
   readTime: 12,
   visual: 'notes',
@@ -36,10 +37,10 @@ export const robinhoodEuroYieldPost: Post = {
         },
       ],
       image: {
-        src: '/images/robinhood-interest-composition.jpg',
+        src: yieldScreenshot.src,
         size: 'compact',
-        width: 1206,
-        height: 1466,
+        width: yieldScreenshot.width,
+        height: yieldScreenshot.height,
         alt: {
           en: 'Robinhood screenshot showing a 5% euro yield composed of a 2.52% J.P. Morgan money market fund base rate and a 2.48% Robinhood boost.',
           zh: 'Robinhood 利率截图：欧元收益率 5%，由 J.P. Morgan 货币市场基金的 2.52% 基础收益与 Robinhood 的 2.48% 补贴组成。',
