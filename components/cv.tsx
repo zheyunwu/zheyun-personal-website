@@ -16,7 +16,7 @@ const experience: {
     company: 'SAP',
     role: ['AI Platform Engineer', 'AI 平台工程师'],
     date: ['Present', '现在'],
-    location: ['Berlin, Germany', '德国 · 柏林'],
+    location: ['Berlin, Germany', '德国柏林'],
     description: ['Working in AI platform engineering. Bringing together software, infrastructure and a curiosity for what comes next.', '从事 AI 平台工程，连接软件开发与基础设施，持续探索技术的新可能。'],
     technologies: ['AI platforms', 'Cloud infrastructure'],
   },
@@ -24,7 +24,7 @@ const experience: {
     company: 'LiangDao GmbH',
     role: ['Fullstack Engineer', '全栈工程师'],
     date: ['Jan 2023 — Jan 2024', '2023.01 — 2024.01'],
-    location: ['Berlin, Germany', '德国 · 柏林'],
+    location: ['Berlin, Germany', '德国柏林'],
     description: ['Full-stack development with Python, React and Node.js, alongside containerized infrastructure on AWS.', '使用 Python、React 和 Node.js 进行全栈开发，并参与 AWS 上的容器化基础设施工作。'],
     technologies: ['Python', 'React', 'Node.js', 'Docker', 'Kubernetes', 'AWS'],
   },
@@ -32,7 +32,7 @@ const experience: {
     company: 'LiangDao GmbH',
     role: ["Master’s Thesis Worker", '硕士论文研究'],
     date: ['Apr — Dec 2022', '2022.04 — 2022.12'],
-    location: ['Berlin, Germany', '德国 · 柏林'],
+    location: ['Berlin, Germany', '德国柏林'],
     description: ['Research into I/O-aware scheduling for containerized, data-intensive HPC tasks in Kubernetes-based heterogeneous clusters.', '研究基于 Kubernetes 的异构集群中，面向容器化、数据密集型高性能计算任务的 I/O 感知调度。'],
     technologies: ['Kubernetes', 'Python', 'Docker', 'GitLab CI/CD'],
   },
@@ -155,7 +155,7 @@ export function CV() {
           <p className="cv-kicker">{t('About & CV', '关于我与履历')}</p>
           <h1>Zheyun Wu<span>.</span></h1>
           <p className="cv-intro-role">{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</p>
-          <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, now based in Berlin. My work connects software, cloud infrastructure and AI. Along the way, I’ve studied in the Nordics, built products, and kept learning by making things.', '我是一名来自福建泉州、现居柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。一路走来，我曾在北欧求学，也在持续通过做项目、造产品，学习新的东西。')}</p>
+          <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, China, now based in Berlin, Germany. My work connects software, cloud infrastructure and AI. Along the way, I’ve studied in the Nordics, built products, and kept learning by making things.', '我是一名来自中国福建泉州、现居德国柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。一路走来，我曾在北欧求学，也在持续通过做项目、造产品，学习新的东西。')}</p>
           <div className="cv-actions">
             <button className="button cv-print-button" onClick={() => window.print()}>{t('Print / Save PDF', '打印 / 保存 PDF')}<span aria-hidden="true">↗</span></button>
             <a className="text-link" href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
@@ -163,7 +163,7 @@ export function CV() {
         </div>
         <figure className="cv-portrait">
           <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={1056} height={1056} />
-          <figcaption>{t('From Quanzhou to Berlin.', '从泉州，到柏林。')}<br />{t('A few Nordic chapters in between.', '途经北欧的求学时光。')}</figcaption>
+          <figcaption>{t('From Quanzhou, China to Berlin, Germany.', '从中国泉州，到德国柏林。')}<br />{t('A few Nordic chapters in between.', '途经北欧的求学时光。')}</figcaption>
         </figure>
       </header>
 

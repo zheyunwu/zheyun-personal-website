@@ -15,7 +15,7 @@ export function Home() {
         <div className="hero-copy">
           <div className="hero-person">
             <img src={asset('/images/zheyun_avatar.jpg')} alt={t('Zheyun Wu', 'Zheyun Wu 的头像')} width={1056} height={1056} />
-            <p>{t('From Quanzhou. At home in Berlin.', '来自泉州，现居柏林。')}<span>{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</span></p>
+            <p>{t('From Quanzhou, China. At home in Berlin, Germany.', '来自中国泉州，现居德国柏林。')}<span>{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</span></p>
           </div>
           <h1 id="home-title">{t('Hi, I’m ', '你好，我是 ')}<span>Zheyun.</span></h1>
           <p className="hero-lead">{t('I build AI platforms, make things for everyday life, and share what I learn.', '构建 AI 平台，开发日常用得上的产品，也分享一路学到的事。')}</p>
@@ -37,7 +37,7 @@ export function Home() {
         <div className="now-list">
           <article><div className="now-title"><h3>{t('AI platforms at SAP', '在 SAP 构建 AI 平台')}</h3><span className="now-context">{t('Work', '工作')}</span></div><p>{t('Working where software and cloud infrastructure come together to support AI applications.', '围绕软件与云基础设施开展平台工程，为 AI 应用提供支持。')}</p></article>
           <article><div className="now-title"><h3><a href="https://klardocs.com" target="_blank" rel="noopener noreferrer">KlarDocs <ArrowUpRight size={18} aria-hidden="true" /></a></h3><span className="now-context">{t('Personal project', '个人项目')}</span></div><p>{t('An AI companion for German paperwork: understanding letters, finding deadlines, and making the next step clearer.', '理解德国信件、找出重要期限，让文书中的下一步行动更清楚。')}</p></article>
-          <p className="now-footnote">{t('And in between: learning German and finding my rhythm in Berlin.', '工作之余，学习德语，也慢慢找到在柏林的生活节奏。')}</p>
+          <p className="now-footnote">{t('And in between: learning German and finding my rhythm in Berlin, Germany.', '工作之余，学习德语，也慢慢找到在德国柏林的生活节奏。')}</p>
         </div>
       </section>
 
