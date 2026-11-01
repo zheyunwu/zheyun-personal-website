@@ -231,7 +231,6 @@ export function CV() {
         </div>
         <figure className="cv-portrait">
           <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={1056} height={1056} />
-          <figcaption>{t('From Quanzhou, China to Berlin, Germany.', '从中国泉州，到德国柏林。')}<br />{t('A few Nordic chapters in between.', '途经北欧的求学时光。')}</figcaption>
         </figure>
       </header>
 
