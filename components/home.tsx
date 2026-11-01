@@ -1,15 +1,61 @@
 'use client';
+
 import Link from 'next/link';
-import { ArrowUpRight, ArrowRight, Braces, Layers3, Cloud, MapPin, MoveUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { useLanguage } from './language';
-const asset=(path:string)=>(process.env.NEXT_PUBLIC_BASE_PATH||'')+path;
-export function Home(){const {t}=useLanguage();return <main id="main">
- <section className="hero container">
-  <div className="hero-copy"><div className="eyebrow hero-eyebrow"><span className="tiny-star">✳</span>{t('ENGINEER. BUILDER. EXPLORER.','工程师 · 创造者 · 探索者')}</div><h1>{t('Thoughtful tech.','以思考构建。')}<br/><em>{t('Intentional living.','以热爱生活。')}</em></h1><div className="hero-introduction"><img className="intro-avatar" src={asset('/images/zheyun_avatar.jpg')} alt={t('Portrait of Zheyun Wu','Zheyun Wu 的头像')} width="1056" height="1056"/><p className="hero-intro">{t('Hello, I’m Zheyun — an AI Platform Engineer at SAP, making a home in Berlin.','你好，我是 Zheyun，SAP 的 AI Platform Engineer，目前生活在德国柏林。')}</p></div><p className="hero-description">{t('From Quanzhou to Berlin. Building useful things, staying curious, and sharing what I learn along the way.','从福建泉州到德国柏林。创造有用的产品，保持好奇，记录一路学到的事。')}</p><div className="hero-actions"><Link className="button button-dark" href="/cv/">{t('A little about me','多了解一点我')}<ArrowUpRight size={16}/></Link><Link className="text-link" href="/journal/">{t('Explore the journal','阅读我的手记')}<ArrowRight size={16}/></Link></div><div className="hero-availability"><span className="status-dot"/>{t('Open to IT services & interesting collaborations','承接 IT 服务，期待有趣的合作')}</div></div>
-  <figure className="hero-figure"><div className="hero-image-wrap"><img className="hero-image" src={asset('/images/stockholm.jpg')} alt={t('Stockholm waterfront and city skyline at dusk','暮色中的斯德哥尔摩海滨与城市天际线')} width="1600" height="1200" fetchPriority="high"/><div className="image-index">A NORDIC CHAPTER<br/><span>01 / EVERYDAY INSPIRATION</span></div></div><div className="hero-seal" aria-hidden="true"><span>STAY CURIOUS</span><MoveUpRight size={38} strokeWidth={1}/><span>KEEP BUILDING</span></div><figcaption><span><MapPin size={12}/> {t('Stockholm, a Nordic chapter.','斯德哥尔摩，北欧生活的一章。')}</span><span className="photo-credit">{t('From the personal archive','来自个人相册')}</span></figcaption></figure>
- </section>
- <section className="intro-strip container" aria-label={t('At a glance','个人简介')}><div><span className="eyebrow">01 / {t('BASED IN','所在城市')}</span><p>Berlin, Germany <span className="subtle">↗</span></p></div><div><span className="eyebrow">02 / {t('CURRENTLY','当前工作')}</span><p>AI Platform Engineer <span className="subtle">@ SAP</span></p></div><div><span className="eyebrow">03 / {t('IN CONVERSATION','语言')}</span><p>{t('中文 · English · Deutsch','中文 · English · Deutsch')}<sup>{t('learning','学习中')}</sup></p></div></section>
- <section className="now-section container"><div className="section-aside"><p className="eyebrow">{t('A SMALL LIFE UPDATE','近况片段')}</p><h2>{t('Here &','此时，')}<br/><em>{t('now.','此地。')}</em></h2><p className="aside-note">{t('A snapshot of what’s keeping me curious.','记录正在投入的事，也留一点空间给好奇心。')}</p></div><div className="now-list"><article><span className="now-number">01</span><div><span className="eyebrow">{t('BUILDING','工作与创造')}</span><h3>{t('Making AI useful, beyond the prototype.','让 AI 走出原型，真正发挥价值。')}</h3><p>{t('Working on AI platforms at SAP. Exploring the space where reliable infrastructure meets useful intelligence.','在 SAP 从事 AI 平台工程，探索可靠基础设施与实用智能的交汇处。')}</p></div><Layers3 strokeWidth={1} size={23}/></article><article><span className="now-number">02</span><div><span className="eyebrow">{t('EXPLORING','正在探索')}</span><h3>{t('Less paperwork. A little more clarity.','让繁琐的文件，变得清晰一点。')}</h3><p>{t('Building KlarDocs, an AI companion for making sense of German paperwork.','构建 KlarDocs，用 AI 帮助理解德国文件，让信息变得易懂、可行动。')}</p><a className="text-link small" href="https://klardocs.com" target="_blank" rel="noopener noreferrer">{t('Meet KlarDocs','探索 KlarDocs')}<ArrowUpRight size={14}/></a></div><Braces strokeWidth={1} size={23}/></article><article><span className="now-number">03</span><div><span className="eyebrow">{t('LIVING & LEARNING','生活与学习')}</span><h3>{t('Finding my rhythm in Berlin.','在柏林，找到自己的生活节奏。')}</h3><p>{t('Learning German, navigating life abroad, and collecting notes on the everyday things worth sharing.','学习德语，探索异国生活，记录那些值得分享的日常经验。')}</p></div><span className="serif now-a">Aa</span></article></div></section>
- <section className="journal-home"><div className="container"><div className="section-heading"><div><p className="eyebrow">{t('NOTES FROM BOTH SIDES OF LIFE','技术与生活的两面')}</p><h2>{t('The journal','我的手记')}<span className="serif italic muted"> / {t('a beginning','从这里开始')}</span></h2></div><Link className="text-link" href="/journal/">{t('All notes','全部手记')}<ArrowUpRight size={16}/></Link></div><div className="home-posts"><Link className="home-post" href="/journal/from-prototype-to-platform/"><div className="post-art platform-art"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><span className="art-center">ai<span>from idea to infrastructure</span></span><span className="art-corner">FIELD NOTES — 001</span></div><div className="post-meta"><span>TECHNOLOGY</span><span>AI · CLOUD · BACKEND</span></div><h3>{t('From prototype to platform: an AI application checklist','从原型到平台：AI 应用检查清单')}</h3><p>{t('A field guide to the questions worth asking before an AI application meets the real world.','当 AI 应用走向真实世界，哪些问题值得提前思考？')}</p><span className="post-read">{t('Read the field guide','阅读技术笔记')}<ArrowUpRight size={17}/></span></Link><Link className="home-post" href="/journal/a-home-in-germany/"><div className="post-art image-art"><img src={asset('/images/stockholm.jpg')} width="1600" height="1200" loading="lazy" alt={t('Boats and buildings along the Stockholm waterfront','斯德哥尔摩海滨的船只与建筑')}/><span className="image-art-label">A LIFE, CONSIDERED.</span></div><div className="post-meta"><span>LIFE IN GERMANY</span><span>HOME · EVERYDAY LIFE</span></div><h3>{t('Making a home in Germany: a research notebook','在德国安家：一本持续更新的研究手记')}</h3><p>{t('Banking, a place to live, and the details in between. An open notebook for what comes next.','银行、住房，以及生活的细枝末节。从一个研究问题开始，慢慢积累答案。')}</p><span className="post-read">{t('Open the notebook','翻开生活手记')}<ArrowUpRight size={17}/></span></Link><Link className="home-post" href="/journal/a-home-for-ideas/"><div className="post-art notes-art"><span className="note-line">A space for</span><span className="note-word">curiosity.</span><span className="note-small">TECHNOLOGY, LIFE & EVERYTHING BETWEEN.</span><span className="note-asterisk">✳</span></div><div className="post-meta"><span>PERSONAL</span><span>AN OPENING NOTE</span></div><h3>{t('A home for ideas, and everything in between','给想法一个家，也给生活留一点空间')}</h3><p>{t('A small corner of the internet for building, learning, and connecting the dots.','用一方小小的网络空间，记录创造、学习和生活之间的连接。')}</p><span className="post-read">{t('Read the opening note','阅读开篇手记')}<ArrowUpRight size={17}/></span></Link></div></div></section>
- <section className="services-section container" id="contact"><div className="services-intro"><p className="eyebrow">{t('GOOD THINGS START WITH A CONVERSATION','好的合作，从一次交流开始')}</p><h2>{t('Something in mind?','有个想法？')}<br/><em>{t('Let’s build it.','一起把它实现。')}</em></h2><p>{t('I offer independent IT services, bringing an engineering mindset to your next idea. Let’s find a thoughtful way forward.','我提供独立 IT 服务，用工程思维帮助想法落地。期待与你一起找到合适的实现方式。')}</p><a className="button button-dark" href="mailto:zheyun.wu.work@gmail.com?subject=Let%E2%80%99s%20build%20something">{t('Get in touch','聊聊你的项目')}<ArrowUpRight size={17}/></a><a className="email-link" href="mailto:zheyun.wu.work@gmail.com">zheyun.wu.work@gmail.com</a></div><div className="services-list"><div><Cloud size={22} strokeWidth={1.2}/><h3>{t('Cloud & platforms','云与平台工程')}</h3><p>{t('Infrastructure, deployment workflows, and dependable foundations.','基础设施、部署流程与可靠的平台基础。')}</p></div><div><Braces size={22} strokeWidth={1.2}/><h3>{t('Web & backend','网站与后端开发')}</h3><p>{t('Thoughtful web experiences and the systems behind them.','用心构建的网站体验，以及支撑它们的后端系统。')}</p></div><div><Layers3 size={22} strokeWidth={1.2}/><h3>{t('AI applications','AI 应用开发')}</h3><p>{t('Turning a promising AI idea into something useful.','把 AI 的可能性，转化为实用的产品。')}</p></div></div></section>
- </main>}
+import { posts, formatPostDate } from '@/content/posts';
+
+const asset = (path: string) => (process.env.NEXT_PUBLIC_BASE_PATH || '') + path;
+
+export function Home() {
+  const { lang, t } = useLanguage();
+  return (
+    <main id="main">
+      <section className="hero container" aria-labelledby="home-title">
+        <div className="hero-copy">
+          <div className="hero-person">
+            <img src={asset('/images/zheyun_avatar.jpg')} alt={t('Zheyun Wu', 'Zheyun Wu 的头像')} width={1056} height={1056} />
+            <p>{t('From Quanzhou. At home in Berlin.', '来自泉州，现居柏林。')}<span>{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</span></p>
+          </div>
+          <h1 id="home-title">{t('Hi, I’m ', '你好，我是 ')}<span>Zheyun.</span></h1>
+          <p className="hero-lead">{t('I build AI platforms, make things for everyday life, and share what I learn.', '构建 AI 平台，开发日常用得上的产品，也分享一路学到的事。')}</p>
+          <p className="hero-description">{t('This is where my engineering work meets life in Germany. You’ll find projects, technical notes, and the questions I’m working through.', '这里记录我的工程实践与德国生活：做过的项目、技术笔记，以及正在认真寻找答案的问题。')}</p>
+          <div className="hero-actions">
+            <Link className="button button-dark" href="/cv/">{t('More about me', '认识我')}<ArrowUpRight size={18} aria-hidden="true" /></Link>
+            <Link className="text-link" href="/journal/">{t('Read my journal', '读读我的手记')}<ArrowRight size={18} aria-hidden="true" /></Link>
+          </div>
+          <p className="hero-languages">{t('Chinese & English · Learning German', '中文、英文流利 · 德语学习中')}</p>
+        </div>
+        <figure className="hero-figure">
+          <img className="hero-image" src={asset('/images/stockholm.jpg')} alt={t('Boats on the Stockholm waterfront at dusk, with the old town across the water', '暮色中的斯德哥尔摩海滨，水面上的船只与远处的老城')} width={1600} height={1200} fetchPriority="high" />
+          <figcaption><span>{t('Stockholm, from my camera roll.', '斯德哥尔摩，来自我的相册。')}</span><span>{t('A place in my story', '旅程中的一站')}</span></figcaption>
+        </figure>
+      </section>
+
+      <section className="now-section container" aria-labelledby="now-title">
+        <div className="section-aside"><h2 id="now-title">{t('These days', '最近在做')}</h2><p>{t('Work, side projects, and a new language.', '工作、个人项目，还有一门新语言。')}</p></div>
+        <div className="now-list">
+          <article><div className="now-title"><h3>{t('AI platforms at SAP', '在 SAP 构建 AI 平台')}</h3><span className="now-context">{t('Work', '工作')}</span></div><p>{t('Working where software and cloud infrastructure come together to support AI applications.', '围绕软件与云基础设施开展平台工程，为 AI 应用提供支持。')}</p></article>
+          <article><div className="now-title"><h3><a href="https://klardocs.com" target="_blank" rel="noopener noreferrer">KlarDocs <ArrowUpRight size={18} aria-hidden="true" /></a></h3><span className="now-context">{t('Personal project', '个人项目')}</span></div><p>{t('An AI companion for German paperwork: understanding letters, finding deadlines, and making the next step clearer.', '理解德国信件、找出重要期限，让文书中的下一步行动更清楚。')}</p></article>
+          <p className="now-footnote">{t('And in between: learning German and finding my rhythm in Berlin.', '工作之余，学习德语，也慢慢找到在柏林的生活节奏。')}</p>
+        </div>
+      </section>
+
+      <section className="journal-home" aria-labelledby="notes-title">
+        <div className="container home-reading-layout">
+          <div className="home-reading-heading"><p className="eyebrow">{t('The journal', '我的手记')}</p><h2 id="notes-title">{t('Notes worth sharing.', '把值得分享的，记下来。')}</h2><p>{t('Engineering on one page. Life in Germany on the next.', '这一页是工程技术，下一页是德国生活。')}</p><Link className="text-link" href="/journal/">{t('Browse all notes', '浏览全部手记')}<ArrowRight size={18} aria-hidden="true" /></Link></div>
+          <div className="home-posts">{posts.map(post => <article className="home-post" key={post.slug}>
+            <div className="home-post-meta"><span>{post.category === 'technology' ? t('Engineering', '工程技术') : t('Life & observations', '生活与观察')}</span><span>{t(`${post.readTime} min read`, `${post.readTime} 分钟阅读`)}</span></div>
+            <h3><Link href={`/journal/${post.slug}/`}>{post.title[lang]}<ArrowUpRight size={22} aria-hidden="true" /></Link></h3>
+            <p>{post.excerpt[lang]}</p><time dateTime={post.date}>{formatPostDate(post.date, lang)}</time>
+          </article>)}</div>
+        </div>
+      </section>
+
+      <section className="services-section container" id="contact" aria-labelledby="services-title">
+        <div className="services-intro"><p className="eyebrow">{t('Independent IT services', '独立 IT 服务')}</p><h2 id="services-title">{t('Have a project in mind?', '有个项目想聊聊？')}</h2><p>{t('Tell me what you’re trying to build, improve, or untangle. We can work out the scope and a practical next step together.', '无论是想做一个产品、改进现有系统，还是理清技术上的难题，都可以告诉我。我们一起明确需求，找到实际可行的下一步。')}</p><a className="text-link contact-email" href="mailto:zheyun.wu.work@gmail.com">zheyun.wu.work@gmail.com<ArrowUpRight size={19} aria-hidden="true" /></a></div>
+        <dl className="services-list"><div><dt>{t('Cloud & platforms', '云与平台')}</dt><dd>{t('Infrastructure, deployment workflows, and reliable operations.', '基础设施、部署流程与可靠的系统运维。')}</dd></div><div><dt>{t('Web & backend', '网站与后端')}</dt><dd>{t('Websites, applications, and the services that connect them.', '网站、应用，以及支撑它们的后端服务。')}</dd></div><div><dt>{t('AI applications', 'AI 应用')}</dt><dd>{t('From an initial idea to a working product with clear boundaries.', '从初步想法，到职责明确、实际可用的产品。')}</dd></div></dl>
+      </section>
+    </main>
+  );
+}

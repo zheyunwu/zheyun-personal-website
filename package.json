@@ -9,12 +9,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/manrope": "latest",
+    "@fontsource/newsreader": "^5.3.0",
+    "lucide-react": "latest",
     "next": "16.4.3",
     "react": "latest",
-    "react-dom": "latest",
-    "@fontsource/cormorant-garamond": "latest",
-    "@fontsource/manrope": "latest",
-    "lucide-react": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",

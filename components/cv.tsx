@@ -145,42 +145,45 @@ export function CV() {
     ['experience', t('Experience', '工作经历')],
     ['education', t('Education', '教育背景')],
     ['projects', t('Selected projects', '精选项目')],
-    ['credentials', t('Credentials', '证书与认证')],
+    ['credentials', t('Certifications', '证书与认证')],
   ];
 
   return (
     <main id="main" className="cv-page container">
       <header className="cv-intro">
-        <div className="eyebrow cv-intro-label"><span>02 / CV</span><span>{t('A little more about me', '更完整地认识我')}</span></div>
-        <h1 className="serif">{t('A curious mind.', '保持好奇。')}<br /><em>{t('A builder at heart.', '用创造回应。')}</em></h1>
-        <div className="cv-intro-bottom">
-          <p>{t('From Quanzhou to Berlin, with a few Nordic chapters along the way. A journey through software, cloud infrastructure and AI.', '从泉州来到柏林，途经北欧的求学时光。一段围绕软件、云基础设施与 AI 展开的旅程。')}</p>
+        <div className="cv-intro-copy">
+          <p className="cv-kicker">{t('About & CV', '关于我与履历')}</p>
+          <h1>Zheyun Wu<span>.</span></h1>
+          <p className="cv-intro-role">{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</p>
+          <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, now based in Berlin. My work connects software, cloud infrastructure and AI. Along the way, I’ve studied in the Nordics, built products, and kept learning by making things.', '我是一名来自福建泉州、现居柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。一路走来，我曾在北欧求学，也在持续通过做项目、造产品，学习新的东西。')}</p>
           <div className="cv-actions">
             <button className="button cv-print-button" onClick={() => window.print()}>{t('Print / Save PDF', '打印 / 保存 PDF')}<span aria-hidden="true">↗</span></button>
             <a className="text-link" href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>
+        <figure className="cv-portrait">
+          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={1056} height={1056} />
+          <figcaption>{t('From Quanzhou to Berlin.', '从泉州，到柏林。')}<br />{t('A few Nordic chapters in between.', '途经北欧的求学时光。')}</figcaption>
+        </figure>
       </header>
 
       <div className="cv-layout">
         <aside className="cv-sidebar">
           <div className="cv-sidebar-sticky">
-            <div className="cv-profile">
-              <div className="cv-portrait"><img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Portrait of Zheyun Wu', 'Zheyun Wu 的头像')} width={1056} height={1056} /></div>
-              <div className="cv-profile-copy">
-                <p className="cv-name serif">Zheyun Wu<span className="cv-name-dot">.</span></p>
-                <p className="cv-role">AI Platform Engineer<br /><span>SAP · {t('Berlin, Germany', '德国 · 柏林')}</span></p>
-              </div>
-            </div>
             <nav className="cv-section-nav" aria-label={t('CV sections', '简历章节')}>
-              {sections.map(([id, label], index) => <a key={id} href={`#${id}`}><span>0{index + 1}</span>{label}<span className="cv-nav-arrow" aria-hidden="true">↗</span></a>)}
+              <p className="cv-sidebar-title">{t('On this page', '本页内容')}</p>
+              {sections.map(([id, label]) => <a key={id} href={`#${id}`}>{label}<span aria-hidden="true">↓</span></a>)}
             </nav>
             <div className="cv-sidebar-detail">
-              <h2 className="eyebrow">{t('Languages', '语言')}</h2>
-              <p>{t('Chinese · Fluent', '中文 · 流利')}<br />{t('English · Fluent', '英语 · 流利')}<br />{t('German · Learning', '德语 · 学习中')}</p>
+              <h2 className="cv-sidebar-title">{t('Languages', '语言')}</h2>
+              <ul className="cv-languages">
+                <li><span>{t('Chinese', '中文')}</span><span>{t('Fluent', '流利')}</span></li>
+                <li><span>{t('English', '英语')}</span><span>{t('Fluent', '流利')}</span></li>
+                <li><span>{t('German', '德语')}</span><span>{t('Learning', '学习中')}</span></li>
+              </ul>
             </div>
             <div className="cv-sidebar-detail">
-              <h2 className="eyebrow">{t('Let’s connect', '联系我')}</h2>
+              <h2 className="cv-sidebar-title">{t('Let’s connect', '联系我')}</h2>
               <a className="cv-email" href="mailto:zheyun.wu.work@gmail.com">zheyun.wu.work@gmail.com</a>
               <a className="text-link cv-github" href="https://github.com/zheyunwu/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
             </div>
@@ -188,23 +191,23 @@ export function CV() {
         </aside>
 
         <div className="cv-content">
-          <section id="experience" className="cv-section">
-            <div className="cv-section-heading"><span className="eyebrow">01</span><h2 className="serif">{t('Experience', '工作经历')}</h2></div>
+          <section id="experience" className="cv-section" aria-labelledby="experience-heading">
+            <div className="cv-section-heading"><h2 id="experience-heading">{t('Experience', '工作经历')}</h2></div>
             <div className="cv-timeline">
               {experience.map((item, index) => (
                 <article className={`cv-experience-item ${index === 0 ? 'cv-current' : ''}`} key={`${item.company}-${item.role[0]}`}>
                   <div className="cv-item-meta"><span>{localized(item.date)}</span><span>{localized(item.location)}</span></div>
                   <h3>{localized(item.role)}</h3>
-                  <p className="cv-company">{item.company}{index === 0 && <span className="cv-current-label">{t('Current', '现在')}</span>}</p>
+                  <p className="cv-company">{item.company}{index === 0 && <span className="cv-current-label">{t('Current role', '当前工作')}</span>}</p>
                   <p className="cv-description">{localized(item.description)}</p>
-                  <div className="cv-technologies">{item.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+                  <ul className="cv-technologies" aria-label={t('Technologies and areas', '技术与领域')}>{item.technologies.map((technology) => <li key={technology}>{technology}</li>)}</ul>
                 </article>
               ))}
             </div>
           </section>
 
-          <section id="education" className="cv-section">
-            <div className="cv-section-heading"><span className="eyebrow">02</span><h2 className="serif">{t('Education', '教育背景')}</h2></div>
+          <section id="education" className="cv-section" aria-labelledby="education-heading">
+            <div className="cv-section-heading"><h2 id="education-heading">{t('Education', '教育背景')}</h2></div>
             {education.map((item) => (
               <article className="cv-education-item" key={item.school}>
                 <div className="cv-item-meta"><span>{item.date}</span><span>{localized(item.location)}</span></div>
@@ -215,46 +218,47 @@ export function CV() {
             ))}
           </section>
 
-          <section id="projects" className="cv-section">
-            <div className="cv-section-heading"><span className="eyebrow">03</span><h2 className="serif">{t('Selected projects', '精选项目')}</h2></div>
-            <p className="cv-section-lede">{t('Curiosity, made tangible. A few things I have built and explored.', '将好奇心变成具体的作品。这里是我的一些创造与探索。')}</p>
-            <div className="cv-projects-grid">
-              {projects.map((project, index) => (
+          <section id="projects" className="cv-section" aria-labelledby="projects-heading">
+            <div className="cv-section-heading"><h2 id="projects-heading">{t('Selected projects', '精选项目')}</h2></div>
+            <p className="cv-section-lede">{t('Independent products, experiments and research.', '独立产品、技术实验与研究。')}</p>
+            <div className="cv-projects">
+              {projects.map((project) => (
                 <article className="cv-project" key={project.name}>
-                  <div className="cv-project-meta"><span>{localized(project.kind)}</span><span>{project.year}</span></div>
-                  <span className="cv-project-number serif" aria-hidden="true">0{index + 1}</span>
-                  <h3 className="serif">{project.name}</h3>
-                  <p className="cv-description">{localized(project.description)}</p>
-                  <div className="cv-technologies">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <a className="text-link cv-project-link" href={project.href} target="_blank" rel="noopener noreferrer">{localized(project.link)}<span aria-hidden="true">↗</span></a>
+                  <div className="cv-project-heading">
+                    <span className="cv-project-year">{project.year}</span>
+                    <h3>{project.name}</h3>
+                    <p className="cv-project-kind">{localized(project.kind)}</p>
+                  </div>
+                  <div className="cv-project-body">
+                    <p className="cv-description">{localized(project.description)}</p>
+                    <ul className="cv-technologies" aria-label={t('Project technologies and topics', '项目技术与主题')}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+                    <a className="text-link cv-project-link" href={project.href} target="_blank" rel="noopener noreferrer">{localized(project.link)}<span aria-hidden="true">↗</span></a>
+                  </div>
                 </article>
               ))}
             </div>
           </section>
 
-          <section id="credentials" className="cv-section">
-            <div className="cv-section-heading"><span className="eyebrow">04</span><h2 className="serif">{t('Always learning', '持续学习')}</h2></div>
-            <p className="cv-section-lede">{t('Selected certifications and completed learning.', '部分认证与已完成的学习。')}</p>
+          <section id="credentials" className="cv-section" aria-labelledby="credentials-heading">
+            <div className="cv-section-heading"><h2 id="credentials-heading">{t('Certifications', '证书与认证')}</h2></div>
+            <p className="cv-section-lede">{t('Professional certifications and completed courses.', '专业认证与已完成的课程。')}</p>
             <div className="cv-credential-row">
-              <span className="cv-credential-mark" aria-hidden="true">L</span>
               <div><h3>Introduction to LangChain — Python</h3><p>LangChain · {t('Issued April 2026', '2026 年 4 月颁发')}</p></div>
-              <a href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer" aria-label={t('View LangChain introduction credential on LinkedIn', '在 LinkedIn 查看 LangChain 入门证书')}>↗</a>
+              <a href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer" aria-label={t('View LangChain introduction credential on LinkedIn', '在 LinkedIn 查看 LangChain 入门证书')}>{t('View', '查看')} <span aria-hidden="true">↗</span></a>
             </div>
             <div className="cv-credential-row">
-              <span className="cv-credential-mark" aria-hidden="true">L</span>
               <div><h3>LangChain Essentials — Python</h3><p>LangChain · {t('Issued March 2026', '2026 年 3 月颁发')}</p></div>
-              <a href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer" aria-label={t('View LangChain Essentials credential on LinkedIn', '在 LinkedIn 查看 LangChain Essentials 证书')}>↗</a>
+              <a href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer" aria-label={t('View LangChain Essentials credential on LinkedIn', '在 LinkedIn 查看 LangChain Essentials 证书')}>{t('View', '查看')} <span aria-hidden="true">↗</span></a>
             </div>
-            <h3 className="cv-historical-label eyebrow">{t('Previously earned · AWS', '曾获认证 · AWS')}</h3>
+            <h3 className="cv-historical-label">{t('Previously earned · AWS', '曾获认证 · AWS')}</h3>
             {awsCredentials.map((credential) => (
               <div className="cv-credential-row cv-historical" key={credential.name}>
-                <span className="cv-credential-mark cv-aws-mark" aria-hidden="true">aws</span>
                 <div><h3>{credential.name}</h3><p>{t('Credential period', '认证有效期')} {credential.earned} — {credential.until} · {t('Expired', '已到期')}</p></div>
-                <a href={credential.url} target="_blank" rel="noopener noreferrer" aria-label={`${t('View historical credential', '查看历史认证')}: ${credential.name}`}>↗</a>
+                <a href={credential.url} target="_blank" rel="noopener noreferrer" aria-label={`${t('View historical credential', '查看历史认证')}: ${credential.name}`}>{t('View', '查看')} <span aria-hidden="true">↗</span></a>
               </div>
             ))}
           </section>
-          <div className="cv-endnote"><p>{t('Open to thoughtful collaborations and IT service projects.', '欢迎交流合作与 IT 服务项目。')}</p><a className="text-link" href="mailto:zheyun.wu.work@gmail.com">{t('Let’s talk', '聊聊你的想法')} <span aria-hidden="true">↗</span></a></div>
+          <div className="cv-endnote"><p>{t('Have a project in mind? I also offer independent IT services.', '有想实现的项目？我也提供独立 IT 服务。')}</p><a className="text-link" href="mailto:zheyun.wu.work@gmail.com">{t('Get in touch', '联系我')} <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </main>

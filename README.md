@@ -1,6 +1,6 @@
 # Zheyun Wu — Personal Website
 
-个人主页、履历与双语 Journal。暖白与墨色、衬线标题、充足留白，采用北欧与法式编辑设计方向。
+个人主页、履历与双语 Journal。明朗、亲近的现代设计结合杂志排版：暖白、墨蓝与少量蓝色，Manrope 界面字体与 Newsreader 阅读标题，保留个人摄影与真实内容。
 
 - Next.js App Router、React、TypeScript；依赖的准确版本锁定在 `package-lock.json`。
 - 静态导出到 `out/`，直接由 GitHub Pages 托管，无需 Node.js 后端。
@@ -37,6 +37,16 @@ npm run build
 工作流只需要仓库自带的 `GITHUB_TOKEN`，权限为 `contents: read`、`pages: write`、`id-token: write`，无需另建部署密钥。不要提交访问令牌。
 
 如果未来移除自定义域名，需同时更新站点 URL、Next.js `basePath`、静态资源路径及 CNAME，而不能只删除 CNAME。GitHub 项目站默认路径为 `/zheyun-personal-website/`。
+
+## 设计与阅读规范
+
+- 全站共用 `app/globals.css` 中的颜色、字体、按钮和导航；CV 与 Journal 的局部样式分别维护。
+- 界面正文 16–18px，长文 18–19px，次要信息保持清晰对比。中文采用适合中文阅读的无衬线字体与较宽松行距。
+- 首页以个人介绍和近况组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
+- 使用真实头像与 Stockholm 摄影。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
+- 更新样式后检查英文与中文、320px/390px 手机端和桌面，测试键盘菜单、搜索筛选、文章目录和打印布局。
+
+设计研究参考：[Anthropic 对前端设计趋同的讨论](https://claude.com/resources/articles/improving-frontend-design-through-skills)、[Adrian Krebs 的 Show HN 页面模式研究](https://www.adriankrebs.ch/blog/design-slop/)。这些是设计倾向和启发式观察，不是判断 AI 作者身份的依据。
 
 ## 内容维护
 
