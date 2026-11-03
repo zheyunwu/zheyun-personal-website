@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import LegacyBlogRedirect from '../../components/legacy-blog-redirect';
+import LegacyBlogRedirect from '@/components/legacy-blog-redirect';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  alternates: { canonical: '/blog/' },
+  alternates: { canonical: absoluteUrl('/blog/') },
   robots: { index: false, follow: true },
 };
 

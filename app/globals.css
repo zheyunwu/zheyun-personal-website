@@ -52,8 +52,8 @@ svg { flex-shrink: 0; }
 .navigation > a[aria-current=page]:after { content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 2px; background: var(--accent); }
 .navigation > a:hover { color: var(--accent); }
 .language-toggle { display: flex; align-items: center; gap: 3px; color: #747c86; }
-.language-toggle button { background: transparent; border: 0; min-width: 40px; min-height: 44px; padding: 6px 4px; font-size: 14px; color: var(--muted); }
-.language-toggle button[aria-pressed=true] { color: var(--accent); font-weight: 600; }
+.language-toggle a { display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 0; min-width: 40px; min-height: 44px; padding: 6px 4px; font-size: 14px; color: var(--muted); }
+.language-toggle a[aria-current=true] { color: var(--accent); font-weight: 600; }
 .language-toggle > span { font-size: 13px; }
 .header-contact { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 15px; font-weight: 600; }
 .header-contact:hover { color: var(--accent); }
@@ -107,7 +107,7 @@ svg { flex-shrink: 0; }
 .legal-page p { font-size: 17px; color: var(--muted); line-height: 1.85; margin-top: 15px; }
 .legal-page a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .not-found { text-align: center; padding: 90px 24px 110px; }
-.not-found h1 { font-size: 95px; color: var(--accent); }
+.not-found h1 { font-size: clamp(42px, 7vw, 82px); color: var(--accent); }
 .not-found p { margin: 20px auto 30px; max-width: 400px; color: var(--muted); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 html[lang=zh-CN] { --serif: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; }
@@ -183,7 +183,7 @@ html[lang=zh-CN] .home-post h3 { font-size: 25px; line-height: 1.5; font-weight:
   .header-right { gap: 3px; }
   .wordmark { font-size: 21px; }
   .language-toggle { gap: 0; }
-  .language-toggle button { min-width: 36px; }
+  .language-toggle a { min-width: 36px; }
   .navigation { left: -18px; right: -18px; padding-inline: 18px; }
   .hero-actions { align-items: start; gap: 11px; }
   .hero-actions .button { padding-inline: 15px; gap: 12px; }

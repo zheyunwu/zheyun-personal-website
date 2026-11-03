@@ -41,6 +41,8 @@ export type Post = {
   category: 'technology' | 'life';
   tags: string[];
   date: string;
+  updated?: string;
+  socialImage?: string;
   readTime: number;
   visual: 'platform' | 'home' | 'notes';
   format: Localized;

@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from './localized-link';
 import { ArrowRight, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useLanguage } from './language';

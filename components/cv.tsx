@@ -230,7 +230,7 @@ export function CV() {
           </div>
         </div>
         <figure className="cv-portrait">
-          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/zheyun_avatar.jpg`} alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={1056} height={1056} />
+          <img src={asset('/images/zheyun-avatar-640.webp')} srcSet={[160,320,640,960].map(width=>`${asset(`/images/zheyun-avatar-${width}.webp`)} ${width}w`).join(', ')} sizes="(max-width:520px) 104px, (max-width:760px) 160px, 240px" alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={640} height={640} />
         </figure>
       </header>
 

@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+      NEXT_PUBLIC_BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
     steps:
       - name: Check out source
         uses: actions/checkout@v7
@@ -33,6 +36,8 @@ jobs:
         run: npm run typecheck
       - name: Build static website
         run: npm run build
+      - name: Validate exported SEO, languages and links
+        run: npm run check:seo
       - name: Upload static output
         uses: actions/upload-pages-artifact@v5
         with:

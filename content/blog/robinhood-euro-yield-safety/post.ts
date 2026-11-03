@@ -15,6 +15,8 @@ export const robinhoodEuroYieldPost: Post = {
   category: 'life',
   tags: ['banking', 'investing'],
   date: '2026-11-01',
+  updated: '2026-11-02',
+  socialImage: '/images/social/robinhood-euro-yield-safety.jpg',
   readTime: 12,
   visual: 'notes',
   format: { en: 'Research note', zh: '研究笔记' },

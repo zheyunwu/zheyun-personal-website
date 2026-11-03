@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from './localized-link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from './language';
 import { formatPostDate, topicLabels, type Post, type PostLink } from '../content/blog';
@@ -27,8 +27,8 @@ export default function Article({ post, nextPost }: { post: Post; nextPost?: Pos
         <h1>{post.title[lang]}</h1>
         <p className="article-deck">{post.excerpt[lang]}</p>
         <div className="article-byline">
-          <Link className="article-author" href="/cv/"><img src={asset('/images/zheyun_avatar.jpg')} width="1056" height="1056" alt="" /><span>Zheyun Wu</span></Link>
-          <div className="article-meta"><time dateTime={post.date}>{formatPostDate(post.date, lang)}</time><span>{post.readTime} {t('min read', '分钟阅读')}</span></div>
+          <Link className="article-author" href="/cv/"><img src={asset('/images/zheyun-avatar-160.webp')} width="160" height="160" alt="" /><span>Zheyun Wu</span></Link>
+          <div className="article-meta"><time dateTime={post.date}>{formatPostDate(post.date, lang)}</time>{post.updated && post.updated !== post.date ? <span>{t('Updated ', '更新于 ')}<time dateTime={post.updated}>{formatPostDate(post.updated, lang)}</time></span> : null}<span>{post.readTime} {t('min read', '分钟阅读')}</span></div>
         </div>
       </header>
 

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import LegacyBlogRedirect from '../../../components/legacy-blog-redirect';
-import { posts } from '../../../content/blog';
+import LegacyBlogRedirect from '@/components/legacy-blog-redirect';
+import { posts } from '@/content/blog';
+import { absoluteUrl } from '@/lib/seo';
 
 export const dynamicParams = false;
 
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   return {
     title: post.title.en,
-    alternates: { canonical: `/blog/${post.slug}/` },
+    alternates: { canonical: absoluteUrl(`/blog/${post.slug}/`) },
     robots: { index: false, follow: true },
   };
 }

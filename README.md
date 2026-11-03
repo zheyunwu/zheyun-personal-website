@@ -4,7 +4,7 @@
 
 - Next.js App Router、React、TypeScript；依赖的准确版本锁定在 `package-lock.json`。
 - 静态导出到 `out/`，直接由 GitHub Pages 托管，无需 Node.js 后端。
-- 英文为默认界面，支持中文切换；字体与图片由本站提供。
+- 英文保留原网址，中文使用 `/zh/` 独立网址；两种语言均在构建时生成完整 HTML，字体与图片由本站提供。
 - 首页、CV、博客列表与文章详情，博客支持分类、标签及搜索。
 - 不默认加载广告、第三方分析脚本或跟踪 Cookie。
 
@@ -22,15 +22,16 @@ npm run dev
 ```sh
 npm run typecheck
 npm run build
+npm run check:seo
 ```
 
-`out/` 是完整静态站点，可以由任意静态 HTTP 服务预览。博客入口为 `/blog/`，文章详情为 `/blog/<slug>/`，使用末尾斜杠，支持 GitHub Pages 直接访问与刷新。旧 `/journal/` 及已发布文章的旧链接保留静态兼容页，由浏览器自动跳转并保留查询参数与章节位置；这不是服务器 301。规范链接与 sitemap 只使用 `/blog/`。
+`out/` 是完整静态站点，可以由任意静态 HTTP 服务预览。博客入口为 `/blog/`，文章详情为 `/blog/<slug>/`，中文对应 `/zh/blog/` 和 `/zh/blog/<slug>/`。URL 使用末尾斜杠，支持 GitHub Pages 直接访问与刷新。旧 `/journal/` 及已发布文章的旧链接保留 `noindex` 兼容页：JavaScript 跳转保留查询参数与章节位置，无 JavaScript 时使用立即 meta refresh；这不是服务器 301。规范链接与 sitemap 使用新的博客网址。
 
 ## GitHub Pages
 
 仓库：[zheyunwu/zheyun-personal-website](https://github.com/zheyunwu/zheyun-personal-website)。已有自定义域名：[zheyun.dev](https://zheyun.dev)。`public/CNAME` 保留该域名，生产链接按域名根路径生成。
 
-自动发布配置见 `.github/workflows/deploy.yml`。推送到 `main` 或 `master` 会依次进行依赖安装、类型检查、静态构建、上传与部署，也可以从 Actions 页面手动运行。
+自动发布配置见 `.github/workflows/deploy.yml`。推送到 `main` 或 `master` 会依次进行依赖安装、类型检查、静态构建、SEO 导出检查、上传与部署，也可以从 Actions 页面手动运行。SEO 检查失败会阻止发布。
 
 仓库 **Settings → Pages → Build and deployment → Source** 已切换为 **GitHub Actions**。旧站的 `gh-pages` 分支作为历史记录保留。`github-pages` environment 必须允许发布所用的源分支。
 
@@ -43,7 +44,7 @@ npm run build
 - 全站共用 `app/globals.css` 中的颜色、字体、按钮和导航；CV 与 Blog 的局部样式分别维护。
 - 界面正文 16–18px，长文 18–19px，次要信息保持清晰对比。中文采用适合中文阅读的无衬线字体与较宽松行距。
 - 首页以个人介绍和最新文章组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
-- 使用真实头像与五地世界地图；Stockholm 摄影保留于社交分享图片。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
+- 使用真实头像与五地世界地图；分享卡沿用网站字体、暖白与墨蓝配色，Stockholm 摄影原件保留在图片目录。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
 - 更新样式后检查英文与中文、320px/390px 手机端和桌面，测试键盘菜单、搜索筛选和文章目录。
 
 设计研究参考：[Anthropic 对前端设计趋同的讨论](https://claude.com/resources/articles/improving-frontend-design-through-skills)、[Adrian Krebs 的 Show HN 页面模式研究](https://www.adriankrebs.ch/blog/design-slop/)。这些是设计倾向和启发式观察，不是判断 AI 作者身份的依据。
@@ -62,6 +63,8 @@ npm run build
 - `components/article-table.tsx`：基于 `PostTable` 类型的原生 HTML 表格，跟随网站语言切换。
 - `components/article-image.tsx` 与 `article-image.css`：文章图片与页内放大弹窗，支持键盘关闭、原始尺寸查看及关闭后恢复阅读位置。
 - `public/images/`：头像、地图、公司 Logo 等全站共用图片，文章专属图片不放在这里。
+
+`post.date` 是首次发布日期；正文有实质更新时填写真实的 `post.updated` 日期，文章页、结构化数据与 sitemap 共用它，不在每次构建时刷新日期。`socialImage` 可指定文章专用的 1200×630 分享图，未指定时使用站点分享卡。段落的可选 `emphasis` 用于在正文末尾追加加粗的双语文字；文章级 `disclosureTitle` 可以明确区分个人邀请说明和联盟链接说明。
 
 地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
@@ -93,6 +96,28 @@ Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，�
 4. 核实适用的 Impressum/经营者资料要求。网站按站主明确要求只公开工作邮箱，不公开电话和具体地址；这不等于完整的商业 Impressum。DDG §5 对商业网站通常要求可送达地址，可另行核实合适的商业/服务地址方案，不能猜测或擅自公开私人地址。
 
 金融、房产及贷款类文章发布前，应核对当日数据，标注来源、核实日期和适用条件，明确区分个人经验与专业建议。
+
+## SEO 架构与发布检查
+
+- `app/(en)/` 与 `app/zh/` 是两个静态根布局，共用 `components/site-layout.tsx`。语言由网址决定，直接访问或禁用 JavaScript 仍能获得相应语言的正文和导航；不依据浏览器语言或本地存储强制跳转。
+- `lib/i18n.ts` 统一路径规则；`components/localized-link.tsx` 让站内导航保持当前语言。语言入口使用可抓取的真实链接，正常点击还会保留查询参数与章节锚点。
+- `lib/seo.ts` 统一首页、简历、博客、文章和法律页的独立标题、摘要、HTTPS canonical、互相对应的 `en` / `zh-Hans` / `x-default`、完整 Open Graph 和 Twitter 信息。中文页面 canonical 指向自身，不指向英文版。
+- 服务端输出 `WebSite`、`Person`、`ProfilePage`、`CollectionPage`、`BlogPosting` 与 `BreadcrumbList` JSON-LD；作者链接指向履历页。数据仅描述页面真实内容，不添加虚构评价、评分、金融产品或商业地址。脚本序列化时转义 `<`。
+- `app/sitemap.ts` 只列出已发布的双语规范网址；没有可靠修改日期的页面省略 `lastmod`。`robots.txt` 保持页面、脚本、样式和图片可抓取。示例草稿、旧路径兼容页和 404 不进入 sitemap。
+- 多根布局使用当前 Next.js 的 `globalNotFound` 功能，`app/global-not-found.tsx` 导出独立的 `404.html` 和 `noindex`；不要将未知 URL 全部重写为首页造成 soft 404。
+- `scripts/check-seo.mjs` 检查实际导出的 HTML：标题、描述、单个 H1、canonical、双语互链、静态中文内容、JSON-LD、分享图真实尺寸、sitemap、robots、404、旧路径回退、草稿隔离、站内链接/锚点及图片资源。也支持 `--dir` 和 `--json`。2026-11-03 版本通过 12 个双语页面、375 处本地引用、1,591 项断言；数字会随内容变化。
+- `npm run build:seo-assets` 可重新生成头像 WebP 和分享卡。首页与作者头像使用 160px 版本（5,904 字节，原 JPG 为 270,301 字节）；CV 使用响应式尺寸。原件保留。生成脚本不进入浏览器运行时，分享图不需要每次构建重生成。
+
+### 搜索平台设置与上线后验收
+
+1. 在 GitHub 仓库 **Settings → Pages** 开启 **Enforce HTTPS**。2026-11-03 只读检查时，HTTPS 正常、`www` 会跳到根域名、未知页面返回 404，但 HTTP 仍返回 200；此项属于托管平台设置，不能用静态 Next.js 的 `redirects()` 代替。
+2. 在 [Google Search Console](https://search.google.com/search-console/) 验证 `zheyun.dev` 的所有权（推荐 DNS Domain property），提交 `https://zheyun.dev/sitemap.xml`。也可使用 URL-prefix 的 HTML meta 验证：把 Search Console 提供的验证码放入仓库 Actions variable `GOOGLE_SITE_VERIFICATION`，重新部署后确认。Bing 对应 `BING_SITE_VERIFICATION`。这些验证码是公开站点标记；不要放账户密码或 API 密钥。`.env.example` 提供本地配置名称。
+3. 在 URL Inspection 检查英文首页、中文首页和双语文章的抓取结果、规范网址与索引状态；在 [Rich Results Test](https://search.google.com/test/rich-results) 检查文章和履历。可用 [Schema Validator](https://validator.schema.org/) 进一步验证完整图谱。
+4. 累积实际数据后看 Search Console 的曝光、点击、查询词、网页索引和 Core Web Vitals。真实用户 p75 的目标为 LCP ≤2.5s、INP ≤200ms、CLS ≤0.1；静态检查或一次 Lighthouse 测试不能证明线上已经达到这些指标。
+
+当前版本没有接入跟踪脚本。代码检查通过不代表搜索平台账户已经验证、sitemap 已提交、页面已收录，或保证排名/富媒体展示。后续内容策略应围绕本人实际经验、清晰的问题与可核对资料展开，不堆砌关键词或批量生成薄内容。
+
+实现依据：[Google 多语言网址](https://developers.google.com/search/docs/specialty/international/localized-versions)、[Article 结构化数据](https://developers.google.com/search/docs/appearance/structured-data/article)、[ProfilePage](https://developers.google.com/search/docs/appearance/structured-data/profile-page)、[sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)、[重定向](https://developers.google.com/search/docs/crawling-indexing/301-redirects)、[Web Vitals](https://web.dev/articles/vitals)。
 
 ## 参考资料
 

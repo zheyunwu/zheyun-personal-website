@@ -7,8 +7,10 @@
     "prebuild": "npm run build:map",
     "build": "next build",
     "start": "next dev --hostname 127.0.0.1",
-    "typecheck": "tsc --noEmit",
-    "build:map": "node scripts/generate-life-map.mjs"
+    "typecheck": "next typegen && tsc --noEmit",
+    "build:map": "node scripts/generate-life-map.mjs",
+    "build:seo-assets": "node scripts/generate-seo-assets.mjs",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@fontsource/manrope": "latest",

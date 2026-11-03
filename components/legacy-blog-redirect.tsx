@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from './language';
+import { withBasePath } from '@/lib/i18n';
 
 export default function LegacyBlogRedirect({ href }: { href: string }) {
   const { t } = useLanguage();
@@ -12,9 +13,9 @@ export default function LegacyBlogRedirect({ href }: { href: string }) {
   }, [href]);
 
   return (
-    <main id="main" tabIndex={-1} className="container" style={{ paddingBlock: '80px' }}>
+    <><noscript><meta httpEquiv="refresh" content={`0;url=${withBasePath(href)}`} /></noscript><main id="main" tabIndex={-1} className="container" style={{ paddingBlock: '80px' }}>
       <h1>{t('The blog has moved.', '博客搬家了。')}</h1>
       <p><Link className="text-link" href={href}>{t('Continue to the blog', '前往博客')} →</Link></p>
-    </main>
+    </main></>
   );
 }

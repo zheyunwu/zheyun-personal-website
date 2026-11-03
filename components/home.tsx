@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from './localized-link';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { useLanguage } from './language';
 import { LifeMap } from './life-map';
@@ -15,7 +15,7 @@ export function Home() {
       <section className="hero container" aria-labelledby="home-title">
         <div className="hero-copy">
           <div className="hero-person">
-            <img src={asset('/images/zheyun_avatar.jpg')} alt={t('Zheyun Wu', 'Zheyun Wu 的头像')} width={1056} height={1056} />
+            <img src={asset('/images/zheyun-avatar-160.webp')} alt={t('Zheyun Wu', 'Zheyun Wu 的头像')} width={160} height={160} />
             <p>{t('From Quanzhou, China. At home in Berlin, Germany.', '来自中国泉州，现居德国柏林。')}<span>{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</span></p>
           </div>
           <h1 id="home-title">{t('Hi, I’m ', '你好，我是 ')}<span>Zheyun.</span></h1>
