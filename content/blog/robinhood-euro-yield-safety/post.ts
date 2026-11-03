@@ -16,6 +16,9 @@ export const robinhoodEuroYieldPost: Post = {
   tags: ['banking', 'investing'],
   date: '2026-11-01',
   updated: '2026-11-02',
+  // Publication/content-update commits: d140682 and 0fc51b8; not SEO build times.
+  publishedAt: '2026-11-01T22:13:50+01:00',
+  updatedAt: '2026-11-02T00:30:13+01:00',
   socialImage: '/images/social/robinhood-euro-yield-safety.jpg',
   readTime: 12,
   visual: 'notes',

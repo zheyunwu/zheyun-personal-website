@@ -64,7 +64,7 @@ npm run check:seo
 - `components/article-image.tsx` 与 `article-image.css`：文章图片与页内放大弹窗，支持键盘关闭、原始尺寸查看及关闭后恢复阅读位置。
 - `public/images/`：头像、地图、公司 Logo 等全站共用图片，文章专属图片不放在这里。
 
-`post.date` 是首次发布日期；正文有实质更新时填写真实的 `post.updated` 日期，文章页、结构化数据与 sitemap 共用它，不在每次构建时刷新日期。`socialImage` 可指定文章专用的 1200×630 分享图，未指定时使用站点分享卡。段落的可选 `emphasis` 用于在正文末尾追加加粗的双语文字；文章级 `disclosureTitle` 可以明确区分个人邀请说明和联盟链接说明。
+`post.date` 是首次发布日期；正文有实质更新时填写真实的 `post.updated` 日期。已知具体时间时填写带时区的 ISO `publishedAt` / `updatedAt`，供文章的 HTML、Open Graph 与结构化数据使用；显示日期仍使用原始日期，避免跨时区显示为前一天。Robinhood 文章的时间来自首次发布及最近正文更新的 Git 提交。不在每次构建时刷新日期。`socialImage` 可指定文章专用的 1200×630 分享图，未指定时使用站点分享卡。段落的可选 `emphasis` 用于在正文末尾追加加粗的双语文字；文章级 `disclosureTitle` 可以明确区分个人邀请说明和联盟链接说明。
 
 地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
@@ -105,13 +105,13 @@ Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，�
 - 服务端输出 `WebSite`、`Person`、`ProfilePage`、`CollectionPage`、`BlogPosting` 与 `BreadcrumbList` JSON-LD；作者链接指向履历页。数据仅描述页面真实内容，不添加虚构评价、评分、金融产品或商业地址。脚本序列化时转义 `<`。
 - `app/sitemap.ts` 只列出已发布的双语规范网址；没有可靠修改日期的页面省略 `lastmod`。`robots.txt` 保持页面、脚本、样式和图片可抓取。示例草稿、旧路径兼容页和 404 不进入 sitemap。
 - 多根布局使用当前 Next.js 的 `globalNotFound` 功能，`app/global-not-found.tsx` 导出独立的 `404.html` 和 `noindex`；不要将未知 URL 全部重写为首页造成 soft 404。
-- `scripts/check-seo.mjs` 检查实际导出的 HTML：标题、描述、单个 H1、canonical、双语互链、静态中文内容、JSON-LD、分享图真实尺寸、sitemap、robots、404、旧路径回退、草稿隔离、站内链接/锚点及图片资源。也支持 `--dir` 和 `--json`。2026-11-03 版本通过 12 个双语页面、375 处本地引用、1,591 项断言；数字会随内容变化。
+- `scripts/check-seo.mjs` 检查实际导出的 HTML：标题、描述、单个 H1、canonical、双语互链、静态中文内容、JSON-LD、带时区的文章时间、分享图真实尺寸、sitemap、robots、404、旧路径回退、草稿隔离、站内链接/锚点及图片资源。也支持 `--dir` 和 `--json`。2026-11-03 版本通过 12 个双语页面、375 处本地引用、1,613 项断言；数字会随内容变化。
 - `npm run build:seo-assets` 可重新生成头像 WebP 和分享卡。首页与作者头像使用 160px 版本（5,904 字节，原 JPG 为 270,301 字节）；CV 使用响应式尺寸。原件保留。生成脚本不进入浏览器运行时，分享图不需要每次构建重生成。
 
 ### 搜索平台设置与上线后验收
 
-1. GitHub 仓库 **Settings → Pages → Enforce HTTPS** 已于 2026-11-03 开启并确认保存。上线后检查 HTTP 重定向、`www` 跳到根域名、未知页面返回 404；GitHub 边缘缓存更新可能稍有延迟。HTTPS 跳转属于托管平台设置，不能用静态 Next.js 的 `redirects()` 代替。
-2. [Google Search Console](https://search.google.com/search-console/) 已有可访问的 `zheyun.dev` Domain property。部署后在该属性提交并检查 `https://zheyun.dev/sitemap.xml`；站点地图被接受不等于所有页面已被收录。也可使用 URL-prefix 的 HTML meta 验证：把 Search Console 提供的验证码放入仓库 Actions variable `GOOGLE_SITE_VERIFICATION`，重新部署后确认。Bing 对应 `BING_SITE_VERIFICATION`。这些验证码是公开站点标记；不要放账户密码或 API 密钥。`.env.example` 提供本地配置名称。
+1. GitHub 仓库 **Settings → Pages → Enforce HTTPS** 已于 2026-11-03 开启并确认保存，线上实测 HTTP 和 `www` 均返回 301 到 HTTPS 根域名，未知页面返回 404。HTTPS 跳转属于托管平台设置，不能用静态 Next.js 的 `redirects()` 代替。
+2. [Google Search Console](https://search.google.com/search-console/) 的 `zheyun.dev` Domain property 已于 2026-11-03 成功处理 `https://zheyun.dev/sitemap.xml`，发现 12 个页面；这不等于所有页面已被收录。也可使用 URL-prefix 的 HTML meta 验证：把 Search Console 提供的验证码放入仓库 Actions variable `GOOGLE_SITE_VERIFICATION`，重新部署后确认。Bing 对应 `BING_SITE_VERIFICATION`。这些验证码是公开站点标记；不要放账户密码或 API 密钥。`.env.example` 提供本地配置名称。
 3. 在 URL Inspection 检查英文首页、中文首页和双语文章的抓取结果、规范网址与索引状态；在 [Rich Results Test](https://search.google.com/test/rich-results) 检查文章和履历。可用 [Schema Validator](https://validator.schema.org/) 进一步验证完整图谱。
 4. 累积实际数据后看 Search Console 的曝光、点击、查询词、网页索引和 Core Web Vitals。真实用户 p75 的目标为 LCP ≤2.5s、INP ≤200ms、CLS ≤0.1；静态检查或一次 Lighthouse 测试不能证明线上已经达到这些指标。
 

@@ -67,11 +67,17 @@ export const layoutMetadata: Metadata = {
 
 type PageInfo = { path: string; title: Localized; description: Localized; image?: string; post?: Post };
 
+function articleDates(post: Post) {
+  const published = post.publishedAt || post.date;
+  return { published, modified: post.updatedAt || post.updated || published };
+}
+
 /** Return complete nested objects: Next's metadata inheritance is a shallow merge. */
 export function pageMetadata(info: PageInfo, language: Language): Metadata {
   const url = absoluteUrl(localizedPath(info.path, language));
   const title = info.path === '/' ? info.title[language] : `${info.title[language]} — ${siteName}`;
   const description = info.description[language];
+  const dates = info.post ? articleDates(info.post) : undefined;
   const image = { url: absoluteUrl(info.image || defaultSocialImage), width: 1200, height: 630, alt: info.title[language], type: 'image/jpeg' };
   return {
     title: { absolute: title }, description,
@@ -80,7 +86,7 @@ export function pageMetadata(info: PageInfo, language: Language): Metadata {
     openGraph: {
       type: info.post ? 'article' : 'website', url, title, description, siteName,
       locale: socialLocale[language], alternateLocale: [socialLocale[language === 'en' ? 'zh' : 'en']], images: [image],
-      ...(info.post ? { publishedTime: info.post.date, modifiedTime: info.post.updated || info.post.date, authors: [absoluteUrl(localizedPath('/cv/', language))] } : {}),
+      ...(dates ? { publishedTime: dates.published, modifiedTime: dates.modified, authors: [absoluteUrl(localizedPath('/cv/', language))] } : {}),
     },
     twitter: { card: 'summary_large_image', title, description, images: [{ url: image.url, alt: image.alt }] },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
@@ -123,7 +129,7 @@ export function structuredData(info: PageInfo, language: Language, kind: CorePag
   const article = info.post ? {
     '@type': 'BlogPosting', '@id': `${url}#article`, url, mainEntityOfPage: { '@id': pageId },
     headline: info.post.title[language], description: info.post.excerpt[language],
-    inLanguage: htmlLanguage[language], datePublished: info.post.date, dateModified: info.post.updated || info.post.date,
+    inLanguage: htmlLanguage[language], datePublished: articleDates(info.post).published, dateModified: articleDates(info.post).modified,
     author: { '@type': 'Person', '@id': personId, name: siteName, url: person.url }, publisher: { '@id': personId },
     image: [absoluteUrl(info.image || defaultSocialImage), ...info.post.body.flatMap(section => section.image ? [absoluteUrl(section.image.src)] : [])],
     isAccessibleForFree: true,

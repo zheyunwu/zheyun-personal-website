@@ -28,7 +28,7 @@ export default function Article({ post, nextPost }: { post: Post; nextPost?: Pos
         <p className="article-deck">{post.excerpt[lang]}</p>
         <div className="article-byline">
           <Link className="article-author" href="/cv/"><img src={asset('/images/zheyun-avatar-160.webp')} width="160" height="160" alt="" /><span>Zheyun Wu</span></Link>
-          <div className="article-meta"><time dateTime={post.date}>{formatPostDate(post.date, lang)}</time>{post.updated && post.updated !== post.date ? <span>{t('Updated ', '更新于 ')}<time dateTime={post.updated}>{formatPostDate(post.updated, lang)}</time></span> : null}<span>{post.readTime} {t('min read', '分钟阅读')}</span></div>
+          <div className="article-meta"><time dateTime={post.publishedAt || post.date}>{formatPostDate(post.date, lang)}</time>{post.updated && post.updated !== post.date ? <span>{t('Updated ', '更新于 ')}<time dateTime={post.updatedAt || post.updated}>{formatPostDate(post.updated, lang)}</time></span> : null}<span>{post.readTime} {t('min read', '分钟阅读')}</span></div>
         </div>
       </header>
 

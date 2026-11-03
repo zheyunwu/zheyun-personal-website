@@ -42,6 +42,9 @@ export type Post = {
   tags: string[];
   date: string;
   updated?: string;
+  /** Actual publication/content-update timestamps, including timezone, when known. */
+  publishedAt?: string;
+  updatedAt?: string;
   socialImage?: string;
   readTime: number;
   visual: 'platform' | 'home' | 'notes';

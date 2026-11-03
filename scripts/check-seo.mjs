@@ -30,6 +30,7 @@ const failures = [];
 const warnings = [];
 const documents = new Map();
 const localReferences = new Set();
+const sourceDatesBySlug = new Map();
 let assertions = 0;
 
 function check(condition, message) {
@@ -200,7 +201,24 @@ function hasType(node, type) {
 }
 
 function validDate(value) {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(value) && Number.isFinite(Date.parse(value));
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(value)) return false;
+  const day = value.slice(0, 10);
+  const timestamp = Date.parse(`${day}T00:00:00Z`);
+  if (!Number.isFinite(timestamp) || new Date(timestamp).toISOString().slice(0, 10) !== day) return false;
+  return value.length === 10 || validDateTime(value);
+}
+
+function validDateTime(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value) && Number.isFinite(Date.parse(value));
+}
+
+function datesInOrder(published, modified) {
+  if (!validDate(published) || !validDate(modified)) return false;
+  // A date-only fallback does not claim midnight precision. Compare calendar
+  // days unless both source values record an actual, time-zoned instant.
+  return validDateTime(published) && validDateTime(modified)
+    ? Date.parse(modified) >= Date.parse(published)
+    : modified.slice(0, 10) >= published.slice(0, 10);
 }
 
 async function auditSchema(document) {
@@ -226,7 +244,20 @@ async function auditSchema(document) {
   if (post) {
     check(textContent(post.headline) === document.headings[0], `${route}: article headline differs from visible H1`);
     check(validDate(post.datePublished), `${route}: article needs a valid publication date`);
-    check(validDate(post.dateModified) && Date.parse(post.dateModified) >= Date.parse(post.datePublished), `${route}: invalid article modification date`);
+    check(datesInOrder(post.datePublished, post.dateModified), `${route}: invalid article modification date`);
+    const slug = unlocalized(route).match(/^\/blog\/([^/]+)\/$/)?.[1];
+    const sourceDates = sourceDatesBySlug.get(slug);
+    if (sourceDates) {
+      const published = sourceDates.publishedAt || sourceDates.date;
+      const modified = sourceDates.updatedAt || sourceDates.updated || published;
+      check(post.datePublished === published, `${route}: JSON-LD publication date must use the source publishedAt timestamp when available, otherwise date`);
+      check(post.dateModified === modified, `${route}: JSON-LD modification date must use the source updatedAt timestamp when available, otherwise updated/publication date`);
+      check(singleMeta(document, 'article:published_time') === published, `${route}: Open Graph publication date differs from the source timestamp/date`);
+      check(singleMeta(document, 'article:modified_time') === modified, `${route}: Open Graph modification date differs from the source timestamp/date`);
+      const visibleDays = new Set(elements(document.body, 'time').map(time => time.datetime?.slice(0, 10)));
+      check(visibleDays.has(sourceDates.date), `${route}: visible publication date differs from the source calendar day`);
+      if (sourceDates.updated && sourceDates.updated !== sourceDates.date) check(visibleDays.has(sourceDates.updated), `${route}: visible update date differs from the source calendar day`);
+    }
     const authors = [post.author].flat().map(resolve);
     check(authors.some(author => author?.name === 'Zheyun Wu' && author?.url === absolute(localized('/cv/', languageFor(route)))), `${route}: article author must resolve to the localized About & CV page`);
     check(post.inLanguage === (languageFor(route) === 'zh' ? 'zh-CN' : 'en') || post.inLanguage === (languageFor(route) === 'zh' ? 'zh-Hans' : 'en-US'), `${route}: article language differs from rendered language`);
@@ -358,6 +389,15 @@ async function publishedSlugs() {
     const post = await readFile(path.resolve(root, 'content/blog', `${imported}.ts`), 'utf8');
     const slug = post.match(/\bslug\s*:\s*['"]([^'"]+)['"]/)?.[1];
     if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`Invalid or missing stable slug for ${name}`);
+    const dates = Object.fromEntries(['date', 'updated', 'publishedAt', 'updatedAt'].map(key => [key, post.match(new RegExp(`\\b${key}\\s*:\\s*['"]([^'"]+)['"]`))?.[1]]));
+    check(validDate(dates.date) && dates.date?.length === 10, `${slug}: date must be a valid YYYY-MM-DD calendar day`);
+    if (dates.updated) check(validDate(dates.updated) && dates.updated.length === 10 && dates.updated >= dates.date, `${slug}: updated must be a calendar day on or after publication`);
+    for (const [field, day] of [['publishedAt', dates.date], ['updatedAt', dates.updated || dates.date]]) {
+      if (!dates[field]) continue;
+      check(validDate(dates[field]) && validDateTime(dates[field]), `${slug}: ${field} must be a full ISO datetime with Z or an explicit timezone offset`);
+      check(dates[field].slice(0, 10) === day, `${slug}: ${field} must correspond to the visible calendar day ${day}`);
+    }
+    sourceDatesBySlug.set(slug, dates);
     slugs.push(slug);
   }
   check(new Set(slugs).size === slugs.length, 'Publication list contains duplicate slugs');
