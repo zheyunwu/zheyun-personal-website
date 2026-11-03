@@ -110,8 +110,8 @@ Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，�
 
 ### 搜索平台设置与上线后验收
 
-1. 在 GitHub 仓库 **Settings → Pages** 开启 **Enforce HTTPS**。2026-11-03 只读检查时，HTTPS 正常、`www` 会跳到根域名、未知页面返回 404，但 HTTP 仍返回 200；此项属于托管平台设置，不能用静态 Next.js 的 `redirects()` 代替。
-2. 在 [Google Search Console](https://search.google.com/search-console/) 验证 `zheyun.dev` 的所有权（推荐 DNS Domain property），提交 `https://zheyun.dev/sitemap.xml`。也可使用 URL-prefix 的 HTML meta 验证：把 Search Console 提供的验证码放入仓库 Actions variable `GOOGLE_SITE_VERIFICATION`，重新部署后确认。Bing 对应 `BING_SITE_VERIFICATION`。这些验证码是公开站点标记；不要放账户密码或 API 密钥。`.env.example` 提供本地配置名称。
+1. GitHub 仓库 **Settings → Pages → Enforce HTTPS** 已于 2026-11-03 开启并确认保存。上线后检查 HTTP 重定向、`www` 跳到根域名、未知页面返回 404；GitHub 边缘缓存更新可能稍有延迟。HTTPS 跳转属于托管平台设置，不能用静态 Next.js 的 `redirects()` 代替。
+2. [Google Search Console](https://search.google.com/search-console/) 已有可访问的 `zheyun.dev` Domain property。部署后在该属性提交并检查 `https://zheyun.dev/sitemap.xml`；站点地图被接受不等于所有页面已被收录。也可使用 URL-prefix 的 HTML meta 验证：把 Search Console 提供的验证码放入仓库 Actions variable `GOOGLE_SITE_VERIFICATION`，重新部署后确认。Bing 对应 `BING_SITE_VERIFICATION`。这些验证码是公开站点标记；不要放账户密码或 API 密钥。`.env.example` 提供本地配置名称。
 3. 在 URL Inspection 检查英文首页、中文首页和双语文章的抓取结果、规范网址与索引状态；在 [Rich Results Test](https://search.google.com/test/rich-results) 检查文章和履历。可用 [Schema Validator](https://validator.schema.org/) 进一步验证完整图谱。
 4. 累积实际数据后看 Search Console 的曝光、点击、查询词、网页索引和 Core Web Vitals。真实用户 p75 的目标为 LCP ≤2.5s、INP ≤200ms、CLS ≤0.1；静态检查或一次 Lighthouse 测试不能证明线上已经达到这些指标。
 
