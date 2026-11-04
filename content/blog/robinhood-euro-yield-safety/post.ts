@@ -46,6 +46,20 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '比如，图2显示发帖的这天是MMF自身2.52% + RH平台补贴2.48%。（平台补贴期目前没有限定时间，但平台随时可以调整）',
         },
       ],
+      image: {
+        src: yieldScreenshot.src,
+        size: 'compact',
+        width: yieldScreenshot.width,
+        height: yieldScreenshot.height,
+        alt: {
+          en: 'Robinhood screenshot showing a 5% euro yield composed of a 2.52% J.P. Morgan money market fund base rate and a 2.48% Robinhood boost.',
+          zh: 'Robinhood 利率截图：欧元收益率 5%，由 J.P. Morgan 货币市场基金的 2.52% 基础收益与 Robinhood 的 2.48% 补贴组成。',
+        },
+        caption: {
+          en: 'Figure 2 from my original post · How Robinhood’s 5% is made up. This screenshot doesn’t show when it was taken.',
+          zh: '原稿图 2 · Robinhood 收益构成。作者提供的历史截图，图中未显示截取日期。',
+        },
+      },
     },
     {
       id: 'two-layers-of-risk',
@@ -87,20 +101,6 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '对我来说，结合对这两层风险的了解和当前5%的收益率，22000内我是很放心的。超过22000的情况，只要不是全部身家都存进去，我相对也是放心的。但是如果它哪天利息补贴期结束了回到MMF本身2.5%左右的收益率，那我肯定直接转回Trade Republic了。',
         },
       ],
-      image: {
-        src: yieldScreenshot.src,
-        size: 'compact',
-        width: yieldScreenshot.width,
-        height: yieldScreenshot.height,
-        alt: {
-          en: 'Robinhood screenshot showing a 5% euro yield composed of a 2.52% J.P. Morgan money market fund base rate and a 2.48% Robinhood boost.',
-          zh: 'Robinhood 利率截图：欧元收益率 5%，由 J.P. Morgan 货币市场基金的 2.52% 基础收益与 Robinhood 的 2.48% 补贴组成。',
-        },
-        caption: {
-          en: 'Figure 2 from my original post · How Robinhood’s 5% is made up. This screenshot doesn’t show when it was taken.',
-          zh: '原稿图 2 · Robinhood 收益构成。作者提供的历史截图，图中未显示截取日期。',
-        },
-      },
       closingParagraphs: [{ en: 'Here are some extra details.', zh: '这边开始是一些补充的详情。' }],
     },
     {
