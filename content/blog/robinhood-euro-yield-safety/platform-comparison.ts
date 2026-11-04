@@ -19,7 +19,7 @@ export const platformComparison: PostTable = {
         { value: { en: 'HOOD', zh: 'HOOD' }, detail: { en: 'Nasdaq-listed', zh: '纳斯达克上市' } },
       ],
       sources: [
-        { label: { en: 'Q3 2026 presentation · headcount, p. 36', zh: '2026 Q3 财报演示 · 员工数，第 36 页' }, href: 'https://investors.robinhood.com/static-files/fd90f575-5b4c-4cde-a16d-d114c920fb6a' },
+        { label: { en: 'Q3 2026 presentation · headcount, p. 36', zh: '2026 Q3 财报演示 · 员工数，第 36 页' }, href: 'https://investors.robinhood.com/static-files/fd90f575-5b4c-4cde-a16d-d114c920fb6a#page=36' },
         { label: { en: 'September 2026 · platform assets', zh: '2026 年 9 月 · 平台资产' }, href: 'https://investors.robinhood.com/static-files/6e609634-4d9c-49e0-9057-118e0962a835' },
         { label: { en: 'Q3 2026 results · Nasdaq: HOOD', zh: '2026 Q3 业绩 · Nasdaq: HOOD' }, href: 'https://investors.robinhood.com/news-releases/news-release-details/robinhood-reports-third-quarter-2026-results' },
       ],
@@ -33,7 +33,7 @@ export const platformComparison: PostTable = {
         { value: { en: 'Private', zh: '未上市' } },
       ],
       sources: [
-        { label: { en: '2025 annual report · headcount, p. 126', zh: '2025 年报 · 员工数，第 126 页' }, href: 'https://assets.revolut.com/pdf/annualreport2025.pdf' },
+        { label: { en: '2025 annual report · headcount, p. 126', zh: '2025 年报 · 员工数，第 126 页' }, href: 'https://assets.revolut.com/pdf/annualreport2025.pdf#page=126' },
         { label: { en: '2025 results · customer balances', zh: '2025 年业绩 · 客户余额' }, href: 'https://www.revolut.com/news/revolut_reports_record_profit_of_2_3bn_for_2025_as_revenue_surges_to_6bn/' },
       ],
     },
@@ -78,7 +78,7 @@ export const platformComparison: PostTable = {
     },
   ],
   note: {
-    en: 'Checked 1 Nov 2026. The dates, currencies, and figures come from each platform’s own reports, so they aren’t directly comparable.',
-    zh: '核对于 2026 年 11 月 1 日。数据保留各自的日期、币种与统计口径，不宜直接横比。',
+    en: 'Rechecked 4 Nov 2026. Figures keep their original reporting dates, currencies and definitions; they aren’t directly comparable.',
+    zh: '复核于 2026 年 11 月 4 日。数据保留各自的日期、币种与统计口径，不宜直接横比。',
   },
 };

@@ -16,9 +16,9 @@ export const robinhoodEuroYieldPost: Post = {
   tags: ['banking', 'investing'],
   date: '2026-11-01',
   updated: '2026-11-04',
-  // Original publication: d140682. Updated for the author's 4 November revision.
+  // Original publication: d140682. Author's 4 November revision; source notes rechecked separately.
   publishedAt: '2026-11-01T22:13:50+01:00',
-  updatedAt: '2026-11-04T15:47:25+01:00',
+  updatedAt: '2026-11-04T22:00:09Z',
   socialImage: '/images/social/robinhood-euro-yield-safety.jpg',
   readTime: 14,
   visual: 'notes',
@@ -239,8 +239,8 @@ export const robinhoodEuroYieldPost: Post = {
       id: 'source-check-notes',
       title: { en: 'Source-check notes · updated 4 November 2026', zh: '资料核对注释 · 2026 年 11 月 4 日更新' },
       paragraphs: [{
-        en: 'A few checks and clarifications to read alongside the original post: what the sources say, where there are conditions to keep in mind, and what couldn’t be confirmed. The interest, regulation and referral details were checked on 4 November; the other notes keep the checks from 1 November and the dates given below. This is a record of my research, not advice on what you personally should invest in.',
-        zh: '以下注释独立于上方原文，说明资料支持的范围、需要补充的条件，以及未能独立确认之处。计息、监管与奖励条款于 11 月 4 日补充核对；其他注释保留 11 月 1 日的核对记录及各项资料原有日期。本文是个人研究记录，不是针对个人情况的投资建议。',
+        en: 'Sources and links rechecked on 4 November 2026. These notes sit alongside my original post: they clarify what the sources support and what remains unconfirmed. Figures keep their own reporting dates. This is my research record, not personal investment advice.',
+        zh: '资料与链接于 2026 年 11 月 4 日重新核对。以下注释独立于上方原文，补充来源支持的范围与尚未证实之处；数字保留各自的统计日期。本文是个人研究记录，不是针对个人情况的投资建议。',
       }],
       bullets: [
         {
@@ -248,8 +248,8 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '收益与存取 [1–2]：核对时 Robinhood 欧洲官网展示了补贴后的 5%。所附截图确实显示 2.52%＋2.48%，但没有截取日期，不能作为当前分项利率的确认。补贴可调整。“随时存取”也有条件：协议允许结算延迟，极端情况下可能更久或产生退出费用。',
         },
         {
-          en: 'Interest and compounding [11]. Robinhood says yield builds up daily and is paid monthly, usually on the first business day of the next month and within the first three. Payments go back into the MMF unless you withdraw or trade with them. That’s how paid-out yield starts earning more yield; unpaid yield doesn’t compound each day. Euro balances also have to reach the fund’s next eligible cutoff, so selling crypto doesn’t necessarily start the interest clock immediately.',
-          zh: '计息与复利 [11]：官方说明确认每日累计收益、按月发放，通常在次月首个工作日、最迟前 3 个工作日到账；未取出或用于交易的收益会自动再投入 MMF。因此，复利来自已发放收益的再投资，当月尚未发放的收益并不每日复利。欧元余额还需等到有效交易日的基金截止时间投入，不能把“卖出后马上计息”理解为即时开始。',
+          en: 'Interest and compounding [2, 11]. Yield builds up daily and is paid monthly, usually on the next month’s first business day and within its first three. Payments are reinvested unless withdrawn or used for trading; unpaid yield doesn’t compound daily. The agreement’s Schedule G, section 2.4, says interest starts the day after the money is invested. Euro balances must first reach an eligible fund cutoff, so selling crypto doesn’t start interest immediately.',
+          zh: '计息与复利 [2, 11]：收益每日累计、按月发放，通常在次月首个工作日、前 3 个工作日内到账；未取出或用于交易的收益会再投入 MMF，当月未发放的收益并不每日复利。客户协议附表 G 第 2.4 条明确写的是投入 MMF 后的次日开始计息。欧元余额还需先赶上有效交易日的基金截止时间，因此卖出 crypto 不代表立即开始计息。',
         },
         {
           en: 'Investor protection [2–3]. The company you’re dealing with here is Robinhood Europe, UAB. Lithuania’s scheme covers eligible assets it can’t return, up to €22,000 per investor. It doesn’t cover the fund losing money. Keeping customer assets separate helps with getting them back, but doesn’t guarantee when that happens or what the outcome will be. It’s different from bank deposit protection.',
@@ -260,12 +260,12 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '上市与监管 [12–13]：美国上市母公司是 Robinhood Markets, Inc.，欧洲服务的签约主体是受立陶宛央行监管的 Robinhood Europe, UAB。美国集团财报披露资产负债、现金流和部分受监管子公司的净资本要求；这不等于欧洲客户的资产由美国 SEC 直接担保。官方文件没有支持“财务指标出现危险时，监管一般会立刻接管”的保证；资本不足可能导致业务限制、暂停或清算。“从未债务违约或破产”的全历史说法也未独立证实。',
         },
         {
-          en: 'The fund and its ratings [4–6]. Robinhood’s KID names the share class as JPM EUR Liquidity LVNAV Select (dist.), ISIN LU2599140782, in the JPMorgan Liquidity Funds – EUR Liquidity LVNAV Fund. The KID dated 17 April 2025 gives it a risk rating of 1/7. The fund provider prepares this document under EU rules; it isn’t a government guarantee. J.P. Morgan reports ratings of Aaa-mf / AAAm / AAAmmf as of 31 August 2026, and €41.41 billion in fund assets as of 13 October 2026. Those figures have dates attached, and the ratings don’t tell us an exact chance of losing money. The fund can also hold high-quality private-sector debt, so the ratings don’t mean every holding is AAA or backed by a government.',
-          zh: '基金、份额与评级 [4–6]：Robinhood 链接的 KID 对应 JPM EUR Liquidity LVNAV Select (dist.)，ISIN 为 LU2599140782，所属子基金是 JPMorgan Liquidity Funds – EUR Liquidity LVNAV Fund。2025 年 4 月 17 日版 KID 列出风险等级 1/7；这是发行方依欧盟规则编制的文件，不是欧盟政府担保。J.P. Morgan 披露的三项评级为 Aaa-mf／AAAm／AAAmmf（截至 2026 年 8 月 31 日），基金规模为 414.1 亿欧元（截至 2026 年 10 月 13 日）。这些均有时点限制，不能直接换算成本金亏损概率。持仓也可包含高质量私人部门债务，并非每项资产均为 AAA 或政府担保。',
+          en: 'The fund and its ratings [4–6]. Robinhood’s KID identifies JPM EUR Liquidity LVNAV Select (dist.), ISIN LU2599140782, in the JPMorgan Liquidity Funds – EUR Liquidity LVNAV Fund. The 17 April 2025 KID gives it a risk rating of 1/7 assuming a one-year holding period, and says risk may be significantly higher for a shorter holding period. That assumption isn’t a one-year lock-up. The provider prepares the KID under EU rules; it isn’t a government guarantee. The matching Select (dist.) page reports Aaa-mf / AAAm / AAAmmf as of 31 August 2026 and €40.98 billion in total sub-fund assets as of 28 October 2026. These aren’t the assets of this share class alone. Ratings don’t give an exact probability of loss, and the fund can hold high-quality private-sector debt—not just AAA or government-backed assets.',
+          zh: '基金、份额与评级 [4–6]：Robinhood 链接的 KID 对应 JPM EUR Liquidity LVNAV Select (dist.)，ISIN 为 LU2599140782，所属子基金是 JPMorgan Liquidity Funds – EUR Liquidity LVNAV Fund。2025 年 4 月 17 日版 KID 的 1/7 风险等级以持有一年为前提，并说明持有更短时风险可能显著提高；这不等于有一年锁定期。KID 由发行方依欧盟规则编制，不是政府担保。对应的 Select (dist.) 页面披露三项评级为 Aaa-mf／AAAm／AAAmmf（截至 2026 年 8 月 31 日），子基金总规模为 409.8 亿欧元（截至 2026 年 10 月 28 日），并非该份额类别单独的规模。评级不能直接换算成本金亏损概率，持仓也可包含高质量私人部门债务，并非每项资产均为 AAA 或政府担保。',
         },
         {
-          en: 'History and rules [7–9]. The claim that Europe had no major credit-loss case in the past ten years, or that the last one was in 2008, couldn’t be confirmed from a complete set of official data. ESMA does describe serious liquidity stress in 2020. Getting through that without widespread failures doesn’t prove that every fund avoided losses. Also, the main EU MMF Regulation was passed in 2017 and took effect in July 2018, before COVID. The 2020 shock led to another review, but ESMA’s 2022 proposals weren’t themselves a new set of rules that had already taken effect.',
-          zh: '历史与法规 [7–9]：未找到足以证明“欧洲过去十年没有重大信用亏损案例”或“2008 年是最后一次”的完整官方统计。ESMA 记录了 2020 年的严重流动性压力，未发生大面积失败不能证明所有基金均无亏损。欧盟主要 MMF 法规于 2017 年通过、2018 年 7 月起适用，早于新冠危机；2020 年冲击促成进一步审议，ESMA 在 2022 年提出的改革建议本身并不等于已经落地的疫后全面改革。',
+          en: 'History and rules [7–9]. The claims that Europe had no major credit-loss case in the past ten years, or that the last one was in 2008, remain unconfirmed by a complete set of official data. ESMA’s 2021 consultation describes the liquidity stress in March 2020 and says no EU MMF suspended redemptions or used liquidity fees or redemption gates. That doesn’t establish that every fund avoided losses. The main EU MMF Regulation was adopted in 2017 and generally applied from 21 July 2018, before COVID. The 2020 shock prompted another review; ESMA’s 2022 reform proposals were recommendations, not themselves new rules already in force.',
+          zh: '历史与法规 [7–9]：仍未找到足以证明“欧洲过去十年没有重大信用亏损案例”或“2008 年是最后一次”的完整官方统计。ESMA 的 2021 年咨询报告记录了 2020 年 3 月的流动性压力，并称当时没有欧盟 MMF 暂停赎回或启用流动性费用、赎回限制措施；这不能证明所有基金均无亏损。欧盟主要 MMF 法规于 2017 年通过、一般自 2018 年 7 月 21 日起适用，早于新冠危机。2020 年冲击促成进一步审议；ESMA 的 2022 年改革建议本身并不是已经生效的新法规。',
         },
         {
           en: 'The platform comparison. The table replaces the original image, with sources linked for each company. Robinhood’s figures are updated to September 2026; Trade Republic’s staff count is marked as unconfirmed. Robinhood reports total platform assets across its whole group, not just its EU company. Revolut’s customer balances include deposits and off-balance-sheet partner savings / Flexible Cash Funds. That isn’t the same measure as N26’s deposits or the brokers’ client assets. A bigger number or a stock-market listing doesn’t by itself make a platform safer.',
@@ -278,13 +278,13 @@ export const robinhoodEuroYieldPost: Post = {
       ],
       links: [
         { label: { en: '[1] Robinhood EU · Euro yield', zh: '[1] Robinhood 欧洲官网 · 欧元收益' }, href: 'https://robinhood.com/eu/en/invest/' },
-        { label: { en: '[2] Robinhood Europe · Customer agreement', zh: '[2] Robinhood Europe · 客户协议' }, href: 'https://cdn.robinhood.com/assets/robinhood/legal/eu-crypto-user-agreement.pdf' },
-        { label: { en: '[3] Lithuania · Investor compensation coverage', zh: '[3] 立陶宛 · 投资者保障范围' }, href: 'https://www.iidraudimas.lt/en/investment-insurance/insurance-object-0/' },
-        { label: { en: '[4] Robinhood · MMF Key Information Document', zh: '[4] Robinhood · MMF 关键信息文件（KID）' }, href: 'https://cdn.robinhood.com/assets/robinhood/legal/money_market_fund_kid_eu.pdf' },
-        { label: { en: '[5] J.P. Morgan · Fund size and ratings', zh: '[5] J.P. Morgan · 基金规模与评级' }, href: 'https://am.jpmorgan.com/lu/en/asset-management/liq/products/jpm-eur-liquidity-lvnav-e-acc-lu1873127952' },
-        { label: { en: '[6] J.P. Morgan · Liquidity Funds prospectus', zh: '[6] J.P. Morgan · Liquidity Funds 招募说明书' }, href: 'https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/global-regulatory/prospectus/jpmorgan-liquidity-funds-prospectus-ce-en.pdf' },
-        { label: { en: '[7] ESMA · MMF review consultation and 2020 stress', zh: '[7] ESMA · MMF 审议咨询与 2020 年市场压力' }, href: 'https://www.esma.europa.eu/sites/default/files/library/esma34-49-309_cp_mmf_reform.pdf' },
-        { label: { en: '[8] EUR-Lex · Regulation (EU) 2017/1131', zh: '[8] EUR-Lex · 欧盟法规 2017/1131' }, href: 'https://eur-lex.europa.eu/legal-content/en/ALL/?uri=CELEX%3A32017R1131' },
+        { label: { en: '[2] Robinhood Europe · Client agreement (sections 9, 14; Schedule G)', zh: '[2] Robinhood Europe · 客户协议（第 9、14 节及附表 G）' }, href: 'https://cdn.robinhood.com/assets/robinhood/legal/eu-crypto-user-agreement.pdf' },
+        { label: { en: '[3] Lithuania · Investor compensation FAQ (questions 1, 6–9)', zh: '[3] 立陶宛 · 投资者保障问答（第 1、6–9 问）' }, href: 'https://www.iidraudimas.lt/en/investment-insurance/insurance-object-0/' },
+        { label: { en: '[4] J.P. Morgan · Select (dist.) KID, hosted by Robinhood', zh: '[4] J.P. Morgan · Select (dist.) KID（Robinhood 提供）' }, href: 'https://cdn.robinhood.com/assets/robinhood/legal/money_market_fund_kid_eu.pdf' },
+        { label: { en: '[5] J.P. Morgan · Select (dist.), LU2599140782', zh: '[5] J.P. Morgan · Select (dist.)，LU2599140782' }, href: 'https://am.jpmorgan.com/gb/en/asset-management/institutional/products/jpm-eur-liquidity-lvnav-select-dist-lu2599140782' },
+        { label: { en: '[6] J.P. Morgan · Liquidity Funds prospectus, p. 90', zh: '[6] J.P. Morgan · Liquidity Funds 招募说明书，第 90 页' }, href: 'https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/global-regulatory/prospectus/jpmorgan-liquidity-funds-prospectus-ce-en.pdf#page=90' },
+        { label: { en: '[7] ESMA · 2021 MMF consultation, p. 6', zh: '[7] ESMA · 2021 年 MMF 审议咨询，第 6 页' }, href: 'https://www.esma.europa.eu/sites/default/files/library/esma34-49-309_cp_mmf_reform.pdf#page=6' },
+        { label: { en: '[8] EUR-Lex · Regulation (EU) 2017/1131, Article 47', zh: '[8] EUR-Lex · 欧盟法规 2017/1131，第 47 条' }, href: 'https://eur-lex.europa.eu/legal-content/en/ALL/?uri=CELEX%3A32017R1131' },
         { label: { en: '[9] ESMA · 2022 MMF reform proposals', zh: '[9] ESMA · 2022 年 MMF 改革建议' }, href: 'https://www.esma.europa.eu/press-news/esma-news/esma-proposes-reforms-improve-resilience-money-market-funds' },
         { label: { en: '[10] Robinhood · Sign-up and referral terms', zh: '[10] Robinhood · 注册与邀请条款' }, href: 'https://robinhood.com/eu/en/support/articles/sign-up-and-referral-terms-and-conditions/' },
         { label: { en: '[11] Robinhood · MMF yield and payments', zh: '[11] Robinhood · MMF 计息与发放' }, href: 'https://robinhood.com/eu/en/support/articles/earning-yield/' },
