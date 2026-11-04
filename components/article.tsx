@@ -45,12 +45,13 @@ export default function Article({ post, nextPost }: { post: Post; nextPost?: Pos
             <section id={section.id} key={section.id}>
               <h2>{section.title[lang]}</h2>
               {section.subtitle ? <h3>{section.subtitle[lang]}</h3> : null}
-              {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}{paragraph.emphasis ? <strong>{paragraph.emphasis[lang]}</strong> : null}</p>)}
+              {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph[lang]}{paragraph.emphasis ? <strong>{paragraph.emphasis[lang]}</strong> : null}{paragraph.suffix?.[lang]}</p>)}
               {section.bullets ? <ul>{section.bullets.map((bullet, index) => <li key={index}>{bullet[lang]}</li>)}</ul> : null}
               {section.afterBullets?.map((paragraph, index) => <p key={index}>{paragraph[lang]}</p>)}
               {section.image ? <ArticleImage image={section.image} /> : null}
               {section.table ? <ArticleTable table={section.table} id={`${section.id}-table`} /> : null}
               {section.links ? <div className="article-sources">{section.links.map(link => <ArticleExternalLink key={link.href} link={link} />)}</div> : null}
+              {section.closingParagraphs?.map((paragraph, index) => <p key={`closing-${index}`}>{paragraph[lang]}</p>)}
             </section>
           ))}
           <div className="article-finish"><p>{t('Thanks for reading.', '谢谢你读到这里。')}</p><a href="mailto:zheyun.wu.work@gmail.com">{t('Have a thought to share?', '有想法，欢迎写信交流。')}<ArrowRight size={18} aria-hidden="true" /></a></div>

@@ -25,13 +25,14 @@ export type PostImage = {
 export type PostSection = {
   id: string;
   title: Localized;
-  paragraphs: (Localized & { emphasis?: Localized })[];
+  paragraphs: (Localized & { emphasis?: Localized; suffix?: Localized })[];
   bullets?: Localized[];
   afterBullets?: Localized[];
   subtitle?: Localized;
   image?: PostImage;
   table?: PostTable;
   links?: PostLink[];
+  closingParagraphs?: Localized[];
 };
 
 export type Post = {

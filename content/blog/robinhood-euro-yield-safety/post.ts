@@ -15,12 +15,12 @@ export const robinhoodEuroYieldPost: Post = {
   category: 'life',
   tags: ['banking', 'investing'],
   date: '2026-11-01',
-  updated: '2026-11-02',
-  // Publication/content-update commits: d140682 and 0fc51b8; not SEO build times.
+  updated: '2026-11-04',
+  // Original publication: d140682. Updated for the author's 4 November revision.
   publishedAt: '2026-11-01T22:13:50+01:00',
-  updatedAt: '2026-11-02T00:30:13+01:00',
+  updatedAt: '2026-11-04T15:47:25+01:00',
   socialImage: '/images/social/robinhood-euro-yield-safety.jpg',
-  readTime: 12,
+  readTime: 14,
   visual: 'notes',
   format: { en: 'Research note', zh: '研究笔记' },
   disclosureTitle: { en: 'Referral link disclosure', zh: '邀请链接说明' },
@@ -38,24 +38,14 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '最近Robinhood的5%活期利息非常火，不过这并不是传统银行存款，不受欧盟10万欧元银行存款担保。为了安心，自己做了些研究，写篇笔记做记录。（非AI文章，花了一天研究整理，欢迎讨论和纠正）',
         },
         {
-          en: 'Here’s the short version: turn on Earn yield, and your euros in Robinhood go into a money market fund (MMF) managed by J.P. Morgan. You can put money in and take it out at any time. The 5% comes from the fund’s own variable return, topped up by Robinhood. In Figure 2, for example, the split on the day I posted was 2.52% from the MMF + 2.48% from Robinhood. (There’s no fixed end date for the top-up, and Robinhood can change it at any time.)',
-          zh: '先说结论，如果开启了Earn yield，用户存在Robinhood的€会被投入J.P. Morgan管理的MMF (Money Market Fund /货币市场基金）（用户随时可以存取）。当前5%的利息来自基金本身的浮动收益率+ Robinhood额外补贴一部分。比如，图2显示发帖的这天是MMF自身2.52% + RH平台补贴2.48%。（平台补贴期没有固定时间，平台随时可以调整）',
+          en: 'Here’s the short version: turn on Earn yield, and your euros in Robinhood go into a money market fund (MMF) managed by J.P. Morgan. You can put money in and take it out at any time. The 5% comes from the fund’s own variable return, topped up by Robinhood. Interest is calculated daily and paid monthly. Once paid, it starts earning interest the next month too, so it compounds.',
+          zh: '先说结论，如果开启了Earn yield，用户存在Robinhood的€会被投入J.P. Morgan管理的MMF (Money Market Fund /货币市场基金）（用户随时可以存取）。当前5%的利息来自基金本身的浮动收益率+ Robinhood额外补贴一部分。每日计息，按月发放，发放后继续参与下一个月计息产生复利。',
+        },
+        {
+          en: 'In Figure 2, for example, the split on the day I posted was 2.52% from the MMF + 2.48% from Robinhood. (There’s currently no fixed end date for the top-up, but Robinhood can change it at any time.)',
+          zh: '比如，图2显示发帖的这天是MMF自身2.52% + RH平台补贴2.48%。（平台补贴期目前没有限定时间，但平台随时可以调整）',
         },
       ],
-      image: {
-        src: yieldScreenshot.src,
-        size: 'compact',
-        width: yieldScreenshot.width,
-        height: yieldScreenshot.height,
-        alt: {
-          en: 'Robinhood screenshot showing a 5% euro yield composed of a 2.52% J.P. Morgan money market fund base rate and a 2.48% Robinhood boost.',
-          zh: 'Robinhood 利率截图：欧元收益率 5%，由 J.P. Morgan 货币市场基金的 2.52% 基础收益与 Robinhood 的 2.48% 补贴组成。',
-        },
-        caption: {
-          en: 'Figure 2 from my original post · How Robinhood’s 5% is made up. This screenshot doesn’t show when it was taken.',
-          zh: '原稿图 2 · Robinhood 收益构成。作者提供的历史截图，图中未显示截取日期。',
-        },
-      },
     },
     {
       id: 'two-layers-of-risk',
@@ -73,11 +63,45 @@ export const robinhoodEuroYieldPost: Post = {
       ],
       afterBullets: [
         {
-          en: 'The rules for European MMFs are pretty strict these days. The last large-scale losses of principal caused by credit defaults were in the 2008 financial crisis. COVID brought liquidity problems in 2020, but European MMFs got through the shock. The MMF Robinhood uses has the highest safety ratings from all three major rating agencies, plus the lowest EU KID risk rating: 1 out of 7. So the chance of losing your principal is extremely low.',
-          zh: '不过当前欧洲的MMF法规相当严格，上一次由于信用违约导致的大规模本金亏损是2008年金融危机、2020因为covid出现过流动性风险但欧洲MMF经受住了冲击。RH底层投的MMF具有国际三大评级机构的最高安全评级、欧盟官方KID风险评级1/7（最低），出现本金损失的概率极低。',
+          en: 'On the first risk:',
+          zh: '针对1:',
         },
-        { en: 'Here are the details.', zh: '这边开始是详情。' },
+        {
+          en: 'Robinhood is a publicly listed brokerage company regulated by the US Securities and Exchange Commission. Every quarter, it has to disclose its balance sheet, cash flow and capital adequacy to the public and regulators. If its finances showed warning signs, regulators would generally step in and take control right away. So far, it has no record of debt defaults or bankruptcy.',
+          zh: 'Robinhood作为受美国证监会监管的上市券商公司，每个季度都必须向公众和监管机构披露资产负债表、现金流和资本充足率，如果其财务指标有危险迹象，监管一般会立刻介入接管。目前其还没有债务违约和破产违约的记录。',
+        },
+        {
+          en: 'On the second risk:',
+          zh: '针对2:',
+        },
+        {
+          en: 'MMFs are considered “near cash”: they’re very liquid, with no lock-up period, and very safe. They’re a typical defensive asset. European MMF rules are also pretty strict these days. The last large-scale losses of principal caused by credit defaults were in the 2008 financial crisis. COVID brought liquidity problems in 2020, but European MMFs got through the shock.',
+          zh: 'MMF具有极高的流动性（支持随时存取、无锁定期）和安全性，被视为“准现金”，是典型的防御型资产。另一方面，当前欧洲的MMF法规相当严格，上一次由于信用违约导致的大规模本金亏损是2008年金融危机、2020因为covid出现过流动性风险但欧洲MMF经受住了冲击。',
+        },
+        {
+          en: 'The specific MMF behind Robinhood Cash has the highest safety ratings from all three major rating agencies, plus the lowest EU KID risk rating: 1 out of 7. In theory, the chance of losing your principal is extremely low.',
+          zh: '具体到RH Cash底层实际使用的MMF标的，其具有国际三大评级机构的最高安全评级、欧盟官方KID风险评级1/7（最低），出现本金损失的概率理论上极低。',
+        },
+        {
+          en: 'For me, after looking into both layers of risk and with the yield at 5%, I’m very comfortable keeping up to €22,000 there. I’m fairly comfortable with more than that too, as long as I’m not putting my entire savings in. But if Robinhood stops topping it up one day and the yield drops back to the MMF’s own rate of around 2.5%, I’d definitely move the money straight back to Trade Republic.',
+          zh: '对我来说，结合对这两层风险的了解和当前5%的收益率，22000内我是很放心的。超过22000的情况，只要不是全部身家都存进去，我相对也是放心的。但是如果它哪天利息补贴期结束了回到MMF本身2.5%左右的收益率，那我肯定直接转回Trade Republic了。',
+        },
       ],
+      image: {
+        src: yieldScreenshot.src,
+        size: 'compact',
+        width: yieldScreenshot.width,
+        height: yieldScreenshot.height,
+        alt: {
+          en: 'Robinhood screenshot showing a 5% euro yield composed of a 2.52% J.P. Morgan money market fund base rate and a 2.48% Robinhood boost.',
+          zh: 'Robinhood 利率截图：欧元收益率 5%，由 J.P. Morgan 货币市场基金的 2.52% 基础收益与 Robinhood 的 2.48% 补贴组成。',
+        },
+        caption: {
+          en: 'Figure 2 from my original post · How Robinhood’s 5% is made up. This screenshot doesn’t show when it was taken.',
+          zh: '原稿图 2 · Robinhood 收益构成。作者提供的历史截图，图中未显示截取日期。',
+        },
+      },
+      closingParagraphs: [{ en: 'Here are some extra details.', zh: '这边开始是一些补充的详情。' }],
     },
     {
       id: 'platform-risk',
@@ -88,8 +112,12 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '首先大家熟知的22000欧保障是立陶宛投资者保护计划，针对的是平台破产倒闭或恶性欺诈（平台卷款跑路），无法返还用户资产的情况。',
         },
         {
-          en: 'One thing I found interesting: Robinhood going bust doesn’t necessarily mean your MMF holdings disappear. The customer agreement says those assets must be kept separate from Robinhood’s own assets, and Robinhood can’t use them for itself. It buys and sells fund units on your behalf, keeps a record of what each customer owns, and has to check those records regularly. So even if Robinhood goes bust, as long as the units are still there and the ownership records are right, you should in principle be able to get all your fund assets back—not just €22,000.',
-          zh: '有意思的是，RH本身破产倒闭并不一定代表用户的MMF资产就没了。因为按照用户协议，用户的MMF资产必须与RH自有资产隔离、不得将客户金融资产用于自己的用途。RH作为用户的代理人买卖MMF份额，RH需要准确记录每位客户的MMF持仓并定期核对。所以即便RH破产，只要用户的MMF份额数据仍然完整且归属记录准确，原则上应当能够取回全部基金资产，而不是只能拿回22000€。',
+          en: 'One thing I found interesting: Robinhood going bust doesn’t necessarily mean your MMF holdings disappear with it. Robinhood is just buying and selling fund units on your behalf. It has to keep accurate records of what each customer owns and check them regularly. The customer agreement also says your MMF assets must be kept separate from Robinhood’s own assets, and it can’t use customer financial assets for itself.',
+          zh: '有意思的是，RH本身破产倒闭并不一定意味用户的MMF资产也一起没了。因为RH只是作为用户的代理人买卖MMF份额，RH需要准确记录每位客户的MMF持仓并定期核对。而且按照用户协议，用户的MMF资产必须与RH自有资产隔离、不得将客户金融资产用于自己的用途。',
+        },
+        {
+          en: 'So the fund units still belong to you. Even if Robinhood goes bust, as long as the units are still there and the ownership records are right, you should in principle be able to get all your fund assets back—not just €22,000.',
+          zh: '所以实际持有MMF的还是用户自己，所以即便RH破产，只要用户的MMF份额数据仍然完整且归属记录准确，原则上应当能够取回全部基金资产，而不是只能拿回22000€。',
         },
         {
           en: 'Also, that €22,000 limit applies to assets that can’t be returned. Say you have €50,000 in the MMF and Robinhood goes bust. If the records are right and all your fund units are still there, you should in principle be able to get them all back through the insolvency or asset-return process. If only €5,000 is missing, the protection applies to that €5,000. It doesn’t mean everything in your account gets capped at €22,000.',
@@ -100,8 +128,8 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '当然我们无法保证RH内部具体如何运作，这个平台层面的风险需要自己了解Robinhood这个公司做判断。',
         },
         {
-          en: 'Here’s how Robinhood compares with Revolut, N26, Trade Republic, and Trading 212. This part was put together with AI help and checked against the sources below:',
-          zh: '根据公开资料，RH与Revolut、N26、Trade Republic、Trading 212的一些对比（这部分由 AI 协助整理，并按表格下方来源核对）：',
+          en: 'Here’s how Robinhood compares with Revolut, N26, Trade Republic, and Trading 212, using publicly available figures. This part was put together with AI:',
+          zh: '根据公开数据，RH与Revolut、N26、Trade Republic、Trading 212的一些对比（这部分来自AI）：',
         },
       ],
       table: platformComparison,
@@ -112,12 +140,17 @@ export const robinhoodEuroYieldPost: Post = {
       subtitle: { en: '2.1 What is an MMF?', zh: '2.1 什么是MMF' },
       paragraphs: [
         {
-          en: 'An MMF is a relatively safe, easy-to-access fund with steady returns—you can put money in and take it out at any time. It mainly holds short-term debt from borrowers with strong credit ratings. With stocks, you’re relying on the price going up or down. An MMF earns interest on the short-term debt it holds.',
-          zh: 'MMF是一种高安全性、高流动性（可以随时存取）、稳定收益的基金，主要投资于高信用质量的短期债务资产。与股票依靠资产本身的价格涨跌获得收益不同，MMF依靠持有短期债务资产获得利息。',
+          en: 'An MMF is a relatively safe, easy-to-access fund with steady returns—you can put money in and take it out at any time. It mainly holds short-term debt from borrowers with strong credit ratings. ',
+          zh: 'MMF是一种安全性、高流动性（可以随时存取）、稳定收益的基金，主要投资于高信用质量的短期债务资产。',
+          emphasis: {
+            en: 'With stocks, you’re relying on the price going up or down. An MMF earns interest on the short-term debt it holds—like lending someone money and getting back the principal plus interest.',
+            zh: '与股票依靠资产本身的价格涨跌获得收益不同，MMF依靠持有短期债务资产获得利息（比如你借给别人钱，收回本息）',
+          },
+          suffix: { en: '', zh: '。' },
         },
         {
-          en: 'The basic idea is that the fund manager pools everyone’s money and buys short-term government debt, commercial paper, repurchase agreements, bank certificates of deposit, and similar assets. As these mature, the fund gets back the principal and interest, buys new short-term assets, and pays out income to investors.',
-          zh: '运行原理是，基金管理公司把大量投资人的钱汇集起来，拿去投资于短期国债、商业票据、回购协议、银行定期存单这类短期资产。随着这些资产不断到期，基金不断收回本金和利息，再投资于新的短期资产，同时将收益分红给用户。',
+          en: 'For example, the fund manager pools everyone’s money and buys short-term government debt, commercial paper, repurchase agreements, bank certificates of deposit, and similar assets. As these mature, the fund gets back the principal and interest, buys new short-term assets, and pays out income to investors.',
+          zh: '比如，基金管理公司把大量投资人的钱汇集起来，拿去投资于短期国债、商业票据、回购协议、银行定期存单这类短期资产。随着这些资产不断到期，基金不断收回本金和利息，再投资于新的短期资产，同时将收益分红给用户。',
         },
         {
           en: 'The further into the future you look, the more uncertainty there is. MMFs keep that risk down by holding very short-term assets. That’s also why their returns tend to follow short-term interest rates: rates go up → MMF yields usually go up; rates go down → yields usually go down.',
@@ -130,8 +163,8 @@ export const robinhoodEuroYieldPost: Post = {
       ],
       bullets: [
         {
-          en: '(1) Credit default risk: a borrower behind one of the fund’s investments could get into trouble and fail to pay back the principal or interest on time.',
-          zh: '(1)信用违约风险：底层资产的发债主体可能出现经营危机或无法按时兑付本息',
+          en: '(1) Credit default risk: a borrower behind one of the fund’s investments could get into trouble and fail to pay back the principal or interest on time. Imagine, for example, that an MMF bought bonds issued by Amazon, and Amazon then went bust and couldn’t pay them back.',
+          zh: '(1) 信用违约风险：底层资产的发债主体可能出现经营危机或无法按时兑付本息（就比如这个MMF底层买了Amazon发的债，结果Amazon破产倒闭了无法兑现）',
         },
         {
           en: '(2) Liquidity risk: if the market panics and lots of people want their money back at once, the manager may have to sell good-quality bonds at a loss before they mature. Then the fund really does lose money, which can push even more people to withdraw.',
@@ -150,8 +183,10 @@ export const robinhoodEuroYieldPost: Post = {
       title: { en: '2.2 Which MMF does Robinhood use? Is it safe?', zh: '2.2 RH的cash被投进哪只MMF？安全吗？' },
       paragraphs: [
         {
-          en: 'Robinhood uses the J.P. Morgan EUR Liquidity LVNAV Fund, a top-tier MMF that J.P. Morgan set up in Luxembourg. It has around €40 billion in assets, so it’s a large euro MMF.',
-          zh: 'RH实际使用的MMF是J.P. Morgan EUR Liquidity LVNAV Fund，是由JP Morgan设立在卢森堡的顶级货币市场基金，目前总资产规模约400亿欧元，属于大型欧元MMF。',
+          en: 'Robinhood uses the J.P. Morgan EUR Liquidity LVNAV Fund, a top-tier MMF that J.P. Morgan set up in Luxembourg. It has ',
+          zh: 'RH实际使用的MMF是J.P. Morgan EUR Liquidity LVNAV Fund，是由JP Morgan设立在卢森堡的顶级货币市场基金，目前总资产规模',
+          emphasis: { en: 'around €40 billion in assets', zh: '约400亿欧元' },
+          suffix: { en: ', so it’s a large euro MMF.', zh: '，属于大型欧元MMF。' },
         },
         {
           en: 'It’s an LVNAV fund—short for low-volatility net asset value. There are strict limits on what it can invest in: very highly rated, very short-term government bonds, bank deposits, repurchase agreements, and similar assets.',
@@ -177,10 +212,10 @@ export const robinhoodEuroYieldPost: Post = {
       paragraphs: [
         {
           en: 'If you found this helpful and want to try Robinhood, feel free to use my referral link. ',
-          zh: '如果你觉得这个信息有帮助到你且感兴趣，欢迎用我的邀请链接，',
+          zh: '如果你觉得这个信息有帮助到你且感兴趣，欢迎用我的邀请，',
           emphasis: {
-            en: 'Robinhood is currently offering €50 when you open an account through the link.',
-            zh: '当前通过链接开户Robinhood送50€',
+            en: 'Robinhood is currently giving new users €50.',
+            zh: '当前RH送新户50€',
           },
         },
       ],
@@ -189,13 +224,23 @@ export const robinhoodEuroYieldPost: Post = {
         href: 'https://join.robinhood.com/eu_crypto/hood-29cf8e9a9/',
         sponsored: true,
       }],
+      closingParagraphs: [
+        {
+          en: 'The €50 sign-up reward arrives as five different cryptocurrencies. You can sell all five straight away for cash, but you have to leave the €50 reward in the account for 180 days before you can withdraw it. I guess they don’t want people signing up just to grab the bonus and leave. Once you sell it, though, the cash starts earning interest right away. Your own money isn’t subject to that restriction.',
+          zh: '开户后的50€是以5个crypto的形式送到账户，用户可以马上卖出这5个crypto变现，但这50奖励需要在账户里锁180天后才能提出来（大概平台不想被纯薅），不过卖出后是马上开始计息的。（自己的资金不受限制）',
+        },
+        {
+          en: 'Crypto prices move around a lot. By the time the reward arrives and you sell it, the price will almost certainly have changed. So you’ll end up with something around €50, rather than exactly €50.',
+          zh: '由于Crypto价格波动巨大，从到账到卖出肯定已经有价格变化了，所以到账会是50上下不会是刚刚好50€。',
+        },
+      ],
     },
     {
       id: 'source-check-notes',
-      title: { en: 'Source-check notes · 1 November 2026', zh: '资料核对注释 · 2026 年 11 月 1 日' },
+      title: { en: 'Source-check notes · updated 4 November 2026', zh: '资料核对注释 · 2026 年 11 月 4 日更新' },
       paragraphs: [{
-        en: 'A few checks and clarifications to read alongside the original post: what the sources say, where there are conditions to keep in mind, and what couldn’t be confirmed. This is a record of my research, not advice on what you personally should invest in.',
-        zh: '以下注释独立于上方原文，说明资料支持的范围、需要补充的条件，以及未能独立确认之处。本文是个人研究记录，不是针对个人情况的投资建议。',
+        en: 'A few checks and clarifications to read alongside the original post: what the sources say, where there are conditions to keep in mind, and what couldn’t be confirmed. The interest, regulation and referral details were checked on 4 November; the other notes keep the checks from 1 November and the dates given below. This is a record of my research, not advice on what you personally should invest in.',
+        zh: '以下注释独立于上方原文，说明资料支持的范围、需要补充的条件，以及未能独立确认之处。计息、监管与奖励条款于 11 月 4 日补充核对；其他注释保留 11 月 1 日的核对记录及各项资料原有日期。本文是个人研究记录，不是针对个人情况的投资建议。',
       }],
       bullets: [
         {
@@ -203,8 +248,16 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '收益与存取 [1–2]：核对时 Robinhood 欧洲官网展示了补贴后的 5%。所附截图确实显示 2.52%＋2.48%，但没有截取日期，不能作为当前分项利率的确认。补贴可调整。“随时存取”也有条件：协议允许结算延迟，极端情况下可能更久或产生退出费用。',
         },
         {
+          en: 'Interest and compounding [11]. Robinhood says yield builds up daily and is paid monthly, usually on the first business day of the next month and within the first three. Payments go back into the MMF unless you withdraw or trade with them. That’s how paid-out yield starts earning more yield; unpaid yield doesn’t compound each day. Euro balances also have to reach the fund’s next eligible cutoff, so selling crypto doesn’t necessarily start the interest clock immediately.',
+          zh: '计息与复利 [11]：官方说明确认每日累计收益、按月发放，通常在次月首个工作日、最迟前 3 个工作日到账；未取出或用于交易的收益会自动再投入 MMF。因此，复利来自已发放收益的再投资，当月尚未发放的收益并不每日复利。欧元余额还需等到有效交易日的基金截止时间投入，不能把“卖出后马上计息”理解为即时开始。',
+        },
+        {
           en: 'Investor protection [2–3]. The company you’re dealing with here is Robinhood Europe, UAB. Lithuania’s scheme covers eligible assets it can’t return, up to €22,000 per investor. It doesn’t cover the fund losing money. Keeping customer assets separate helps with getting them back, but doesn’t guarantee when that happens or what the outcome will be. It’s different from bank deposit protection.',
           zh: '投资者保障 [2–3]：相关签约主体是 Robinhood Europe, UAB。立陶宛计划对符合条件且机构无法返还的资产提供每位投资者最高 22,000 欧元保障，不承保基金投资亏损。资产隔离有利于返还，但不能保证返还时间或结果，也不等同于银行存款保障。',
+        },
+        {
+          en: 'Listing and regulation [12–13]. The US-listed parent is Robinhood Markets, Inc. The company serving European customers is Robinhood Europe, UAB, regulated by the Bank of Lithuania. Group reports include financial statements and capital requirements for regulated subsidiaries. That doesn’t mean the SEC guarantees European customers’ assets. The documents don’t promise that regulators will take over immediately if warning signs appear: too little capital can lead to restrictions, suspension or liquidation. The claim that the company has never defaulted or gone bankrupt couldn’t be independently confirmed across its entire history.',
+          zh: '上市与监管 [12–13]：美国上市母公司是 Robinhood Markets, Inc.，欧洲服务的签约主体是受立陶宛央行监管的 Robinhood Europe, UAB。美国集团财报披露资产负债、现金流和部分受监管子公司的净资本要求；这不等于欧洲客户的资产由美国 SEC 直接担保。官方文件没有支持“财务指标出现危险时，监管一般会立刻接管”的保证；资本不足可能导致业务限制、暂停或清算。“从未债务违约或破产”的全历史说法也未独立证实。',
         },
         {
           en: 'The fund and its ratings [4–6]. Robinhood’s KID names the share class as JPM EUR Liquidity LVNAV Select (dist.), ISIN LU2599140782, in the JPMorgan Liquidity Funds – EUR Liquidity LVNAV Fund. The KID dated 17 April 2025 gives it a risk rating of 1/7. The fund provider prepares this document under EU rules; it isn’t a government guarantee. J.P. Morgan reports ratings of Aaa-mf / AAAm / AAAmmf as of 31 August 2026, and €41.41 billion in fund assets as of 13 October 2026. Those figures have dates attached, and the ratings don’t tell us an exact chance of losing money. The fund can also hold high-quality private-sector debt, so the ratings don’t mean every holding is AAA or backed by a government.',
@@ -219,8 +272,8 @@ export const robinhoodEuroYieldPost: Post = {
           zh: '平台对比：双语表格替代原图，并逐家附上来源。Robinhood 更新至 2026 年 9 月，未确认的 Trade Republic 员工数已明确标出。Robinhood 平台总资产是集团口径，不等于欧洲签约主体资产。Revolut 客户余额包含存款以及表外合作方储蓄／Flexible Cash Funds，与 N26 的存款及券商客户资产口径不同；规模与上市状态均不能直接证明安全性。',
         },
         {
-          en: 'The referral offer [10]. The €50 mentioned in the original post couldn’t be independently confirmed from the public terms. Check the referral page and app for the amount you’ll actually get, who qualifies, and the deposit and holding requirements. The published terms include a 180-day restriction on withdrawing the reward’s cash value. They’re for personal referrals and restrict commercial use. This is my personal invitation link; it doesn’t mean Robinhood has approved an affiliate partnership.',
-          zh: '邀请活动 [10]：原稿中的新户 50 欧元未能从公开条款独立确认，实际金额、资格、入金与持有要求以邀请页面和 App 为准；公开条款包含奖励等值金额的 180 天提取限制。条款针对个人邀请，并限制商业用途；本站链接是个人邀请，不代表获批的联盟合作关系。',
+          en: 'The referral offer [10–11]. The public terms, updated on 3 November 2026, confirm a 180-day hold on the reward’s cash value. The amount, coins and minimum deposit depend on the offer in the app. The terms don’t guarantee everyone €50 in five coins, immediate selling, or that cash from selling a locked reward can go into the MMF. Those are details reported in the post, rather than terms that apply to everyone. Any eligible euro proceeds still need Earn yield switched on and the next fund cutoff. The reward hold doesn’t lock up all your own deposits, but normal settlement and withdrawal conditions still apply. The terms cover personal referrals and restrict commercial use; this link doesn’t mean Robinhood has approved an affiliate partnership.',
+          zh: '邀请奖励 [10–11]：2026 年 11 月 3 日更新的公开条款确认奖励等值金额需留在账户 180 天，具体金额、币种和最低入金条件以当时活动页面及 App 为准。公开资料未明确保证每位用户都获 50 欧元、分成 5 种 crypto、到账即可卖出，或锁定中的奖励卖出后一定可投入 MMF。正文所述活动细节不能视为对所有用户通用的条款。即使可投入 MMF，也需开启 Earn yield 并等待有效截止时间；奖励的 180 天限制不等于所有自有资金都被锁定，但普通结算和提现条件仍适用。条款针对个人邀请，并限制商业用途；本站链接不代表获批的联盟合作关系。',
         },
       ],
       links: [
@@ -234,6 +287,9 @@ export const robinhoodEuroYieldPost: Post = {
         { label: { en: '[8] EUR-Lex · Regulation (EU) 2017/1131', zh: '[8] EUR-Lex · 欧盟法规 2017/1131' }, href: 'https://eur-lex.europa.eu/legal-content/en/ALL/?uri=CELEX%3A32017R1131' },
         { label: { en: '[9] ESMA · 2022 MMF reform proposals', zh: '[9] ESMA · 2022 年 MMF 改革建议' }, href: 'https://www.esma.europa.eu/press-news/esma-news/esma-proposes-reforms-improve-resilience-money-market-funds' },
         { label: { en: '[10] Robinhood · Sign-up and referral terms', zh: '[10] Robinhood · 注册与邀请条款' }, href: 'https://robinhood.com/eu/en/support/articles/sign-up-and-referral-terms-and-conditions/' },
+        { label: { en: '[11] Robinhood · MMF yield and payments', zh: '[11] Robinhood · MMF 计息与发放' }, href: 'https://robinhood.com/eu/en/support/articles/earning-yield/' },
+        { label: { en: '[12] Bank of Lithuania · Robinhood Europe, UAB', zh: '[12] 立陶宛央行 · Robinhood Europe, UAB' }, href: 'https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab' },
+        { label: { en: '[13] SEC · Robinhood Markets 2025 Form 10-K', zh: '[13] SEC · Robinhood Markets 2025 年度报告' }, href: 'https://www.sec.gov/Archives/edgar/data/1783879/000178387926000023/hood-20251231.htm' },
       ],
     },
   ],
