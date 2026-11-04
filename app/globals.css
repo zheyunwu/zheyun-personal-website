@@ -71,7 +71,6 @@ svg { flex-shrink: 0; }
 .journal-home { background: var(--pale); padding-block: 65px 68px; }
 .home-reading-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 86px; }
 .home-reading-heading h2 { font-family: var(--serif); font-weight: 400; font-size: 43px; letter-spacing: -.025em; line-height: 1.12; max-width: 280px; margin-top: 18px; }
-.home-reading-heading > p:not(.eyebrow) { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 265px; margin-top: 16px; }
 .home-reading-heading .text-link { margin-top: 18px; }
 .home-post { padding-block: 26px; border-top: 1px solid #cbd5e0; }
 .home-post:first-child { padding-top: 0; border-top: 0; }
@@ -142,8 +141,7 @@ html[lang=zh-CN] .home-post h3 { font-size: 25px; line-height: 1.5; font-weight:
   .home-reading-heading { display: grid; grid-template-columns: 1fr auto; gap: 0 20px; align-items: start; }
   .home-reading-heading .eyebrow { grid-column: 1/-1; }
   .home-reading-heading h2 { max-width: 100%; margin-top: 13px; font-size: 38px; }
-  .home-reading-heading > p:not(.eyebrow) { max-width: 100%; grid-column: 1; margin-top: 12px; }
-  .home-reading-heading .text-link { grid-row: 2/4; grid-column: 2; align-self: end; margin-top: 0; }
+  .home-reading-heading .text-link { grid-row: 2; grid-column: 2; align-self: end; margin-top: 0; }
   .journal-home { padding-block: 43px 49px; }
   .services-section { grid-template-columns: 1fr; gap: 32px; padding-block: 52px 55px; }
   .services-intro h2 { font-size: 40px; }

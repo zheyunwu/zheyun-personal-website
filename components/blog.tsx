@@ -88,11 +88,6 @@ export default function Blog() {
           </div>
         )}
       </section>
-
-      <aside className="journal-endnote">
-        <div><h2>{t('Have a question in mind?', '你也在研究什么问题？')}</h2><p>{t('A technical question, a shared experience, or an idea for a future article. I’d be glad to hear from you.', '一个技术问题，一段相似的经历，或是希望看到的选题。欢迎写信来聊聊。')}</p></div>
-        <a href="mailto:zheyun.wu.work@gmail.com" className="text-link">{t('Say hello', '写信给我')}<ArrowRight size={18} aria-hidden="true" /></a>
-      </aside>
     </div>
   );
 }

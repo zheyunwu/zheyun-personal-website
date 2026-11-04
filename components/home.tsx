@@ -30,7 +30,7 @@ export function Home() {
 
       <section className="journal-home" aria-labelledby="notes-title">
         <div className="container home-reading-layout">
-          <div className="home-reading-heading"><p className="eyebrow">{t('Blog', '博客')}</p><h2 id="notes-title">{t('Latest posts.', '最新文章')}</h2><p>{t('Engineering on one page. Life in Germany on the next.', '这一页是工程技术，下一页是德国生活。')}</p><Link className="text-link" href="/blog/">{t('Browse all posts', '浏览全部文章')}<ArrowRight size={18} aria-hidden="true" /></Link></div>
+          <div className="home-reading-heading"><p className="eyebrow">{t('Blog', '博客')}</p><h2 id="notes-title">{t('Latest posts.', '最新文章')}</h2><Link className="text-link" href="/blog/">{t('Browse all posts', '浏览全部文章')}<ArrowRight size={18} aria-hidden="true" /></Link></div>
           <div className="home-posts">{posts.map(post => <article className="home-post" key={post.slug}>
             <div className="home-post-meta"><span>{post.category === 'technology' ? t('Engineering', '工程技术') : t('Life & observations', '生活与观察')}</span><span>{t(`${post.readTime} min read`, `${post.readTime} 分钟阅读`)}</span></div>
             <h3><Link href={`/blog/${post.slug}/`}>{post.title[lang]}<ArrowUpRight size={22} aria-hidden="true" /></Link></h3>
