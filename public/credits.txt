@@ -2,7 +2,7 @@ Stockholm waterfront and portrait: supplied by Zheyun Wu from his personal colle
 KTH photograph: asset from Zheyun Wu’s previous website repository.
 Fonts: Newsreader and Manrope, self-hosted, SIL Open Font License.
 Social cards in images/social/: rendered from code using the site's typography, colors and supplied portrait. Responsive avatar WebP variants are derived from the supplied original; regenerate with scripts/generate-seo-assets.mjs.
-Life map: Natural Earth public-domain land geometry, distributed as world-atlas 2.0.2 (110m).
+Life map: Natural Earth public-domain land geometry, distributed as world-atlas 2.0.2 (50m), rendered with an orthographic projection centred on Europe and Asia.
 Sources: https://github.com/topojson/world-atlas and https://www.naturalearthdata.com/about/terms-of-use/
 The map uses approximate city/district coordinates. Coordinate sources are recorded in content/life-locations.json.
 Company and university logos: downloaded from the institutions’ LinkedIn profiles on 1 November 2026. Original logos belong to their respective owners. Source URLs: images/logos/sources.json.

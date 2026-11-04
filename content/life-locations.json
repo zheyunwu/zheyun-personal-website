@@ -14,18 +14,18 @@
       24.93
     ],
     "label": [
-      480,
-      370
+      568,
+      425
     ],
-    "align": "end",
+    "align": "start",
     "leader": [
       [
-        522,
-        386
+        542,
+        441
       ],
       [
-        492,
-        386
+        556,
+        441
       ]
     ],
     "source": "https://ungegn.un.org/dashboard/cities/details?id=2311"
@@ -45,22 +45,18 @@
       25.1755786
     ],
     "label": [
-      676,
-      290
+      620,
+      300
     ],
-    "align": "end",
+    "align": "start",
     "leader": [
       [
-        695,
-        276
+        594,
+        316
       ],
       [
-        695,
-        306
-      ],
-      [
-        688,
-        306
+        608,
+        316
       ]
     ],
     "source": "https://www.imc.ntpc.gov.tw/websitedowndoc?file=imc%2F201811301605410.pdf&filedisplay=WIFI_ENG.pdf"
@@ -80,18 +76,18 @@
       60.17
     ],
     "label": [
-      426,
-      96
+      388,
+      78
     ],
     "align": "start",
     "leader": [
       [
-        407,
-        112
+        350,
+        94
       ],
       [
-        414,
-        112
+        376,
+        94
       ]
     ],
     "source": "https://publications.pik-potsdam.de/rest/items/item_26770_2/component/file_26771/content"
@@ -111,18 +107,18 @@
       59.33
     ],
     "label": [
-      235,
-      62
+      213,
+      107
     ],
     "align": "end",
     "leader": [
       [
-        320,
-        78
+        254,
+        123
       ],
       [
-        247,
-        78
+        225,
+        123
       ]
     ],
     "source": "https://unstats.un.org/unsd/ungegn/nna/documents/3_UNGEGN%20db.pdf"
@@ -142,18 +138,18 @@
       52.52
     ],
     "label": [
-      270,
-      256
+      162,
+      245
     ],
     "align": "end",
     "leader": [
       [
-        324,
-        272
+        203,
+        261
       ],
       [
-        282,
-        272
+        174,
+        261
       ]
     ],
     "source": "https://publications.pik-potsdam.de/rest/items/item_26770_2/component/file_26771/content"

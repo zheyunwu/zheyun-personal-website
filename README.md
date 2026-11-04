@@ -66,7 +66,7 @@ npm run check:seo
 
 `post.date` 是首次发布日期；正文有实质更新时填写真实的 `post.updated` 日期。已知具体时间时填写带时区的 ISO `publishedAt` / `updatedAt`，供文章的 HTML、Open Graph 与结构化数据使用；显示日期仍使用原始日期，避免跨时区显示为前一天。Robinhood 文章的时间来自首次发布及最近正文更新的 Git 提交。不在每次构建时刷新日期。`socialImage` 可指定文章专用的 1200×630 分享图，未指定时使用站点分享卡。段落的可选 `emphasis` 用于在正文末尾追加加粗的双语文字；文章级 `disclosureTitle` 可以明确区分个人邀请说明和联盟链接说明。
 
-地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，原始数据随仓库保存在 `scripts/map-data/land-110m.json`（world-atlas 2.0.2）。`npm run build:map` 使用同一 Natural Earth 投影生成底图与五个标记坐标，生产构建也会自动执行。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
+地图使用 [Natural Earth 公共领域地理数据](https://www.naturalearthdata.com/about/terms-of-use/)，1:50m 原始数据随仓库保存在 `scripts/map-data/land-50m.json`（world-atlas 2.0.2）。`npm run build:map` 使用以欧亚大陆为中心的正射投影，同时生成底图与五个标记坐标，生产构建也会自动执行。海岸线在投影后做亚像素精度简化，保留细节并控制静态 SVG 体积。开发时修改坐标后运行此命令；修改标签与引线无需重新生成。标签偏移仅用于排版，不改变真实地理位置；中英文标签作为 HTML 文字显示，手机端保持可读字号。D3 与 TopoJSON 只用于生成静态资源，不进入浏览器运行时。
 
 新增文章时，在 `content/blog/` 下创建以稳定英文 `slug` 命名的目录，复制现有 `post.ts`，填写中英文标题、摘要、正文及 ISO 日期。分类为 `technology` 或 `life`，标签用于筛选与搜索。在 `index.ts` 导入文章并加入 `posts` 后，重新构建便会生成静态详情页；不要将未完成的草稿加入发布数组。
 

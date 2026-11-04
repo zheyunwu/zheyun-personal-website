@@ -13,8 +13,8 @@ export function LifeMap() {
   return (
     <figure className="life-map">
       <div className="life-map-artwork" role="img" aria-label={t(
-        'A world map marking five important places in my life: Quanzhou, China; Tamsui, New Taipei; Helsinki, Finland; Stockholm, Sweden; and Berlin, Germany.',
-        '标记我生命中五个重要地点的世界地图：中国泉州、新北淡水、芬兰赫尔辛基、瑞典斯德哥尔摩、德国柏林。',
+        'A globe centred on Europe and Asia, marking five important places in my life: Quanzhou, China; Tamsui, New Taipei; Helsinki, Finland; Stockholm, Sweden; and Berlin, Germany.',
+        '以欧亚大陆为中心的球面地图，标记我生命中五个重要地点：中国泉州、新北淡水、芬兰赫尔辛基、瑞典斯德哥尔摩、德国柏林。',
       )}>
         <svg viewBox={`0 0 ${geometry.width} ${geometry.height}`} aria-hidden="true" focusable="false">
           <image href={asset('/images/life-map-base.svg')} width={geometry.width} height={geometry.height} />
@@ -22,7 +22,8 @@ export function LifeMap() {
             const point = geometry.points.find(item => item.id === location.id)!.point;
             return <g key={location.id}>
               <polyline className="life-map-leader" points={[point, ...location.leader].map(pair => pair.join(',')).join(' ')} />
-              <circle className="life-map-dot" cx={point[0]} cy={point[1]} r={location.id === 'quanzhou' || location.id === 'tamsui' ? 2 : 3} />
+              <circle className="life-map-pin-halo" cx={point[0]} cy={point[1]} r={location.id === 'quanzhou' || location.id === 'tamsui' ? 4.4 : 5.5} />
+              <circle className="life-map-dot" cx={point[0]} cy={point[1]} r={location.id === 'quanzhou' || location.id === 'tamsui' ? 2.5 : 3.2} />
             </g>;
           })}
         </svg>
