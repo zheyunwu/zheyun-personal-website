@@ -76,10 +76,7 @@ export default function ArticleImage({ image }: { image: PostImage }) {
           <img src={image.src} alt={image.alt[lang]} width={image.width} height={image.height} loading="lazy" decoding="async" />
           <span className="article-image-zoom-cue" aria-hidden="true"><ZoomIn size={17} /></span>
         </button>
-        <figcaption>
-          {image.caption ? <span>{image.caption[lang]}</span> : null}
-          <span className="article-image-hint">{t('Click to take a closer look.', '点击图片，放大查看。')}</span>
-        </figcaption>
+        {image.caption ? <figcaption>{image.caption[lang]}</figcaption> : null}
       </figure>
 
       <dialog

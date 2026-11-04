@@ -46,6 +46,7 @@ npm run check:seo
 - 首页以个人介绍和最新文章组织，履历采用时间线，博客采用文章索引；不为统一视觉而强行套用相同卡片布局。
 - 使用真实头像与五地世界地图；分享卡沿用网站字体、暖白与墨蓝配色，Stockholm 摄影原件保留在图片目录。避免虚构评价、指标，以及装饰性编号、轨道图、无意义图标和空泛口号。
 - 更新样式后检查英文与中文、320px/390px 手机端和桌面，测试键盘菜单、搜索筛选和文章目录。
+- 文案以实际信息为准：不为每个标题补写副标题，不重复邀请联系或添加模板化收尾。保留帮助选文的摘要、操作提示、履历事实与必要披露。手机文章目录默认收起，桌面目录保持展开。
 
 设计研究参考：[Anthropic 对前端设计趋同的讨论](https://claude.com/resources/articles/improving-frontend-design-through-skills)、[Adrian Krebs 的 Show HN 页面模式研究](https://www.adriankrebs.ch/blog/design-slop/)。这些是设计倾向和启发式观察，不是判断 AI 作者身份的依据。
 

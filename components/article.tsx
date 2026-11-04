@@ -1,7 +1,8 @@
 'use client';
 
 import Link from './localized-link';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 import { useLanguage } from './language';
 import { formatPostDate, topicLabels, type Post, type PostLink } from '../content/blog';
 import ArticleTable from './article-table';
@@ -18,25 +19,30 @@ export function ArticleExternalLink({ link }: { link: PostLink }) {
 export default function Article({ post, nextPost }: { post: Post; nextPost?: Post }) {
   const { lang, t } = useLanguage();
   const hasAffiliateLinks = post.affiliate || post.affiliateDisclosure || post.body.some(section => section.links?.some(link => link.sponsored));
+  const [tocOpen, setTocOpen] = useState(false);
 
   return (
     <article className="article-page container">
       <Link href="/blog/" className="article-back"><ArrowLeft size={18} aria-hidden="true" />{t('Back to blog', '返回博客')}</Link>
       <header className="article-heading">
-        <p className="journal-kicker">{post.format[lang]}<span aria-hidden="true"> / </span><span>{post.category === 'technology' ? t('Technology', '技术') : t('Life in Germany', '德国生活')}</span></p>
+        <p className="journal-kicker">{post.format[lang]}<span aria-hidden="true"> / </span><span>{post.category === 'technology' ? t('Technology', '技术') : t('Life', '生活')}</span></p>
         <h1>{post.title[lang]}</h1>
         <p className="article-deck">{post.excerpt[lang]}</p>
         <div className="article-byline">
           <Link className="article-author" href="/cv/"><img src={asset('/images/zheyun-avatar-160.webp')} width="160" height="160" alt="" /><span>Zheyun Wu</span></Link>
-          <div className="article-meta"><time dateTime={post.publishedAt || post.date}>{formatPostDate(post.date, lang)}</time>{post.updated && post.updated !== post.date ? <span>{t('Updated ', '更新于 ')}<time dateTime={post.updatedAt || post.updated}>{formatPostDate(post.updated, lang)}</time></span> : null}<span>{post.readTime} {t('min read', '分钟阅读')}</span></div>
+          <div className="article-meta"><time dateTime={post.publishedAt || post.date}>{formatPostDate(post.date, lang)}</time>{post.updated && post.updated !== post.date ? <span>{t('Updated ', '更新于 ')}<time dateTime={post.updatedAt || post.updated}>{formatPostDate(post.updated, lang)}</time></span> : null}</div>
+          <span className="article-read-time">{post.readTime} {t('min read', '分钟阅读')}</span>
         </div>
       </header>
 
       <div className="article-layout">
         <aside className="article-toc">
-          <h2>{t('On this page', '本文目录')}</h2>
-          <nav aria-label={t('Table of contents', '文章目录')}>{post.body.map(section => <a href={`#${section.id}`} key={section.id}>{section.title[lang]}</a>)}</nav>
-          <p className="article-topics">{post.tags.map(tag => topicLabels[tag]?.[lang] || tag).join(' · ')}</p>
+          <h2 className="article-toc-title">{t('On this page', '本文目录')}</h2>
+          <button className="article-toc-toggle" type="button" aria-expanded={tocOpen} aria-controls="article-toc-links" onClick={() => setTocOpen(value => !value)}>{t('On this page', '本文目录')}<ChevronDown size={18} aria-hidden="true" /></button>
+          <div id="article-toc-links" className={`article-toc-links${tocOpen ? ' is-open' : ''}`}>
+            <nav aria-label={t('Table of contents', '文章目录')}>{post.body.map(section => <a href={`#${section.id}`} key={section.id}>{section.title[lang]}</a>)}</nav>
+            <p className="article-topics">{post.tags.map(tag => topicLabels[tag]?.[lang] || tag).join(' · ')}</p>
+          </div>
         </aside>
         <div className="article-prose">
           {hasAffiliateLinks ? <aside className="article-disclosure"><strong>{post.disclosureTitle?.[lang] ?? t('Referral & affiliate disclosure', '邀请与联盟链接说明')}</strong><p>{post.affiliateDisclosure?.[lang] ?? t('This article contains affiliate links. If you choose to use them, this site may earn a commission at no additional cost to you. Affiliate links are individually marked.', '本文包含联盟链接。如果你通过这些链接购买或注册，本站可能获得佣金，而不会增加你的费用。相关链接均会单独标注。')}</p></aside> : null}
@@ -54,7 +60,6 @@ export default function Article({ post, nextPost }: { post: Post; nextPost?: Pos
               {section.closingParagraphs?.map((paragraph, index) => <p key={`closing-${index}`}>{paragraph[lang]}</p>)}
             </section>
           ))}
-          <div className="article-finish"><p>{t('Thanks for reading.', '谢谢你读到这里。')}</p><a href="mailto:zheyun.wu.work@gmail.com">{t('Have a thought to share?', '有想法，欢迎写信交流。')}<ArrowRight size={18} aria-hidden="true" /></a></div>
         </div>
       </div>
 

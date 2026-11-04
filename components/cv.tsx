@@ -223,14 +223,14 @@ export function CV() {
         <div className="cv-intro-copy">
           <p className="cv-kicker">{t('About & CV', '关于我')}</p>
           <h1>Zheyun Wu<span>.</span></h1>
-          <p className="cv-intro-role">{t('AI Platform Engineer at SAP', 'SAP · AI 平台工程师')}</p>
-          <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, China, now based in Berlin, Germany. My work connects software, cloud infrastructure and AI. Along the way, I’ve studied in the Nordics, built products, and kept learning by making things.', '我是一名来自中国福建泉州、现居德国柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。一路走来，我曾在北欧求学，也在持续通过做项目、造产品，学习新的东西。')}</p>
+          <p className="cv-intro-role">{t('AI Platform Engineer ', 'SAP · ')}<span>{t('at SAP', 'AI 平台工程师')}</span></p>
+          <p className="cv-intro-description">{t('I’m an engineer from Quanzhou, China, now based in Berlin, Germany. My work connects software, cloud infrastructure and AI.', '我是一名来自中国福建泉州、现居德国柏林的工程师，工作围绕软件开发、云基础设施与 AI 展开。')}</p>
           <div className="cv-actions">
             <a className="text-link" href="https://www.linkedin.com/in/zheyun-wu/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <figure className="cv-portrait">
-          <img src={asset('/images/zheyun-avatar-640.webp')} srcSet={[160,320,640,960].map(width=>`${asset(`/images/zheyun-avatar-${width}.webp`)} ${width}w`).join(', ')} sizes="(max-width:520px) 104px, (max-width:760px) 160px, 240px" alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={640} height={640} />
+          <img src={asset('/images/zheyun-avatar-640.webp')} srcSet={[160,320,640,960].map(width=>`${asset(`/images/zheyun-avatar-${width}.webp`)} ${width}w`).join(', ')} sizes="(max-width:370px) 72px, (max-width:520px) 88px, (max-width:760px) 160px, 240px" alt={t('Zheyun Wu by the Stockholm waterfront', 'Zheyun Wu 在斯德哥尔摩海滨')} width={640} height={640} />
         </figure>
       </header>
 
@@ -250,7 +250,7 @@ export function CV() {
                 <li><span>{t('German', '德语')}</span><span>{t('Learning', '学习中')}</span></li>
               </ul>
             </div>
-            <div className="cv-sidebar-detail">
+            <div className="cv-sidebar-detail cv-sidebar-contact">
               <h2 className="cv-sidebar-title">{t('Let’s connect', '联系我')}</h2>
               <a className="cv-email" href="mailto:zheyun.wu.work@gmail.com">zheyun.wu.work@gmail.com</a>
             </div>
@@ -311,7 +311,6 @@ export function CV() {
 
           <section id="projects" className="cv-section" aria-labelledby="projects-heading">
             <div className="cv-section-heading"><h2 id="projects-heading">{t('Projects', '项目')}</h2></div>
-            <p className="cv-section-lede">{t('Independent products, experiments and research.', '独立产品、技术实验与研究。')}</p>
             <div className="cv-projects">
               {projects.map((project) => (
                 <article className="cv-project" key={project.name}>
@@ -332,7 +331,6 @@ export function CV() {
 
           <section id="credentials" className="cv-section" aria-labelledby="credentials-heading">
             <div className="cv-section-heading"><h2 id="credentials-heading">{t('Certifications', '证书与认证')}</h2></div>
-            <p className="cv-section-lede">{t('Professional certifications and completed courses.', '专业认证与已完成的课程。')}</p>
             <div className="cv-credential-row">
               <div><h3>Foundation: Introduction to LangChain - Python</h3><p>LangChain · {t('Issued 2026-04-16', '颁发于 2026-04-16')}</p></div>
               <a href="https://academy.langchain.com/certificates/kedqhv5uuw" target="_blank" rel="noopener noreferrer" aria-label={t('View Foundation: Introduction to LangChain certificate', '查看 LangChain 入门课程证书')}>{t('View', '查看')} <span aria-hidden="true">↗</span></a>
@@ -344,12 +342,11 @@ export function CV() {
             <h3 className="cv-certification-group">{t('AWS certifications', 'AWS 认证')}</h3>
             {awsCredentials.map((credential) => (
               <div className="cv-credential-row" key={credential.name}>
-                <div><h3>{credential.name}</h3><p>{t('Issued', '颁发于')} <time dateTime={credential.earned}>{credential.earned}</time> · {t('Valid until', '有效期至')} <time dateTime={credential.until}>{credential.until}</time></p></div>
+                <div><h3>{credential.name}</h3><p className="cv-credential-dates"><span>{t('Issued', '颁发于')} <time dateTime={credential.earned}>{credential.earned}</time></span><span>{t('Valid until', '有效期至')} <time dateTime={credential.until}>{credential.until}</time></span></p></div>
                 <a href={credential.url} target="_blank" rel="noopener noreferrer" aria-label={`${t('View AWS certification', '查看 AWS 认证')}: ${credential.name}`}>{t('View', '查看')} <span aria-hidden="true">↗</span></a>
               </div>
             ))}
           </section>
-          <div className="cv-endnote"><p>{t('Have a project in mind? I also offer independent IT services.', '有想实现的项目？我也提供独立 IT 服务。')}</p><a className="text-link" href="mailto:zheyun.wu.work@gmail.com">{t('Get in touch', '联系我')} <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </main>

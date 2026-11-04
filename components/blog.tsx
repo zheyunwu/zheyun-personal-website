@@ -11,12 +11,11 @@ export function BlogCard({ post }: { post: Post }) {
   return (
     <article className="journal-entry">
       <div className="journal-entry-details">
-        <span className="journal-entry-category">{post.category === 'technology' ? t('Technology', '技术') : t('Life in Germany', '德国生活')}</span>
+        <span className="journal-entry-category">{post.category === 'technology' ? t('Technology', '技术') : t('Life', '生活')}</span>
         <time dateTime={post.date}>{formatPostDate(post.date, lang)}</time>
         <span>{post.readTime} {t('min read', '分钟阅读')}</span>
       </div>
       <div className="journal-entry-copy">
-        <p className="journal-entry-format">{post.format[lang]}</p>
         <h2><Link href={`/blog/${post.slug}/`}>{post.title[lang]}</Link></h2>
         <p className="journal-entry-excerpt">{post.excerpt[lang]}</p>
         <div className="journal-entry-bottom">
@@ -46,10 +45,7 @@ export default function Blog() {
   return (
     <div className="journal-page container">
       <header className="journal-heading">
-        <div className="journal-heading-row">
-          <h1>{t('Blog', '博客')}</h1>
-          <p>{t('What I’m learning about AI and engineering, and the everyday details of making a life in Germany.', '记录 AI 与工程中的所学，也分享在德国生活时，值得认真研究的日常小事。')}</p>
-        </div>
+        <h1>{t('Blog', '博客')}</h1>
       </header>
 
       <section className="journal-library" aria-label={t('Browse articles', '浏览文章')}>
@@ -82,8 +78,8 @@ export default function Blog() {
         </div>
         {filtered.length ? <div className="journal-entries">{filtered.map(post => <BlogCard key={post.slug} post={post} />)}</div> : (
           <div className="journal-empty">
-            <h2>{query ? t('No articles found.', '暂时没有找到。') : t('More to come.', '这个主题，还在准备中。')}</h2>
-            <p>{query ? t('Try another search, or return to the full collection.', '换一个关键词试试，或返回全部文章。') : t('There are no published articles on this topic yet. Banking, investing, housing, mortgages, and kitchens are on the research list.', '这个主题暂时还没有文章。银行、投资、买房、房贷和厨房，都已列入未来的研究选题。')}</p>
+            <h2>{query ? t('No articles found.', '暂时没有找到。') : t('No articles yet.', '暂无文章。')}</h2>
+            {query ? <p>{t('Try another search or clear the filters.', '换个关键词，或清除筛选。')}</p> : null}
             <button className="button" type="button" onClick={reset}>{t('Browse all articles', '浏览全部文章')}<ArrowRight size={18} aria-hidden="true" /></button>
           </div>
         )}
