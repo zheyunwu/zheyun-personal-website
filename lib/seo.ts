@@ -44,7 +44,7 @@ export const corePages = {
   privacy: {
     path: '/privacy/',
     title: { en: 'Privacy & Disclosures', zh: '隐私与披露' },
-    description: { en: 'How zheyun.dev handles hosting, language selection, contact enquiries and external links, including disclosures for personal referrals and future advertising.', zh: '了解 zheyun.dev 的网站托管、语言选择、联系信息及外部链接处理方式，以及个人邀请链接、联盟链接与广告的相关说明。' },
+    description: { en: 'How zheyun.dev handles your data, optional Google Analytics, consent settings, contact enquiries and referral links.', zh: '了解 zheyun.dev 如何处理个人数据、管理可选的 Google Analytics 访问统计和同意设置，以及联系邮箱和邀请链接的隐私说明。' },
     label: { en: 'Privacy & disclosures', zh: '隐私与披露' },
   },
   imprint: {

@@ -20,6 +20,7 @@ jobs:
     env:
       NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
       NEXT_PUBLIC_BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
+      NEXT_PUBLIC_GA_MEASUREMENT_ID: G-ZE19W09NYB
     steps:
       - name: Check out source
         uses: actions/checkout@v7
@@ -34,6 +35,8 @@ jobs:
         run: npm ci
       - name: Check types
         run: npm run typecheck
+      - name: Verify analytics consent and event handling
+        run: npm run check:analytics
       - name: Build static website
         run: npm run build
       - name: Validate exported SEO, languages and links

@@ -8,7 +8,19 @@ import '@/app/globals.css';
 import { htmlLanguage, type Language } from '@/lib/i18n';
 import { LanguageProvider } from './language';
 import { Header, Footer } from './shell';
+import { AnalyticsTracker } from './analytics-tracker';
 
 export default function SiteLayout({ children, language, languageSwitchPath }: { children: React.ReactNode; language: Language; languageSwitchPath?: string }) {
-  return <html lang={htmlLanguage[language]}><body id="top"><LanguageProvider language={language}><Header languageSwitchPath={languageSwitchPath} />{children}<Footer /></LanguageProvider></body></html>;
+  return (
+    <html lang={htmlLanguage[language]}>
+      <body id="top">
+        <LanguageProvider language={language}>
+          <Header languageSwitchPath={languageSwitchPath} />
+          {children}
+          <Footer />
+          <AnalyticsTracker />
+        </LanguageProvider>
+      </body>
+    </html>
+  );
 }

@@ -21,6 +21,7 @@ npm run dev
 
 ```sh
 npm run typecheck
+npm run check:analytics
 npm run build
 npm run check:seo
 ```
@@ -116,7 +117,17 @@ Robinhood 欧元收益文章保留作者提供的中文正文与段落顺序，�
 3. 在 URL Inspection 检查英文首页、中文首页和双语文章的抓取结果、规范网址与索引状态；在 [Rich Results Test](https://search.google.com/test/rich-results) 检查文章和履历。可用 [Schema Validator](https://validator.schema.org/) 进一步验证完整图谱。
 4. 累积实际数据后看 Search Console 的曝光、点击、查询词、网页索引和 Core Web Vitals。真实用户 p75 的目标为 LCP ≤2.5s、INP ≤200ms、CLS ≤0.1；静态检查或一次 Lighthouse 测试不能证明线上已经达到这些指标。
 
-当前版本没有接入跟踪脚本。代码检查通过不代表搜索平台账户已经验证、sitemap 已提交、页面已收录，或保证排名/富媒体展示。后续内容策略应围绕本人实际经验、清晰的问题与可核对资料展开，不堆砌关键词或批量生成薄内容。
+## 访问与行为统计
+
+生产站使用独立的免费 GA4 媒体资源 [zheyun.dev](https://analytics.google.com/analytics/web/#/a362212302p564813510/reports/intelligenthome)。GitHub Pages 工作流在静态构建时传入公开的 `NEXT_PUBLIC_GA_MEASUREMENT_ID`。本地默认关闭统计。需要测试时使用独立的测试数据流。
+
+| 在后台想看什么 | 查看方式 |
+| --- | --- |
+| 访问量与流量来源 | 在「报告」中查看「网页和屏幕」的浏览次数、活跃用户数，以及「流量获取」的会话来源。实时报告可确认近期访问。 |
+| 读者看到文章的哪个位置 | 在「探索」中按页面路径筛选文章，筛选事件名 `article_read_depth`，以自定义维度 `Article reading depth` 为行、事件数为值。25、50、75、90 各档每次浏览最多记一次。计算到达率时，用该档事件数除以同一文章、同一时段的浏览次数。 |
+| 邀请链接与邮箱点击 | 在事件或关键事件报告查看 `referral_click` 和 `email_click`。每次点击计一次，不设置金额。邀请平台可用 `Referral provider` 细分；点击并不能确认开户或邮件送达。 |
+
+用 `Site language` 或页面路径区分英文和中文。访客须先同意才加载 Google 标签。页脚「统计设置」可以随时撤回。页面网址去除查询参数和锚点，邀请点击仅传平台名。Google Signals、精细位置和设备采集、广告个性化及数据流增强型衡量均关闭。用户与事件明细保留两个月，新活动不延长用户数据保留期。更改事件、期限或数据用途时，同步更新中英文隐私页和回归测试。
 
 实现依据：[Google 多语言网址](https://developers.google.com/search/docs/specialty/international/localized-versions)、[Article 结构化数据](https://developers.google.com/search/docs/appearance/structured-data/article)、[ProfilePage](https://developers.google.com/search/docs/appearance/structured-data/profile-page)、[sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)、[重定向](https://developers.google.com/search/docs/crawling-indexing/301-redirects)、[Web Vitals](https://web.dev/articles/vitals)。
 
